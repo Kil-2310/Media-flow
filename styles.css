@@ -287,7 +287,7 @@ body main #main_page {
 }
 body main #main_page h1 {
   color: var(--font_color_white);
-  font-size: clamp(1.2rem, 2.4vw + 0.9rem, 3rem);
+  font-size: clamp(1.2rem, 2.5vw + 1rem, 3rem);
   font-family: "Cormorant Garamond", Arial, Helvetica, sans-serif;
   width: clamp(60vw, 15vh + 30vw, 70vw);
   position: relative;
