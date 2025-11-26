@@ -1,22 +1,98 @@
+function setCookie(name, value, days = 365) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = "expires=" + date.toUTCString();
+    document.cookie = name + "=" + encodeURIComponent(value) + ";" + expires + ";path=/";
+}
+
+function getCookie(name) {
+    const nameEQ = name + "=";
+    const cookies = document.cookie.split(';');
+    
+    for (let i = 0; i < cookies.length; i++) {
+        let cookie = cookies[i];
+        while (cookie.charAt(0) === ' ') {
+            cookie = cookie.substring(1);
+        }
+        if (cookie.indexOf(nameEQ) === 0) {
+            return decodeURIComponent(cookie.substring(nameEQ.length));
+        }
+    }
+    return null;
+}
+
 // Окно с информацией
-const info_win_btn = document.getElementById('info_win_btn')
-const info_win = document.getElementById('info_win') // Добавлено отсутствующее определение
-info_win_btn.addEventListener('click', () => {
-    info_win.style.display = 'none'
-})
+// const info_win_btn = document.getElementById('info_win_btn')
+// const info_win = document.getElementById('info_win') // Добавлено отсутствующее определение
+// info_win_btn.addEventListener('click', () => {
+//     info_win.style.display = 'none'
+// })
 
-// Карта 2-ой страницы сайта
-const container_iframe_map = document.getElementById('container_iframe_map')
-const iframe_map = document.getElementById('iframe_map') // Вынесено за пределы обработчика
+// Проверка браузера пользователя
 
-container_iframe_map.addEventListener('click', () => {
-    iframe_map.style.pointerEvents = 'auto'
-})
+function detectBrowserByVendor() {
+    const vendor = navigator.vendor;
+    
+    if (vendor.includes("Yandex")) {
+        const container = document.createElement('div');
+        container.style.cssText = 'position:relative;overflow:hidden;width:100vw;height:100vh;';
+        
+        const link1 = document.createElement('a');
+        link1.href = 'https://yandex.ru/maps?utm_medium=mapframe&utm_source=maps';
+        link1.style.cssText = 'color:#eee;font-size:12px;position:absolute;top:0px;width:100vw;';
+        link1.textContent = 'Яндекс Карты';
+        
+        const link2 = document.createElement('a');
+        link2.href = 'https://yandex.ru/maps/geo/kurskaya_oblast/53000040/?ll=36.300031%2C51.680046&utm_medium=mapframe&utm_source=maps&z=7';
+        link2.style.cssText = 'color:#eee;font-size:12px;position:absolute;top:14px;width:100vw;';
+        link2.textContent = 'Курская область — Яндекс Карты';
 
-// Обработчик mouseout добавлен один раз
-iframe_map.addEventListener('mouseout', () => {
-    iframe_map.style.pointerEvents = 'none'
-})
+        const iframe = document.createElement('iframe');
+        iframe.id = 'iframe_map';
+        iframe.src = 'https://yandex.ru/map-widget/v1/?ll=36.300031%2C51.680046&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgg1MzAwMDA0MBIr0KDQvtGB0YHQuNGPLCDQmtGD0YDRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCIKDUV8EEIV2iNOQg%2C%2C&z=7';
+        iframe.width = '100%';
+        iframe.height = '100%';
+        iframe.frameBorder = '1';
+        iframe.allowFullscreen = true;
+        iframe.style.cssText = 'position:relative;';
+
+        container.appendChild(link1);
+        container.appendChild(link2);
+        container.appendChild(iframe);
+        
+        return container;
+    } else {
+        const iframe = document.createElement('iframe');
+        iframe.id = 'iframe_map';
+        iframe.src = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d632329.067180087!2d35.4585185580859!3d51.75067776459236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x412f0579d6594437%3A0xad02dfc2bf4338a8!2z0JrRg9GA0YHQutCw0Y8g0L7QsdC7Lg!5e0!3m2!1sru!2sru!4v1755610697730!5m2!1sru!2sru';
+        iframe.width = '600';
+        iframe.height = '450';
+        iframe.style.border = '0';
+        iframe.allowFullscreen = true;
+        iframe.loading = 'lazy';
+        iframe.referrerPolicy = 'no-referrer-when-downgrade';
+        
+        return iframe;
+    }
+}
+
+const container_iframe_map = document.getElementById('container_iframe_map');
+if (container_iframe_map) {
+    const mapContent = detectBrowserByVendor();
+    container_iframe_map.appendChild(mapContent);
+    
+    // Обработчики событий
+    const iframe_map = document.getElementById('iframe_map');
+    if (iframe_map) {
+        container_iframe_map.addEventListener('click', () => {
+            iframe_map.style.pointerEvents = 'auto';
+        });
+        
+        iframe_map.addEventListener('mouseout', () => {
+            iframe_map.style.pointerEvents = 'none';
+        });
+    }
+}
 
 // Музыкальный плеер
 const control_music_player = document.getElementById('control_music_player')
@@ -118,25 +194,54 @@ const history_info = [
 ]
 
 function renderHistoryFeed() {
-    const placeholder = document.getElementById('placeholder_history_feed')
-    let html_content = ''
-
+    const placeholder = document.getElementById('placeholder_history_feed');
+    if (!placeholder) return;
+    
+    // Очищаем контейнер безопасно
+    placeholder.textContent = '';
+    
     history_info.forEach((item, index) => {
-        const reverse_class = index % 2 === 0 ? '' : 'reversed'
-        const total_img = item.img ? `<img loading="lazy" src="${item.img}" class="container_history_right_block_img">` : ''
-        const total_text = `<article class="container_history_left_block">${item.text}</article>`
-
-        html_content += 
-        `<h5 class="container_history_h5">${item.year}</h5>
-        <aside class="container_history_markup ${reverse_class}">
-            ${total_text}
-            <article class="container_history_right_block">
-                ${total_img}
-            </article>
-        </aside>`
-    })
-
-    placeholder.innerHTML = html_content
+        const reverse_class = index % 2 === 0 ? '' : 'reversed';
+        
+        // Создаем основные элементы
+        const yearHeading = document.createElement('h5');
+        yearHeading.className = 'container_history_h5';
+        yearHeading.textContent = item.year;
+        
+        const aside = document.createElement('aside');
+        aside.className = `container_history_markup ${reverse_class}`;
+        
+        // Создаем левый блок с текстом
+        const leftArticle = document.createElement('article');
+        leftArticle.className = 'container_history_left_block';
+        
+        const textParagraph = document.createElement('p');
+        textParagraph.textContent = item.text;
+        
+        leftArticle.appendChild(textParagraph);
+        
+        // Создаем правый блок с изображением
+        const rightArticle = document.createElement('article');
+        rightArticle.className = 'container_history_right_block';
+        
+        // Добавляем изображение если есть
+        if (item.img) {
+            const img = document.createElement('img');
+            img.loading = 'lazy';
+            img.src = item.img;
+            img.className = 'container_history_right_block_img';
+            img.alt = `Историческое фото: ${item.year}`;
+            rightArticle.appendChild(img);
+        }
+        
+        // Собираем структуру
+        aside.appendChild(leftArticle);
+        aside.appendChild(rightArticle);
+        
+        // Добавляем в контейнер
+        placeholder.appendChild(yearHeading);
+        placeholder.appendChild(aside);
+    });
 }
 
 // Military Museum Gallery
@@ -205,23 +310,48 @@ const solders_info = [
 ]
 
 function renderSolders() {
-    let total_HTML = ''
-    const placeholder = document.getElementById('solders')
+    const placeholder = document.getElementById('solders');
+    if (!placeholder) return;
+    
+    placeholder.textContent = '';
     
     solders_info.forEach(item => {
-        total_HTML += `
-        <div class="solders_div">
-            <a target="_blank" href="${item.link}">
-                <img src="${item.image}" alt="Фото солдата ${item.name}">
-            </a>
-            <div>
-                <pre>${item.name[0]}
-    ${item.name[1]}</pre>
-            </div>
-        </div>
-        `
-    })
-    placeholder.innerHTML = total_HTML
+        const soldierDiv = document.createElement('div');
+        soldierDiv.className = 'solders_div';
+        
+        // Ссылка с фото
+        const link = document.createElement('a');
+        link.target = '_blank';
+        link.href = item.link;
+        link.rel = 'noopener noreferrer';
+        
+        const img = document.createElement('img');
+        img.src = item.image;
+        img.alt = `Фото солдата ${item.name.join(' ')}`;
+        img.loading = 'lazy';
+        
+        link.appendChild(img);
+        
+        // Контейнер для имени
+        const nameDiv = document.createElement('div');
+        
+        // Создаем отдельные элементы для имени и фамилии
+        const firstName = document.createElement('span');
+        firstName.textContent = item.name[0];
+        firstName.style.display = 'block';
+        
+        const lastName = document.createElement('span');
+        lastName.textContent = item.name[1];
+        lastName.style.display = 'block';
+        lastName.style.textIndent = '1em';
+        
+        nameDiv.appendChild(firstName);
+        nameDiv.appendChild(lastName);
+        
+        soldierDiv.appendChild(link);
+        soldierDiv.appendChild(nameDiv);
+        placeholder.appendChild(soldierDiv);
+    });
 }
 
 // ecology
@@ -246,14 +376,22 @@ const tourism_chapter = [
 ]
 
 function create_small_cards(element, array) {
-    const placeholder = document.querySelector(element)
-    const total_html = array.map(item => `
-        <div>
-            <p><strong>${item.text}</strong></p>
-        </div>
-    `).join('')
-
-    placeholder.innerHTML = total_html
+    const placeholder = document.querySelector(element);
+    if (!placeholder) return;
+    
+    placeholder.textContent = '';
+    
+    array.forEach(item => {
+        const cardDiv = document.createElement('div');
+        const paragraph = document.createElement('p');
+        const strong = document.createElement('strong');
+        
+        strong.textContent = item.text;
+        paragraph.appendChild(strong);
+        cardDiv.appendChild(paragraph);
+        
+        placeholder.appendChild(cardDiv);
+    });
 }
 
 const observer_two = new IntersectionObserver((entries) => {
@@ -280,7 +418,7 @@ const observer_three = new IntersectionObserver((entries) => {
     threshold: 0.6
 })
 
-function creating_chart() {
+function creating_chart(color_text='black') {
     const data = {
         labels: ['Транспорт 🛻', 'Сфера услуг 🛎', 'Индустрия 🏭', 'Энергетика ⚡', 'Сельское хозяйство 🌾', 'Остальные виды деятельности 💵'],
         datasets: [{
@@ -300,12 +438,13 @@ function creating_chart() {
                 legend: {
                     display: true,
                     labels: {
+                        color: color_text,
                         font: {
                             size: function(context) {
                                 const width = context.chart.width
-                                if (width < 400) return 16
-                                if (width <= 600) return 19
-                                return 22
+                                if (width < 400) return 24
+                                if (width <= 600) return 24
+                                return 28
                             }
                         },
                         padding: 20,
@@ -331,18 +470,20 @@ function creating_chart() {
 
 // beginning_chapter
 function fun_create_placeholder_beginning_chapter() {
-    const placeholders = document.querySelectorAll('.placeholder-beginning-chapter')
-    
+    const placeholders = document.querySelectorAll('.placeholder-beginning-chapter');
+
     placeholders.forEach(placeholder => {
-        const html_content = `
+        const container = document.createElement('div');
+        container.innerHTML = `
             <section class="container_beginning_chapter">
                 <img loading="lazy" class="container_beginning_chapter_img" src="${placeholder.dataset.image}" alt="Изображение начала главы">
                 <h3 class="container_beginning_chapter_title">${placeholder.dataset.leftBlock} Курской области</h3>
                 <p class="container_beginning_chapter_bottom_text">${placeholder.dataset.rightBlock}</p>
             </section>
-        `
-        placeholder.outerHTML = html_content
-    })
+        `;
+
+        placeholder.replaceWith(container.firstElementChild);
+    });
 }
 
 // Carousel
@@ -355,21 +496,67 @@ class Carousel {
     }
     
     init() {
-        this.container.innerHTML = `
-            <img loading="lazy" class="info_card_img" src="${this.slides[this.currentSlide].image}" alt="${this.slides[this.currentSlide].title}">
-            <section class="info_cards">
-                <aside class="left_card_block">
-                    <h5>${this.slides[this.currentSlide].title}</h5>
-                    <p>${this.slides[this.currentSlide].text}</p>
-                    <aside><a target="_blank" href="${this.slides[this.currentSlide].link}">Узнать больше</a></aside>
-                </aside>
-                <aside class="right_card_block">
-                    <button class="prev-btn go_button">←</button>
-                    <button class="next-btn go_button">→</button>
-                </aside>
-            </section>
-            <div class="carousel-indicator"></div>
-        `
+        this.container.textContent = '';
+        const slide = this.slides[this.currentSlide];
+        
+        // Создаем элементы
+        const img = document.createElement('img');
+        img.loading = 'lazy';
+        img.className = 'info_card_img';
+        img.src = slide.image;
+        img.alt = slide.title;
+        
+        const section = document.createElement('section');
+        section.className = 'info_cards';
+        
+        // Левый блок
+        const leftAside = document.createElement('aside');
+        leftAside.className = 'left_card_block';
+        
+        const h5 = document.createElement('h5');
+        h5.textContent = slide.title;
+        
+        const p = document.createElement('p');
+        p.textContent = slide.text;
+        
+        const linkAside = document.createElement('aside');
+        const a = document.createElement('a');
+        a.target = '_blank';
+        a.href = slide.link;
+        a.textContent = 'Узнать больше';
+        a.rel = 'noopener noreferrer';
+        
+        // Правый блок
+        const rightAside = document.createElement('aside');
+        rightAside.className = 'right_card_block';
+        
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'prev-btn go_button';
+        prevBtn.textContent = '←';
+        
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'next-btn go_button';
+        nextBtn.textContent = '→';
+        
+        // Индикатор
+        const indicator = document.createElement('div');
+        indicator.className = 'carousel-indicator';
+        
+        // Собираем структуру
+        linkAside.appendChild(a);
+        leftAside.appendChild(h5);
+        leftAside.appendChild(p);
+        leftAside.appendChild(linkAside);
+        
+        rightAside.appendChild(prevBtn);
+        rightAside.appendChild(nextBtn);
+        
+        section.appendChild(leftAside);
+        section.appendChild(rightAside);
+        
+        this.container.appendChild(img);
+        this.container.appendChild(section);
+        this.container.appendChild(indicator);
 
         if (this.container.classList.contains('carousel_right_text')) {
             const left_card_block = this.container.querySelector('.left_card_block')
@@ -535,7 +722,7 @@ const nature_cards = [
     {
         image: './img/arboretum_park.jpg',
         title: 'Железногорский дендрологический парк',
-        text: 'Дендропарк создавался на научной основе в соответствии с рекомендациями ученых-ботаников Брянской и Воронежской областей. Сегодня в парке собраны растения из разных уголков земного шара. На территории в три гектара высажены более 3500 редких растений. Для удобства парк разделен на 34 сектора.',
+        text: 'Дендропарк создавался в соответствии с рекомендациями ученых-ботаников. Сегодня в парке собраны растения из разных уголков земного шара. На территории в три гектара высажены более 3500 редких растений. Для удобства парк разделен на 34 сектора.',
         link: 'https://avatars.dzeninfra.ru/get-zen_doc/271828/pub_64650d31324a2f6697bb2817_651ed9478294f35673ed3173/scale_1200'
     },
     {
@@ -559,7 +746,7 @@ const nature_cards = [
     {
         image: './img/cranberry_lake.jpg',
         title: 'Клюквенное озеро',
-        text: 'Статус памятника природы регионального значения был официально утвержден в 2013 году. Особенностью озера является его плавучий остров, состоящий из растений. На территории водоёма обнаружено 187 видов сосудистых растений из них 11 включены в Красную книгу Курской области.',
+        text: 'Статус памятника природы регионального значения был официально утвержден в 2013 году. Особенностью озера является его плавучий остров, состоящий из растений. На территории водоёма обнаружено 187 видов сосудистых растений.',
         link: 'https://ru.wikipedia.org/wiki/Клюквенное_озеро'
     }
 ]
@@ -575,31 +762,76 @@ function initCarousels() {
 
 // container_interesting_fact
 function initInterestingFacts() {
-    const placeholders = document.querySelectorAll('.container_interesting_fact')
+    const placeholders = document.querySelectorAll('.container_interesting_fact');
 
     placeholders.forEach(placeholder => {
-        placeholder.innerHTML = `
-            <h5 class='create_interesting_fact_h5'>Интересный факт:</h5>
-            <p class='interesting_fact_text'>${placeholder.dataset.text}</p>
-            <aside class='aside_interesting_fact'>
-            <p class="audio-trigger">${placeholder.dataset.audioText}</p>
-            <a target="_blank" href="${placeholder.dataset.hrefLink1}">Узнать больше</a>
-            </aside>
-        `
+        placeholder.textContent = '';
         
-        const interesting_fact_audio = document.createElement('audio')
-        interesting_fact_audio.src = placeholder.dataset.audioSrc
-        placeholder.append(interesting_fact_audio)
+        const heading = document.createElement('h5');
+        heading.className = 'create_interesting_fact_h5';
+        heading.textContent = 'Интересный факт:';
+        placeholder.appendChild(heading);
+        
+        const text = document.createElement('p');
+        text.className = 'interesting_fact_text';
+        text.textContent = placeholder.dataset.text || '';
+        placeholder.appendChild(text);
+        
+        const aside = document.createElement('aside');
+        aside.className = 'aside_interesting_fact';
+        
+        const audioTrigger = document.createElement('p');
+        audioTrigger.className = 'audio-trigger';
+        audioTrigger.textContent = placeholder.dataset.audioText || 'Воспроизвести аудио';
+        audioTrigger.style.cursor = 'pointer';
+        audioTrigger.style.color = '#007bff';
+        audioTrigger.style.transition = 'color 0.2s';
+        
+        const link = document.createElement('a');
+        link.target = '_blank';
+        link.href = placeholder.dataset.hrefLink1 || '#';
+        link.textContent = 'Узнать больше';
+        link.rel = 'noopener noreferrer';
+        
+        aside.appendChild(audioTrigger);
+        aside.appendChild(link);
+        placeholder.appendChild(aside);
+        
+        // Настройка аудио
+        setupAudioForFact(placeholder, audioTrigger);
+    });
+}
 
-        const audio_trigger = placeholder.querySelector('.audio-trigger')
-        audio_trigger.addEventListener('click', () => {
-            if (interesting_fact_audio.paused) {
-                interesting_fact_audio.play()
-            } else {
-                interesting_fact_audio.pause()
-            }
-        })
-    })
+function setupAudioForFact(placeholder, audioTrigger) {
+    const audioSrc = placeholder.dataset.audioSrc;
+    if (!audioSrc) return;
+    
+    const audio = document.createElement('audio');
+    audio.src = audioSrc;
+    audio.preload = 'metadata';
+    
+    let isPlaying = false;
+    
+    audioTrigger.addEventListener('click', () => {
+        if (isPlaying) {
+            audio.pause();
+            isPlaying = false;
+            audioTrigger.textContent = placeholder.dataset.audioText || 'Воспроизвести аудио';
+        } else {
+            audio.play().then(() => {
+                isPlaying = true;
+                audioTrigger.textContent = 'Остановить аудио';
+            })
+        }
+    });
+    
+    audio.addEventListener('ended', () => {
+        isPlaying = false;
+        audioTrigger.style.color = '#007bff';
+        audioTrigger.textContent = placeholder.dataset.audioText || 'Воспроизвести аудио';
+    });
+    
+    placeholder.appendChild(audio);
 }
 
 // Инициализация всего кода после загрузки DOM
@@ -627,3 +859,258 @@ document.addEventListener('DOMContentLoaded', () => {
     initCarousels()
     initInterestingFacts()
 })
+
+// Настройки и фунуции для модального окна
+const settings = document.getElementById('settings')
+const module_bg = document.getElementById('module_bg')
+const exit_btn = document.getElementById('exit_btn')
+let rorate = 10
+
+function rotate_settings(offset = '+') {
+    if (offset == '+') {rorate += 180} else {rorate -= 180}
+    settings.style.transform = `rotate(${rorate}deg)`
+}
+settings.addEventListener('click', () => {
+    rotate_settings()
+    setTimeout(() => {
+        module_bg.classList.add('active')
+    }, 100)
+})
+function remove_wodule_window() {
+    module_bg.classList.remove('active')
+    rotate_settings('-')
+}
+
+module_bg.addEventListener('click', (e) => {
+    if (e.target === module_bg) {
+        remove_wodule_window();
+    }
+})
+exit_btn.addEventListener('click', () => {
+    remove_wodule_window()
+})
+
+// Шапка сайта
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    const scrollThreshold = document.documentElement.clientHeight * 0.1;
+    
+    if (window.scrollY < scrollThreshold) {
+        header.classList.add('no_actove');
+        header.classList.remove('active');
+    } else {
+        header.classList.add('active');
+        header.classList.remove('no_actove');
+    }
+});
+
+
+// Выносим переменную для голосов в глобальную область
+let availableVoices = [];
+
+// Функция инициализации голосов
+function initVoices() {
+    availableVoices = speechSynthesis.getVoices();
+}
+
+// Ждем загрузки голосов
+speechSynthesis.onvoiceschanged = initVoices;
+// Вызываем сразу на случай если голоса уже загружены
+initVoices();
+
+function safeSpeakText(text) {
+    // Всегда останавливаем предыдущую речь
+    speechSynthesis.cancel();
+    
+    // Проверяем поддержку браузером
+    if (!('speechSynthesis' in window)) {
+        console.error('Браузер не поддерживает синтез речи');
+        return false;
+    }
+    
+    // Проверяем загружены ли голоса
+    if (availableVoices.length === 0) {
+        console.warn('Голоса не загружены, пробуем перезагрузить...');
+        initVoices();
+        if (availableVoices.length === 0) {
+            console.error('Голоса недоступны');
+            return false;
+        }
+    }
+    
+    const utterance = new SpeechSynthesisUtterance(text);
+    
+    // Ищем русский голос
+    const russianVoice = availableVoices.find(voice => 
+        voice.lang.includes('ru') || voice.lang.includes('RU')
+    );
+    
+    if (russianVoice) {
+        utterance.voice = russianVoice;
+        console.log('Используется голос:', russianVoice.name);
+    }
+    
+    utterance.rate = 0.8;
+    utterance.pitch = 1;
+    utterance.volume = 1;
+    
+    // Обработчики событий для отладки
+    utterance.onstart = () => console.log('Начало речи:', text);
+    utterance.onend = () => console.log('Конец речи');
+    utterance.onerror = (event) => console.error('Ошибка синтеза речи:', event.error);
+    
+    try {
+        speechSynthesis.speak(utterance);
+        return true;
+    } catch (error) {
+        console.error('Ошибка при воспроизведении:', error);
+        return false;
+    }
+}
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const plus_btn = document.getElementById('plus_btn');
+    const changeable_font_size = document.getElementById('changeable_font_size');
+    const minus_btn = document.getElementById('minus_btn');
+    const voice_assistant_select = document.getElementById('voice_assistant_select');
+    const color_palette_select = document.getElementById('color_palette_select');
+    
+
+    const cookieData = getCookie('cookie_settings');
+    const settings_JSON = cookieData ? JSON.parse(cookieData) : {
+        font_size: 16,
+        color: 'white',
+        voice_assistant: false
+    };
+
+    function updateSetting(settingName, value) {
+        settings_JSON[settingName] = value;
+        setCookie('cookie_settings', JSON.stringify(settings_JSON), 3);
+    }
+
+    function updateFontSize(font_size) {
+        settings_JSON['font_size'] = font_size;
+        
+        document.documentElement.style.fontSize = font_size + 'px';
+        changeable_font_size.innerHTML = `<strong>${font_size}</strong>`
+        
+        setCookie('cookie_settings', JSON.stringify(settings_JSON), 3);
+    }
+
+    voice_assistant_select.addEventListener('change', () => {
+        const newValue = voice_assistant_select.value;
+        flage_voice = voice_assistant_select.value === 'Вкл';
+        updateSetting('voice_assistant', newValue);
+        
+        if (flage_voice) {
+            setTimeout(() => {
+                safeSpeakText("Голосовой помощник включен");
+            }, 100);
+        }
+    });
+
+    color_palette_select.addEventListener('change', () => {
+        updateSetting('color', color_palette_select.value);
+        
+        setTimeout(() => {
+            location.reload();
+        }, 1000)
+    });
+
+    plus_btn.addEventListener('click', () => {
+        const currentSize = settings_JSON.font_size;
+        if (currentSize < 20) {
+            let new_size = currentSize + 1
+            updateFontSize(new_size);
+
+            if (flage_voice) {
+                setTimeout(() => {
+                    safeSpeakText(`Размер шрифта ${new_size} px`);
+                }, 100);
+            }
+        } else if (flage_voice){
+            setTimeout(() => {
+                safeSpeakText(`Максимальный размер 21px`);
+            }, 100);
+        }
+    });
+
+    minus_btn.addEventListener('click', () => {
+        const currentSize = settings_JSON.font_size;
+        if (currentSize > 14) {
+            let new_size = currentSize - 1
+            updateFontSize(new_size);
+            
+            if (flage_voice) {
+                setTimeout(() => {
+                    safeSpeakText(`Размер шрифта ${new_size} px`);
+                }, 100);
+            }
+        } else if (flage_voice){
+            setTimeout(() => {
+                safeSpeakText(`Минимальный размер 14px`);
+            }, 100);
+        }
+    });
+
+    updateFontSize(settings_JSON.font_size);
+
+    
+    voice_assistant_select.value = settings_JSON.voice_assistant;
+    color_palette_select.value = settings_JSON.color;
+
+    let flage_voice = voice_assistant_select.value === 'Вкл';
+    console.log(flage_voice)
+
+    update_theme(color_palette_select.value, flage_voice)
+});
+
+function update_theme(value, flage_voice) {
+    const all_elements = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, a, li, td, th, caption, span')
+    const body = document.querySelector('body')
+    if (value === 'Темная') {
+        body.style.backgroundColor = 'rgba(105, 105, 105, 1)'
+        
+        all_elements.forEach(el => {
+            el.classList.add('darck_theme')
+        })
+    }else if (value === 'Упрощенная') {
+        const all_img = document.querySelectorAll('.container_info_cards img, video, #container_iframe_map, .forest_conservation_project_div, .container_history_right_block img')
+        const container_beginning_chapter_bottom_text = document.querySelectorAll('.container_beginning_chapter_bottom_text')
+        const main_page = document.getElementById('main_page')
+        const hidden_h = document.querySelectorAll('.hidden_h')
+        const chart_container = document.querySelector('.chart-container')
+        
+        all_img.forEach(el => {
+            el.classList.add('del_bg')
+        })
+
+        container_beginning_chapter_bottom_text.forEach(el => {
+            el.classList.add('del_bg')
+        })
+
+        main_page.style.backgroundColor = 'rgba(105, 105, 105, 1)'
+
+        hidden_h.forEach(el => {
+            el.classList.add('del_bg')
+        })
+        chart_container.classList.add('del_bg')
+    }
+
+    if (flage_voice) {
+        setTimeout(() => {
+            safeSpeakText(toString(value));
+        }, 100);
+    }
+}
+
+// menu
+
+document.addEventListener('click', (e) => {
+    const input = document.querySelector('input');
+    
+    if (!e.target.closest('.burger_menu_elements_position')) {
+        input.checked = false;
+    }
+});

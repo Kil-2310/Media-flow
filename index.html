@@ -5,10 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Курск, Курская область: культура, история, экология и экономика региона, туризм</title>
-    <meta name="description" content="Данный сайт про Курскую область расскажет вам про этот замечательный соловьиный край. Вы узнаете про культуру данного региона, его историю, экологию, а также познакометесь с основными направлениями экономики и туризма данного субъекта Российской Федерации">
-    <meta name="keywords" content="Курская область, Курск, Курщина, История Курска Курщины Курской области, Туризм Курска Курщины Курской области, Культура Культурный образ Курска Курщины Курской области, Экология Природа Курска Курщины Курской области, Экономика Курска Курщины Курской области, Туризм Курска Курщины Курской области, Курская АЭС, Достопремечательности Курской области">
+    <meta name="description" content="Вся информация о Курской области – живописном соловьином крае. Вы узнаете про культуру данного региона, его историю, экологию, а также познакомитесь с основными направлениями экономики и туризма данного субъекта Российской Федерации">
     <meta name="author" content="Хомяков Евгений Алексеевич">
     <meta name="robots" content="all">
+
+    <!-- <meta http-equiv="Content-Security-Policy" 
+        content="default-src 'self' https:;
+                script-src 'self' 'unsafe-inline' 'unsafe-eval' https:;
+                style-src 'self' 'unsafe-inline' https:;
+                img-src 'self' data: https:;
+                frame-src 'self' 
+                        https://yandex.ru 
+                        https://*.yandex.ru 
+                        https://*.yandex.net
+                        https://www.google.com 
+                        https://maps.google.com
+                        https:;
+                child-src 'self' 
+                        https://yandex.ru 
+                        https://*.yandex.ru 
+                        https://www.google.com 
+                        https:;
+                connect-src 'self' https:;
+                font-src 'self' https:;
+                media-src 'self' https:;"> -->
 
     <link rel="icon" type="image/png" href="./favicon/favicon-96x96.png" sizes="96x96">
     <link rel="icon" type="image/svg+xml" href="./favicon/favicon.svg">
@@ -21,7 +41,8 @@
     <meta property="og:title" content="Курская область: культура, история, экология и экономика">
     <meta property="og:description" content="Патриотический сайт про соловьиный край России">
     <meta property="og:image" content="./img/for_social_network.jpg">
-    <meta property="og:https://kursk-region.ru" content="URL_страницы">
+    <meta property="og:url" content="https://kursk-region.ru">
+    <meta property="og:site_name" content="Курский Край">
     <meta property="og:type" content="website">
 
     <!-- цифровой объект -->
@@ -58,18 +79,54 @@
     <link rel="stylesheet" href="normal.css">
 </head>
 <body>
+    <!-- settings -->
+    <aside id="settings_panel">
+        <p>Тема и опции для слабовидящих — в настройках.</p>
+        <img id="settings" src="./png/settings.png" alt="Настройки">
+    </aside>
+
+    <section id="module_bg">
+        <div id="module_win">
+            <span id="exit_btn">X</span>
+
+            <div id="font_size_el">
+                <p><strong>Размер шрифта</strong></p>
+                <div>
+                    <button type="button" id="plus_btn">+</button>
+                    <p id="changeable_font_size"><b>16</b></p>
+                    <button type="button" id="minus_btn">-</button>
+                </div>
+            </div>
+
+            <div id="color_palette">
+                <p><strong>Цветовая палитра</strong></p>
+                <select name="" id="color_palette_select">
+                    <option value="Светлая">Светлая</option>
+                    <option value="Темная">Темная</option>
+                    <option value="Упрощенная">Для слабовидящих</option>
+                </select>
+            </div>
+
+            <div id="voice_assistant">
+                <p><strong>Голосовой асистент</strong></p>
+                <select name="" id="voice_assistant_select">
+                    <option value="Выкл">Выкл.</option>
+                    <option value="Вкл">Вкл.</option>
+                </select>
+            </div>
+        </div>
+    </section>
 
     <!-- info_win -->
-
-    <section id="info_win">
-        <p>Хотите полного погружения? Разрешите звук — нажмите на иконку сайта в адресной строке и включите воспроизведение аудио!</p>
+    <!-- <section id="info_win">
+        <p>Для сохранения настроек на сайте используются cookie</p>
         <span id="info_win_btn">ОК</span>
-    </section>
+    </section> -->
 
     <!-- menu -->
     
     <audio id="music_player" src=""></audio>
-    <header>
+    <header class="no_actove">
         <!-- pc_menu -->
         <nav id="pc_menu">
             <ul>
@@ -131,8 +188,7 @@
                 <h2>Курская область</h2>
                 <p><strong><a target="_blank" href="https://ru.wikipedia.org/wiki/Курская_область">Курская область</a></strong> — субъект РФ, входит в состав Центрального федерального округа. Административный центр — город Курск.</p>
             </article>
-            <div id="container_iframe_map">
-                <iframe id="iframe_map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d632329.067180087!2d35.4585185580859!3d51.75067776459236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x412f0579d6594437%3A0xad02dfc2bf4338a8!2z0JrRg9GA0YHQutCw0Y8g0L7QsdC7Lg!5e0!3m2!1sru!2sru!4v1755610697730!5m2!1sru!2sru" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div id="container_iframe_map"></div>
             </div>
         </section>
         <!-- culture -->
@@ -182,7 +238,7 @@
                 </aside>
 
                 <aside class="container_traditions_card">
-                    <div><h5>🎂<br>Кулинарные</h5></div>
+                    <div><h5>🎂<br>Кухня</h5></div>
                     <ul>
                         <li><a target="_blank" href="https://riakursk.ru/v-kurske-segodnya-formirovali-novyy-gastronomicheskiy-brend-bliny-po-kurski">Блины по-курски</a></li>
                         <li><a target="_blank" href="https://welcomekursk.ru/overviews/8/blyuda-tradicionnoi-kukhni-kurskoi-oblasti?ysclid=mgcajh5wrh677814402">Традиционные блюда</a></li>
@@ -190,7 +246,7 @@
                 </aside>
 
                 <aside class="container_traditions_card">
-                    <div><h5>⌛<br>Сезонные<br>и аграрные</h5></div>
+                    <div><h5>⌛<br>Сезонно-<br>аграрные</h5></div>
                     <ul>
                         <li><a target="_blank" href="https://vk.com/wall-14839763_54418">Вождение коня</a></li>
                         <li><a target="_blank" href="https://welcomekursk.ru/events/24567/programma-zaklikanie-vesny">Закликание весны</a></li>
@@ -214,11 +270,11 @@
             <article class="placeholder-beginning-chapter" 
                 data-image="./img/kurska_duga.jpg"
                 data-left-block="История"
-                data-right-block="Монумент “Курская битва”, расположенный в рабочем поселке Поныри Курской области,  увековечивает подвига советского народа в Курской битве времён Великой Отечественной войны.">
+                data-right-block="Мемореальный комплекс “Курская дуга”, расположенный в рабочем поселке Поныри Курской области,  увековечивает подвига советского народа в Курской битве времён Великой Отечественной войны.">
             </article>
 
             <article class="introductory-chapter-text">
-                <p>Курская область была образована в 1934 году, а её современные границы сформировались к 1954 году после передачи части территорий вновь созданным Белгородской и Липецкой областям. Область расположена в центре Европейской части России и имеет богатую историю. На протяжении всей своей истории регион нередко становился ареной боевых действий - от древних времён до наших дней, в связи с чем в 2007 году Курску было присвоено почётное звание «Город воинской славы».</p>
+                <p>Курская область возникла 13 июня 1934 года путём разделения Центрально-Чёрнозёмной области на две новые единицы — Воронежскую и Курскую. После Великой Отечественной войны территория претерпела изменения границ, окончательно закрепившихся лишь к 1954 году вследствие передачи частей земель новообразованным Белгородской и Липецкой областям.</p>
                 <p>Первое письменное упоминание Курска в «Житии Феодосия Печерского» датируются 1032 году, однако в хронологической последовательности ниже приведен этапы жизни Курской области начиная с 1917 по 2025.</p>
                 <p>Практически вся информация, приведенная в этой главе, бралась с сайта: <a target="_blank" href="https://ru.wikipedia.org/wiki/История_Курской_области">История_Курской_области</a>, а картинки с сайта: <a target="_blank" href="https://visualhistory.livejournal.com/188884.html">Курск на исторических снимках</a>.</p>
             </article>
@@ -284,7 +340,7 @@
     
             <div class="carousel_left_text container_info_cards"></div>
     
-            <h4>Центрально-Чернозёмный гос. заповедник имени В. В. Алёхина</h4>
+            <h4 class="hidden_h">Центрально-Чернозёмный гос. заповедник имени В. В. Алёхина</h4>
     
             <aside id="reserve" class="forest_conservation_project_reserve">
                 <div class="forest_conservation_project_div">
@@ -295,8 +351,8 @@
     
             <h4>Проблемы экологии Курской области и их решения</h4>
     
-            <article class="just_text">
-                <p>Несмотря на то, что Курская область остаётся одним из экологически благополучных регионов России, антропогенное воздействие в долгосрочной перспективе может привести к ухудшению экологического состояния территории. К основным современным экологическим проблемам области относятся:</p>
+            <article>
+                <p class="just_text">Несмотря на то, что Курская область остаётся одним из экологически благополучных регионов России, антропогенное воздействие в долгосрочной перспективе может привести к ухудшению экологического состояния территории. К основным современным экологическим проблемам области относятся:</p>
             </article>
     
             <aside class="marking_cards_one"></aside>
@@ -325,11 +381,11 @@
                 data-right-block="<a target='_blank' href='https://ru.wikipedia.org/wiki/Курская_АЭС'>Курской АЭС</a> (КуАЭС) — одна из крупнейших атомных электростанций России, расположенная в городе Курчатов Курской области, в 40 км к западу от города Курс к на берегу реки Сейм, мощьностью 4000 МВт.">
             </div>
 
-            <article class="introductory-chapter-text"><a target="_blank" href="https://ru.wikipedia.org/wiki/Экономика_Курской_области">Экономика Курской</a> области основана на использовании двух основных видов природных ресурсов: плодородных сельскохозяйственных земель и железных руд Курской магнитной аномалии, добываемых в Михайловском карьере. На территории Курской области действует одна из крупнейших в России Курская АЭС. Валовой региональный продукт (ВРП) региона на  2024 года составляет 743,3 млрд рублей. ВРП на душу населения — 704,3 тыс. рублей. Ниже приведена круговая диаграмма, показывающая процентное соотношение разных видов деятельности в ВРП Курской области.</article>
+            <article class="introductory-chapter-text"><p><a target="_blank" href="https://ru.wikipedia.org/wiki/Экономика_Курской_области">Экономика Курской</a> области основана на использовании двух основных видов природных ресурсов: плодородных сельскохозяйственных земель и железных руд Курской магнитной аномалии, добываемых в Михайловском карьере. На территории Курской области действует одна из крупнейших в России Курская АЭС. Валовой региональный продукт (ВРП) региона на  2024 года составляет 743,3 млрд рублей. ВРП на душу населения — 704,3 тыс. рублей. Ниже приведена круговая диаграмма, показывающая процентное соотношение разных видов деятельности в ВРП Курской области.</p></article>
             
             <hr class="enter_hr">
 
-            <h4>Анализ экономики Курской области</h4>
+            <h4 class="hidden_h">Анализ экономики Курской области</h4>
 
             <!-- pie chart -->
             <div class="chart-container">
@@ -382,7 +438,7 @@
                 data-right-block="Собор иконы Божией Матери «Знамение» (<a target='_blank' href='https://ru.wikipedia.org/wiki/%D0%97%D0%BD%D0%B0%D0%BC%D0%B5%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_%D1%81%D0%BE%D0%B1%D0%BE%D1%80_(%D0%9A%D1%83%D1%80%D1%81%D0%BA)'>Знаменский собор</a>) — православный храм в Курске, кафедральный собор Курской митрополии и епархии Русской православной церкви. Расположен в историческом центре города, на территории Знаменского монастыря.">
             </div>
 
-            <article class="introductory-chapter-text"><a target="_blank" href="https://ru.wikipedia.org/wiki/%D0%A2%D1%83%D1%80%D0%B8%D0%B7%D0%BC_%D0%B2_%D0%9A%D1%83%D1%80%D1%81%D0%BA%D0%BE%D0%B9_%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D0%B8">Туризм в Курской области</a> — отрасль экономики Курской области. Основными видами туризма являются деловой, религиозный, событийный и культурно-познавательный.</article>
+            <article class="introductory-chapter-text"><p><a target="_blank" href="https://ru.wikipedia.org/wiki/%D0%A2%D1%83%D1%80%D0%B8%D0%B7%D0%BC_%D0%B2_%D0%9A%D1%83%D1%80%D1%81%D0%BA%D0%BE%D0%B9_%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D0%B8">Туризм в Курской области</a> — отрасль экономики Курской области. Основными видами туризма являются деловой, религиозный, событийный и культурно-познавательный.</p></article>
             
             <hr class="enter_hr">
 
@@ -478,6 +534,7 @@
                 </div>
                 <div id="nightingale_text">
                     <p class="just_text">Спасибо, что заглянули на мой сайт! Для меня Курская область — родной край. Это невероятно богатый и красивый регион, который однозначно стоит посетить. Уникальное сочетание богатой истории, культурных традиций и прекрасной природы создаёт здесь особый, неповторимый мир.</p>
+                    <p class="just_text"><a style="color: white;" href="./privacy-policy.html" target="_blank">Политика конфиденциальности</a></p>
                 </div>
             </aside>
 
