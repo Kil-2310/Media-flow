@@ -30,70 +30,70 @@ function getCookie(name) {
 
 // Проверка браузера пользователя
 
-function detectBrowserByVendor() {
-    const vendor = navigator.vendor;
+// function detectBrowserByVendor() {
+//     const vendor = navigator.vendor;
     
-    if (vendor.includes("Yandex")) {
-        const container = document.createElement('div');
-        container.style.cssText = 'position:relative;overflow:hidden;width:100vw;height:100vh;';
+//     if (vendor.includes("Yandex")) {
+//         const container = document.createElement('div');
+//         container.style.cssText = 'position:relative;overflow:hidden;width:100vw;height:100vh;';
         
-        const link1 = document.createElement('a');
-        link1.href = 'https://yandex.ru/maps?utm_medium=mapframe&utm_source=maps';
-        link1.style.cssText = 'color:#eee;font-size:12px;position:absolute;top:0px;width:100vw;';
-        link1.textContent = 'Яндекс Карты';
+//         const link1 = document.createElement('a');
+//         link1.href = 'https://yandex.ru/maps?utm_medium=mapframe&utm_source=maps';
+//         link1.style.cssText = 'color:#eee;font-size:12px;position:absolute;top:0px;width:100vw;';
+//         link1.textContent = 'Яндекс Карты';
         
-        const link2 = document.createElement('a');
-        link2.href = 'https://yandex.ru/maps/geo/kurskaya_oblast/53000040/?ll=36.300031%2C51.680046&utm_medium=mapframe&utm_source=maps&z=7';
-        link2.style.cssText = 'color:#eee;font-size:12px;position:absolute;top:14px;width:100vw;';
-        link2.textContent = 'Курская область — Яндекс Карты';
+//         const link2 = document.createElement('a');
+//         link2.href = 'https://yandex.ru/maps/geo/kurskaya_oblast/53000040/?ll=36.300031%2C51.680046&utm_medium=mapframe&utm_source=maps&z=7';
+//         link2.style.cssText = 'color:#eee;font-size:12px;position:absolute;top:14px;width:100vw;';
+//         link2.textContent = 'Курская область — Яндекс Карты';
 
-        const iframe = document.createElement('iframe');
-        iframe.id = 'iframe_map';
-        iframe.src = 'https://yandex.ru/map-widget/v1/?ll=36.300031%2C51.680046&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgg1MzAwMDA0MBIr0KDQvtGB0YHQuNGPLCDQmtGD0YDRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCIKDUV8EEIV2iNOQg%2C%2C&z=7';
-        iframe.width = '100%';
-        iframe.height = '100%';
-        iframe.frameBorder = '1';
-        iframe.allowFullscreen = true;
-        iframe.style.cssText = 'position:relative;';
+//         const iframe = document.createElement('iframe');
+//         iframe.id = 'iframe_map';
+//         iframe.src = 'https://yandex.ru/map-widget/v1/?ll=36.300031%2C51.680046&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgg1MzAwMDA0MBIr0KDQvtGB0YHQuNGPLCDQmtGD0YDRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCIKDUV8EEIV2iNOQg%2C%2C&z=7';
+//         iframe.width = '100%';
+//         iframe.height = '100%';
+//         iframe.frameBorder = '1';
+//         iframe.allowFullscreen = true;
+//         iframe.style.cssText = 'position:relative;';
 
-        container.appendChild(link1);
-        container.appendChild(link2);
-        container.appendChild(iframe);
+//         container.appendChild(link1);
+//         container.appendChild(link2);
+//         container.appendChild(iframe);
         
-        return container;
-    } else {
-        const iframe = document.createElement('iframe');
-        iframe.id = 'iframe_map';
-        iframe.src = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d632329.067180087!2d35.4585185580859!3d51.75067776459236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x412f0579d6594437%3A0xad02dfc2bf4338a8!2z0JrRg9GA0YHQutCw0Y8g0L7QsdC7Lg!5e0!3m2!1sru!2sru!4v1755610697730!5m2!1sru!2sru';
-        iframe.width = '600';
-        iframe.height = '450';
-        iframe.style.border = '0';
-        iframe.allowFullscreen = true;
-        iframe.loading = 'lazy';
-        iframe.referrerPolicy = 'no-referrer-when-downgrade';
+//         return container;
+//     } else {
+//         const iframe = document.createElement('iframe');
+//         iframe.id = 'iframe_map';
+//         iframe.src = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d632329.067180087!2d35.4585185580859!3d51.75067776459236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x412f0579d6594437%3A0xad02dfc2bf4338a8!2z0JrRg9GA0YHQutCw0Y8g0L7QsdC7Lg!5e0!3m2!1sru!2sru!4v1755610697730!5m2!1sru!2sru';
+//         iframe.width = '600';
+//         iframe.height = '450';
+//         iframe.style.border = '0';
+//         iframe.allowFullscreen = true;
+//         iframe.loading = 'lazy';
+//         iframe.referrerPolicy = 'no-referrer-when-downgrade';
         
-        return iframe;
-    }
-}
+//         return iframe;
+//     }
+// }
 
 const container_iframe_map = document.getElementById('container_iframe_map');
-if (container_iframe_map) {
-    const mapContent = detectBrowserByVendor();
-    container_iframe_map.appendChild(mapContent);
+// if (container_iframe_map) {
+//     const mapContent = detectBrowserByVendor();
+//     container_iframe_map.appendChild(mapContent);
     
-    // Обработчики событий
-    const iframe_map = document.getElementById('iframe_map');
-    if (iframe_map) {
-        container_iframe_map.addEventListener('click', () => {
-            iframe_map.style.pointerEvents = 'auto';
-        });
-        
-        iframe_map.addEventListener('mouseout', () => {
-            iframe_map.style.pointerEvents = 'none';
-        });
-    }
-}
+//     // Обработчики событий
+// }
 
+const iframe_map = document.getElementById('iframe_map');
+if (iframe_map) {
+    container_iframe_map.addEventListener('click', () => {
+        iframe_map.style.pointerEvents = 'auto';
+    });
+    
+    iframe_map.addEventListener('mouseout', () => {
+        iframe_map.style.pointerEvents = 'none';
+    });
+}
 // Музыкальный плеер
 const control_music_player = document.getElementById('control_music_player')
 const music_player = document.getElementById('music_player')
@@ -845,7 +845,7 @@ document.addEventListener('DOMContentLoaded', () => {
         observer_two.observe(card)
     })
     
-    observer_three.observe(chart_element)
+    // observer_three.observe(chart_element)
 
     // Рендеринг контента
     renderHistoryFeed()
@@ -854,10 +854,10 @@ document.addEventListener('DOMContentLoaded', () => {
     create_small_cards('.marking_cards_two', tourism_chapter)
     
     // Инициализация компонентов
-    initMilitaryMuseumGallery()
+    // initMilitaryMuseumGallery()
     fun_create_placeholder_beginning_chapter()
-    initCarousels()
-    initInterestingFacts()
+    // initCarousels()
+    // initInterestingFacts()
 })
 
 // Настройки и фунуции для модального окна
