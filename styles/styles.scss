@@ -217,11 +217,12 @@ body{
             bottom: 0;
             position: fixed;
         }
+
         #pc_menu{
             ul{
                 overflow: hidden;
                 @include markup(grid);
-                grid-template-columns: 25% 12% 12% 12% 13% 12% 7% 6%;
+                grid-template-columns: 22% 13% 13% 13% 13% 13% 13%;
                 background-image: linear-gradient(
                     90deg,
                     hsla(0, 0%, 82%, 0.75) 10%,
@@ -229,16 +230,31 @@ body{
                 );
                 li{
                     @include markup();
-                    a{
+                    width: 100%;
+                    height: 100%;
+
+                    select{
+                        border: none; 
+
+
+                        width: 100%;
+                        height: 100%;
+                        text-align: center;
+                        background-color: transparent;
+                        color: var(--font_color_white); 
+                        font-size: clamp(1rem, 0.7vw + 0.8rem, 1.7rem);
                         text-decoration: none;
                         font-family: 'Roboto Serif', Arial, Helvetica, sans-serif;
-
-                        font-size: clamp(1rem, 0.7vw + 0.8rem, 1.7rem);
                         font-weight: bold;
+                        transition: all 1.5s ease;
 
-                        transition: transform 1.5s ease;
-                        color: var(--font_color_white);    
+                        option{
+                            font-family: 'Roboto Serif', Arial, Helvetica, sans-serif;
+                        }
+                        
+
                     }
+
                     a:hover{
                         transform: scale(0.9);
                     }
@@ -262,11 +278,6 @@ body{
                             height: clamp(9vh, 2.5vh + 3rem, 14vh);
                             margin-block: 1vh;
                         }
-                    }
-                    &:last-child{
-                        font-size: clamp(1.5rem, 1.5vw + 1rem, 2.5rem);
-                        color: var(--font_color_white);
-                        cursor: pointer
                     }
                 }
             }
@@ -1493,4 +1504,65 @@ body{
         }
     }
 
+}
+
+#search_container{
+
+    position: fixed;
+    top: 20vh;
+    right: 0;
+    
+    transform: translateX(85%);
+    z-index: 101;
+
+    transition: transform 0.3s ease;
+}
+#search{
+
+
+    width: 25vw;
+    height: 10vh;
+    border-radius: 10px;
+
+    display: flex;
+    background-color: var(--dark_background);
+
+    border: 1px solid black;
+    
+
+    input{
+        border: none;
+        background-color: transparent;
+        width: 85%;
+        height: 100%;
+        padding: 7px;
+    }
+    p{
+        width: 15%;
+        height: 100%;
+
+        @include markup();
+    }
+
+    
+}
+#search_container:hover{
+    transform: translateX(-2%);
+}
+
+#top_seven_of_search{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--font_color_white);
+    border-radius: 5px;
+
+    margin-top: 5px;
+    
+    .search_value{
+        width: 100%;
+        padding: 5px;
+
+        border-top: 1px solid black;
+    
+    }
 }

@@ -95,30 +95,30 @@ if (iframe_map) {
     });
 }
 // Музыкальный плеер
-const control_music_player = document.getElementById('control_music_player')
-const music_player = document.getElementById('music_player')
-const music_player_array = ['./music/background_music_1.mp3', './music/background_music_2.mp3']
-let music_player_counter = 0
+// const control_music_player = document.getElementById('control_music_player')
+// const music_player = document.getElementById('music_player')
+// const music_player_array = ['./music/background_music_1.mp3', './music/background_music_2.mp3']
+// let music_player_counter = 0
 
-function start_music(music_element) {
-    music_element.src = music_player_array[music_player_counter]
-    music_element.play()
-}
+// function start_music(music_element) {
+//     music_element.src = music_player_array[music_player_counter]
+//     music_element.play()
+// }
 
-control_music_player.addEventListener('click', () => {
-    if (music_player.paused) {
-        start_music(music_player)
-        control_music_player.textContent = '🔇'
-    } else {
-        music_player.pause()
-        control_music_player.textContent = '♬'
-    }
-})
+// control_music_player.addEventListener('click', () => {
+//     if (music_player.paused) {
+//         start_music(music_player)
+//         control_music_player.textContent = '🔇'
+//     } else {
+//         music_player.pause()
+//         control_music_player.textContent = '♬'
+//     }
+// })
 
-music_player.addEventListener('ended', () => {
-    music_player_counter = (music_player_counter + 1) % music_player_array.length
-    start_music(music_player)
-})
+// music_player.addEventListener('ended', () => {
+//     music_player_counter = (music_player_counter + 1) % music_player_array.length
+//     start_music(music_player)
+// })
 
 // culture - Intersection Observer
 const observer_one = new IntersectionObserver((entries) => {
