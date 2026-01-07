@@ -478,7 +478,7 @@ function fun_create_placeholder_beginning_chapter() {
             <section class="container_beginning_chapter">
                 <img loading="lazy" class="container_beginning_chapter_img" src="${placeholder.dataset.image}" alt="Изображение начала главы">
                 <h3 class="container_beginning_chapter_title">${placeholder.dataset.leftBlock} Курской области</h3>
-                <p class="container_beginning_chapter_bottom_text">${placeholder.dataset.rightBlock}</p>
+                ${placeholder.dataset.rightBlock ? `<p class="container_beginning_chapter_bottom_text">${placeholder.dataset.rightBlock}</p>` : ''}
             </section>
         `;
 
@@ -896,77 +896,75 @@ window.addEventListener('scroll', () => {
     const scrollThreshold = document.documentElement.clientHeight * 0.1;
     
     if (window.scrollY < scrollThreshold) {
-        header.classList.add('no_actove');
         header.classList.remove('active');
     } else {
         header.classList.add('active');
-        header.classList.remove('no_actove');
     }
 });
 
 
 // Выносим переменную для голосов в глобальную область
-let availableVoices = [];
+// let availableVoices = [];
 
 // Функция инициализации голосов
-function initVoices() {
-    availableVoices = speechSynthesis.getVoices();
-}
+// function initVoices() {
+//     availableVoices = speechSynthesis.getVoices();
+// }
 
-// Ждем загрузки голосов
-speechSynthesis.onvoiceschanged = initVoices;
-// Вызываем сразу на случай если голоса уже загружены
-initVoices();
+// // Ждем загрузки голосов
+// speechSynthesis.onvoiceschanged = initVoices;
+// // Вызываем сразу на случай если голоса уже загружены
+// initVoices();
 
-function safeSpeakText(text) {
-    // Всегда останавливаем предыдущую речь
-    speechSynthesis.cancel();
+// function safeSpeakText(text) {
+//     // Всегда останавливаем предыдущую речь
+//     speechSynthesis.cancel();
     
-    // Проверяем поддержку браузером
-    if (!('speechSynthesis' in window)) {
-        console.error('Браузер не поддерживает синтез речи');
-        return false;
-    }
+//     // Проверяем поддержку браузером
+//     if (!('speechSynthesis' in window)) {
+//         console.error('Браузер не поддерживает синтез речи');
+//         return false;
+//     }
     
-    // Проверяем загружены ли голоса
-    if (availableVoices.length === 0) {
-        console.warn('Голоса не загружены, пробуем перезагрузить...');
-        initVoices();
-        if (availableVoices.length === 0) {
-            console.error('Голоса недоступны');
-            return false;
-        }
-    }
+//     // Проверяем загружены ли голоса
+//     if (availableVoices.length === 0) {
+//         console.warn('Голоса не загружены, пробуем перезагрузить...');
+//         initVoices();
+//         if (availableVoices.length === 0) {
+//             console.error('Голоса недоступны');
+//             return false;
+//         }
+//     }
     
-    const utterance = new SpeechSynthesisUtterance(text);
+//     const utterance = new SpeechSynthesisUtterance(text);
     
-    // Ищем русский голос
-    const russianVoice = availableVoices.find(voice => 
-        voice.lang.includes('ru') || voice.lang.includes('RU')
-    );
+//     // Ищем русский голос
+//     const russianVoice = availableVoices.find(voice => 
+//         voice.lang.includes('ru') || voice.lang.includes('RU')
+//     );
     
-    if (russianVoice) {
-        utterance.voice = russianVoice;
-        console.log('Используется голос:', russianVoice.name);
-    }
+//     if (russianVoice) {
+//         utterance.voice = russianVoice;
+//         console.log('Используется голос:', russianVoice.name);
+//     }
     
-    utterance.rate = 0.8;
-    utterance.pitch = 1;
-    utterance.volume = 1;
+//     utterance.rate = 0.8;
+//     utterance.pitch = 1;
+//     utterance.volume = 1;
     
-    // Обработчики событий для отладки
-    utterance.onstart = () => console.log('Начало речи:', text);
-    utterance.onend = () => console.log('Конец речи');
-    utterance.onerror = (event) => console.error('Ошибка синтеза речи:', event.error);
+//     // Обработчики событий для отладки
+//     utterance.onstart = () => console.log('Начало речи:', text);
+//     utterance.onend = () => console.log('Конец речи');
+//     utterance.onerror = (event) => console.error('Ошибка синтеза речи:', event.error);
     
-    try {
-        speechSynthesis.speak(utterance);
-        return true;
-    } catch (error) {
-        console.error('Ошибка при воспроизведении:', error);
-        return false;
-    }
-}
+//     try {
+//         speechSynthesis.speak(utterance);
+//         return true;
+//     } catch (error) {
+//         console.error('Ошибка при воспроизведении:', error);
+//         return false;
+//     }
+// }
 
 
 document.addEventListener('DOMContentLoaded', function() {

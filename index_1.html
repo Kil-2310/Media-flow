@@ -174,41 +174,70 @@
         <nav id="pc_menu" aria-label="Основное меню">
             <ul>
                 <li>
-                    <a title="Официальный герб Курской области" target="_blank" href="https://kursk.ru/?i">
+                    <a title="Перейти на официальный сайт Курской области" target="_blank" href="https://kursk.ru/?i">
                         <img src="./png/coat_arms_kursk_region.png" alt="Герб Курской области">
                     </a>
-                    <p>Курская <br><span>область</span></p>
+                    <p>Курская<span>область</span></p>
+                </li>
+
+                <li>
+                    <select class="header_select">
+                        <option value="https://kursk-region.ru/" selected>Главная</option>
+                        <option value="https://kursk-region.ru/">Курская область на карте России</option>
+                        <option value="https://kursk-region.ru/">Статьи о Курской области</option>
+                        <option value="https://kursk-region.ru/l">Цитаты о регионе</option>
+                    </select>
                 </li>
                 
                 <li>
                     <select class="header_select">
-                        <option value="" selected>Культура</option>
+                        <option value="https://kursk-region.ru/pages/culture.html" selected>Культура</option>
                         <option value="https://kursk-region.ru/pages/culture.html">Направления культуры</option>
                         <option value="https://kursk-region.ru/pages/culture.html">Известные личности</option>
                         <option value="https://kursk-region.ru/pages/culture.html">Традиции, праздники</option>
                         <option value="https://kursk-region.ru/pages/culture.html">Статьи о регионе</option>
-                        <option value="https://kursk-region.ru/pages/culture.html">Цитаты о регионе</option>
-                        <option value="">Обратная связь</option>
                     </select>
                 </li>
 
                 <li>
                     <select class="header_select">
-                        <option value="" selected>История</option>
-                        <option value="https://kursk-region.ru/pages/history.html">Направления культуры</option>
-                        <option value="https://kursk-region.ru/pages/history.html">Известные личности</option>
-                        <option value="https://kursk-region.ru/pages/history.html">Традиции, праздники</option>
-                        <option value="https://kursk-region.ru/pages/history.html">Статьи о регионе</option>
-                        <option value="https://kursk-region.ru/pages/history.html">Цитаты о регионе</option>
-                        <option value="">Обратная связь</option>
+                        <option value="https://kursk-region.ru/pages/history.html" selected>История</option>
+                        <option value="https://kursk-region.ru/pages/history.html">История развития области</option>
+                        <option value="https://kursk-region.ru/pages/history.html">Герои нашего времени</option>
+                        <option value="https://kursk-region.ru/pages/history.html">Современные музеи военной истории</option>
+                        <option value="https://kursk-region.ru/pages/history.html">Курская битва (дуга) 1943</option>
                     </select>
                 </li>
 
-                <!-- <li><a href="https://kursk-region.ru/pages/history.html">История</a></li>
-                <li><a href="https://kursk-region.ru/pages/ecology.html">Экология</a></li>
-                <li><a href="https://kursk-region.ru/pages/economy.html">Экономика</a></li>
-                <li><a href="https://kursk-region.ru/pages/tourism.html">Туризм</a></li>
-                <li><a href="#feedback">Связь</a></li> -->
+                <li>
+                    <select class="header_select">
+                        <option value="https://kursk-region.ru/pages/ecology.html" selected>Экология</option>
+                        <option value="https://kursk-region.ru/pages/ecology.html">Основные характеристики экологии</option>
+                        <option value="https://kursk-region.ru/pages/ecology.html">Центрально-Чернозёмный заповедник В. В. Алёхина</option>
+                        <option value="https://kursk-region.ru/pages/ecology.html">Красная книга региона</option>
+                        <option value="https://kursk-region.ru/pages/ecology.html">Проект "Сохранение лесов"</option>
+                    </select>
+                </li>
+
+                <li>
+                    <select class="header_select">
+                        <option value="https://kursk-region.ru/pages/tourism.html" selected>Туризм</option>
+                        <option value="https://kursk-region.ru/pages/tourism.html">Инфраструктура туризма региона</option>
+                        <option value="https://kursk-region.ru/pages/tourism.html">Популярные места и достопремечательности</option>
+                        <option value="https://kursk-region.ru/pages/tourism.html">Уникальные природные объекты</option>
+                        <option value="https://kursk-region.ru/pages/tourism.html">Туристические направления</option>
+                    </select>
+                </li>
+
+                <li>
+                    <select class="header_select">
+                        <option value="https://kursk-region.ru/pages/economy.html" selected>Экономика</option>
+                        <option value="https://kursk-region.ru/pages/economy.html">Структура ВРП региона 2012 года</option>
+                        <option value="https://kursk-region.ru/pages/economy.html">Курская магнитная аномалия (КМА)</option>
+                    </select>
+                </li>
+
+                <li><a href="#feedback">Связь</a></li> 
             </ul>
         </nav>
 
@@ -272,7 +301,7 @@
 
         <section id="second_page" title="Вид на Знаменский собор">
             <article>
-                <h2>Курская область</h2>
+                <h2>Курская область на карте России</h2>
                 <p><strong><a target="_blank" href="https://ru.wikipedia.org/wiki/Курская_область">Курская область</a></strong> — субъект РФ, входит в состав Центрального федерального округа. Административный центр — город Курск.</p>
             </article>
             
@@ -293,10 +322,27 @@
 
         <section id="articles_about_region">
 
-            <h2>Статьи о Курской области</h2>
+            <h2>Статьи и публикации на тему Курской области</h2>
 
             <article>
-                <a href="./pages/culture.html">
+
+                <h3>Статьи на тему культуры Курской области</h3>
+                <ul id="links_for_culture">
+                    <li>
+                        <a href="#">Дом культуры</a>
+                    </li>
+                    <li>
+                        <a href="#">Основные направления культуры</a>
+                    </li>
+                    <li>
+                        <a href="#">Известные личности</a>
+                    </li>
+                    <li>
+                        <a href="#">Традиции, праздники, обряды</a>
+                    </li>
+                </ul>
+
+                <a href="https://kursk-region.ru/pages/culture.html" target="_blank">
                     <aside class="placeholder-beginning-chapter"
                         data-image="./img/drama_theater_for_main_page.jpg"
                         data-left-block="Культурный образ"
@@ -304,7 +350,28 @@
                     </aside>
                 </a>
 
-                <a href="./pages/history.html">
+                <h3>Статьи на тему истории и развитии Курской области</h3>
+                <ul id="links_for_history">
+                    <li>
+                        <a href="#">Развитие и биография Курской области</a>
+                    </li>
+                    <li>
+                        <a href="#">Революция 1917 года</a>
+                    </li>
+                    <li>
+                        <a href="#">Курская битва (дуга) 1943 года</a>
+                    </li>
+                    <li>
+                        <a href="#">Современные музеи, посвященные военной истории (СВО)</a>
+                    </li>
+                    <li>
+                        <a href="#">Курская атомная электростанция (Курской АЭС)</a>
+                    </li>
+                    <li>
+                        <a href="#">Герои нашего времени</a>
+                    </li>
+                </ul>
+                <a href="https://kursk-region.ru/pages/history.html">
                     <aside class="placeholder-beginning-chapter" 
                         data-image="./img/kurska_duga.jpg"
                         data-left-block="История"
@@ -312,7 +379,23 @@
                     </aside>
                 </a>
 
-                <a href="./pages/ecology.html">
+                <h3>Статьи на тему экологии и природы Курской области</h3>
+                <ul id="links_for_ecology">
+                    <li>
+                        <a href="#">Красная книга Курской области</a>
+                    </li>
+                    <li>
+                        <a href="#">Основные характеристики экологии региона</a>
+                    </li>
+                    <li>
+                        <a href="#">Проблемы экологии края</a>
+                    </li>
+                    <li>
+                        <a href="#">Проект "Сохранение лесов" Курской области</a>
+                    </li>
+                </ul>
+
+                <a href="https://kursk-region.ru/pages/ecology.html">
                     <aside class="placeholder-beginning-chapter" 
                         data-image="./img/ecology.jpg"
                         data-left-block="Экология"
@@ -320,7 +403,17 @@
                     </aside>
                 </a>
 
-                <a href="./pages/economy.html">
+                <h3>Статьи на тему экономики и ВРП Курской области</h3>
+                <ul id="links_for_economy">
+                    <li>
+                        <a href="#">Курская магнитная аномалия (КМА)</a>
+                    </li>
+                    <li>
+                        <a href="#">Анализ и структура экономики Курской области</a>
+                    </li>
+                </ul>
+
+                <a href="https://kursk-region.ru/pages/economy.html">
                     <aside class="placeholder-beginning-chapter" 
                         data-image="./img/economy.jpg"
                         data-left-block="Экономика"
@@ -328,7 +421,20 @@
                     </aside>
                 </a>
 
-                <a href="./pages/tourism.html">
+                <h3>Статьи на тему туризма, достопремечательности Курской области</h3>
+                <ul id="links_for_tourism">
+                    <li>
+                        <a href="#">Инфроструктура туризма Курской области</a>
+                    </li>
+                    <li>
+                        <a href="#">Уникальные природные объекты</a>
+                    </li>
+                    <li>
+                        <a href="#">Популярные места и достопремечательности</a>
+                    </li>
+                </ul>
+
+                <a href="https://kursk-region.ru/pages/tourism.html">
                     <aside class="placeholder-beginning-chapter" 
                         data-image="./img/cathedral.jpg"
                         data-left-block="Туризм"
@@ -342,7 +448,7 @@
 
         <section id="quotes">
 
-            <h2>Цитаты о Курской области</h2>
+            <h2>Цитаты о Курской области - Соловьином крае России</h2>
 
             <aside>
                 <div class="oval_block">
@@ -434,10 +540,13 @@
 <script>
     const allHeaderSelects = document.querySelectorAll(".header_select");
     allHeaderSelects.forEach((selectElement) => {
-        selectElement.addEventListener("change", () => {
-            if (this.value) {
-                window.location.href = this.value;
+        selectElement.addEventListener("change", (e) => {
+            if (e.target.value.includes('#')) {
+                window.open(e.target.value, '_blank');
+            }else{
+                window.location.href = e.target.value
             }
+            e.target.value = ''
         });
     });
 
