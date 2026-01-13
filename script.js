@@ -28,61 +28,8 @@ function getCookie(name) {
 //     info_win.style.display = 'none'
 // })
 
-// Проверка браузера пользователя
-
-// function detectBrowserByVendor() {
-//     const vendor = navigator.vendor;
-    
-//     if (vendor.includes("Yandex")) {
-//         const container = document.createElement('div');
-//         container.style.cssText = 'position:relative;overflow:hidden;width:100vw;height:100vh;';
-        
-//         const link1 = document.createElement('a');
-//         link1.href = 'https://yandex.ru/maps?utm_medium=mapframe&utm_source=maps';
-//         link1.style.cssText = 'color:#eee;font-size:12px;position:absolute;top:0px;width:100vw;';
-//         link1.textContent = 'Яндекс Карты';
-        
-//         const link2 = document.createElement('a');
-//         link2.href = 'https://yandex.ru/maps/geo/kurskaya_oblast/53000040/?ll=36.300031%2C51.680046&utm_medium=mapframe&utm_source=maps&z=7';
-//         link2.style.cssText = 'color:#eee;font-size:12px;position:absolute;top:14px;width:100vw;';
-//         link2.textContent = 'Курская область — Яндекс Карты';
-
-//         const iframe = document.createElement('iframe');
-//         iframe.id = 'iframe_map';
-//         iframe.src = 'https://yandex.ru/map-widget/v1/?ll=36.300031%2C51.680046&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgg1MzAwMDA0MBIr0KDQvtGB0YHQuNGPLCDQmtGD0YDRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCIKDUV8EEIV2iNOQg%2C%2C&z=7';
-//         iframe.width = '100%';
-//         iframe.height = '100%';
-//         iframe.frameBorder = '1';
-//         iframe.allowFullscreen = true;
-//         iframe.style.cssText = 'position:relative;';
-
-//         container.appendChild(link1);
-//         container.appendChild(link2);
-//         container.appendChild(iframe);
-        
-//         return container;
-//     } else {
-//         const iframe = document.createElement('iframe');
-//         iframe.id = 'iframe_map';
-//         iframe.src = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d632329.067180087!2d35.4585185580859!3d51.75067776459236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x412f0579d6594437%3A0xad02dfc2bf4338a8!2z0JrRg9GA0YHQutCw0Y8g0L7QsdC7Lg!5e0!3m2!1sru!2sru!4v1755610697730!5m2!1sru!2sru';
-//         iframe.width = '600';
-//         iframe.height = '450';
-//         iframe.style.border = '0';
-//         iframe.allowFullscreen = true;
-//         iframe.loading = 'lazy';
-//         iframe.referrerPolicy = 'no-referrer-when-downgrade';
-        
-//         return iframe;
-//     }
-// }
 
 const container_iframe_map = document.getElementById('container_iframe_map');
-// if (container_iframe_map) {
-//     const mapContent = detectBrowserByVendor();
-//     container_iframe_map.appendChild(mapContent);
-    
-//     // Обработчики событий
-// }
 
 const iframe_map = document.getElementById('iframe_map');
 if (iframe_map) {
@@ -94,31 +41,6 @@ if (iframe_map) {
         iframe_map.style.pointerEvents = 'none';
     });
 }
-// Музыкальный плеер
-// const control_music_player = document.getElementById('control_music_player')
-// const music_player = document.getElementById('music_player')
-// const music_player_array = ['./music/background_music_1.mp3', './music/background_music_2.mp3']
-// let music_player_counter = 0
-
-// function start_music(music_element) {
-//     music_element.src = music_player_array[music_player_counter]
-//     music_element.play()
-// }
-
-// control_music_player.addEventListener('click', () => {
-//     if (music_player.paused) {
-//         start_music(music_player)
-//         control_music_player.textContent = '🔇'
-//     } else {
-//         music_player.pause()
-//         control_music_player.textContent = '♬'
-//     }
-// })
-
-// music_player.addEventListener('ended', () => {
-//     music_player_counter = (music_player_counter + 1) % music_player_array.length
-//     start_music(music_player)
-// })
 
 // culture - Intersection Observer
 const observer_one = new IntersectionObserver((entries) => {
@@ -470,14 +392,14 @@ function creating_chart(color_text='black') {
 
 // beginning_chapter
 function fun_create_placeholder_beginning_chapter() {
-    const placeholders = document.querySelectorAll('.placeholder-beginning-chapter');
+    const placeholders = document.querySelectorAll('.placeholder_beginning_chapter');
 
     placeholders.forEach(placeholder => {
         const container = document.createElement('div');
         container.innerHTML = `
             <section class="container_beginning_chapter">
                 <img loading="lazy" class="container_beginning_chapter_img" src="${placeholder.dataset.image}" alt="Изображение начала главы">
-                <h3 class="container_beginning_chapter_title">${placeholder.dataset.leftBlock} Курской области</h3>
+                <${placeholder.dataset.titleH} class="container_beginning_chapter_title">${placeholder.dataset.leftBlock} Курской области</${placeholder.dataset.titleH}>
                 ${placeholder.dataset.rightBlock ? `<p class="container_beginning_chapter_bottom_text">${placeholder.dataset.rightBlock}</p>` : ''}
             </section>
         `;
@@ -765,39 +687,18 @@ function initInterestingFacts() {
     const placeholders = document.querySelectorAll('.container_interesting_fact');
 
     placeholders.forEach(placeholder => {
-        placeholder.textContent = '';
+        placeholder.innerHTML = `
+            <h5 class="create_interesting_fact_h5">Интересный факт:</h5>
+            <p class="interesting_fact_text">${placeholder.dataset.text || ''}</p>
+            <aside class="aside_interesting_fact">
+                <p class="audio-trigger" style="cursor: pointer; color: #007bff; transition: color 0.2s;">
+                    ${placeholder.dataset.audioText || 'Воспроизвести аудио'}
+                </p>
+                <a href="${placeholder.dataset.hrefLink1 || '#'}" target="_blank" rel="noopener noreferrer">Узнать больше</a>
+            </aside>
+        `;
         
-        const heading = document.createElement('h5');
-        heading.className = 'create_interesting_fact_h5';
-        heading.textContent = 'Интересный факт:';
-        placeholder.appendChild(heading);
-        
-        const text = document.createElement('p');
-        text.className = 'interesting_fact_text';
-        text.textContent = placeholder.dataset.text || '';
-        placeholder.appendChild(text);
-        
-        const aside = document.createElement('aside');
-        aside.className = 'aside_interesting_fact';
-        
-        const audioTrigger = document.createElement('p');
-        audioTrigger.className = 'audio-trigger';
-        audioTrigger.textContent = placeholder.dataset.audioText || 'Воспроизвести аудио';
-        audioTrigger.style.cursor = 'pointer';
-        audioTrigger.style.color = '#007bff';
-        audioTrigger.style.transition = 'color 0.2s';
-        
-        const link = document.createElement('a');
-        link.target = '_blank';
-        link.href = placeholder.dataset.hrefLink1 || '#';
-        link.textContent = 'Узнать больше';
-        link.rel = 'noopener noreferrer';
-        
-        aside.appendChild(audioTrigger);
-        aside.appendChild(link);
-        placeholder.appendChild(aside);
-        
-        // Настройка аудио
+        const audioTrigger = placeholder.querySelector('.audio-trigger');
         setupAudioForFact(placeholder, audioTrigger);
     });
 }
@@ -860,211 +761,69 @@ document.addEventListener('DOMContentLoaded', () => {
     // initInterestingFacts()
 })
 
-// Настройки и фунуции для модального окна
-const settings = document.getElementById('settings')
-const module_bg = document.getElementById('module_bg')
-const exit_btn = document.getElementById('exit_btn')
-let rorate = 10
 
-function rotate_settings(offset = '+') {
-    if (offset == '+') {rorate += 180} else {rorate -= 180}
-    settings.style.transform = `rotate(${rorate}deg)`
-}
-settings.addEventListener('click', () => {
-    rotate_settings()
-    setTimeout(() => {
-        module_bg.classList.add('active')
-    }, 100)
-})
-function remove_wodule_window() {
-    module_bg.classList.remove('active')
-    rotate_settings('-')
-}
 
-module_bg.addEventListener('click', (e) => {
-    if (e.target === module_bg) {
-        remove_wodule_window();
-    }
-})
-exit_btn.addEventListener('click', () => {
-    remove_wodule_window()
-})
 
-// Шапка сайта
-window.addEventListener('scroll', () => {
-    const header = document.querySelector('header');
-    const scrollThreshold = document.documentElement.clientHeight * 0.1;
+// document.addEventListener('DOMContentLoaded', function() {
+//     const plus_btn = document.getElementById('plus_btn');
+//     const changeable_font_size = document.getElementById('changeable_font_size');
+//     const minus_btn = document.getElementById('minus_btn');
+//     const color_palette_select = document.getElementById('color_palette_select');
     
-    if (window.scrollY < scrollThreshold) {
-        header.classList.remove('active');
-    } else {
-        header.classList.add('active');
-    }
-});
 
+//     const cookieData = getCookie('cookie_settings');
+//     const settings_JSON = cookieData ? JSON.parse(cookieData) : {
+//         font_size: 16,
+//         color: 'white',
+//     };
 
-// Выносим переменную для голосов в глобальную область
-// let availableVoices = [];
-
-// Функция инициализации голосов
-// function initVoices() {
-//     availableVoices = speechSynthesis.getVoices();
-// }
-
-// // Ждем загрузки голосов
-// speechSynthesis.onvoiceschanged = initVoices;
-// // Вызываем сразу на случай если голоса уже загружены
-// initVoices();
-
-// function safeSpeakText(text) {
-//     // Всегда останавливаем предыдущую речь
-//     speechSynthesis.cancel();
-    
-//     // Проверяем поддержку браузером
-//     if (!('speechSynthesis' in window)) {
-//         console.error('Браузер не поддерживает синтез речи');
-//         return false;
+//     function updateSetting(settingName, value) {
+//         settings_JSON[settingName] = value;
+//         setCookie('cookie_settings', JSON.stringify(settings_JSON), 3);
 //     }
-    
-//     // Проверяем загружены ли голоса
-//     if (availableVoices.length === 0) {
-//         console.warn('Голоса не загружены, пробуем перезагрузить...');
-//         initVoices();
-//         if (availableVoices.length === 0) {
-//             console.error('Голоса недоступны');
-//             return false;
-//         }
+
+//     function updateFontSize(font_size) {
+//         settings_JSON['font_size'] = font_size;
+        
+//         document.documentElement.style.fontSize = font_size + 'px';
+//         changeable_font_size.innerHTML = `<strong>${font_size}</strong>`
+        
+//         setCookie('cookie_settings', JSON.stringify(settings_JSON), 3);
 //     }
-    
-//     const utterance = new SpeechSynthesisUtterance(text);
-    
-//     // Ищем русский голос
-//     const russianVoice = availableVoices.find(voice => 
-//         voice.lang.includes('ru') || voice.lang.includes('RU')
-//     );
-    
-//     if (russianVoice) {
-//         utterance.voice = russianVoice;
-//         console.log('Используется голос:', russianVoice.name);
-//     }
-    
-//     utterance.rate = 0.8;
-//     utterance.pitch = 1;
-//     utterance.volume = 1;
-    
-//     // Обработчики событий для отладки
-//     utterance.onstart = () => console.log('Начало речи:', text);
-//     utterance.onend = () => console.log('Конец речи');
-//     utterance.onerror = (event) => console.error('Ошибка синтеза речи:', event.error);
-    
-//     try {
-//         speechSynthesis.speak(utterance);
-//         return true;
-//     } catch (error) {
-//         console.error('Ошибка при воспроизведении:', error);
-//         return false;
-//     }
-// }
 
-
-document.addEventListener('DOMContentLoaded', function() {
-    const plus_btn = document.getElementById('plus_btn');
-    const changeable_font_size = document.getElementById('changeable_font_size');
-    const minus_btn = document.getElementById('minus_btn');
-    const voice_assistant_select = document.getElementById('voice_assistant_select');
-    const color_palette_select = document.getElementById('color_palette_select');
-    
-
-    const cookieData = getCookie('cookie_settings');
-    const settings_JSON = cookieData ? JSON.parse(cookieData) : {
-        font_size: 16,
-        color: 'white',
-        voice_assistant: false
-    };
-
-    function updateSetting(settingName, value) {
-        settings_JSON[settingName] = value;
-        setCookie('cookie_settings', JSON.stringify(settings_JSON), 3);
-    }
-
-    function updateFontSize(font_size) {
-        settings_JSON['font_size'] = font_size;
+//     // color_palette_select.addEventListener('change', () => {
+//     //     updateSetting('color', color_palette_select.value);
         
-        document.documentElement.style.fontSize = font_size + 'px';
-        changeable_font_size.innerHTML = `<strong>${font_size}</strong>`
-        
-        setCookie('cookie_settings', JSON.stringify(settings_JSON), 3);
-    }
+//     //     setTimeout(() => {
+//     //         location.reload();
+//     //     }, 1000)
+//     // });
 
-    voice_assistant_select.addEventListener('change', () => {
-        const newValue = voice_assistant_select.value;
-        flage_voice = voice_assistant_select.value === 'Вкл';
-        updateSetting('voice_assistant', newValue);
-        
-        if (flage_voice) {
-            setTimeout(() => {
-                safeSpeakText("Голосовой помощник включен");
-            }, 100);
-        }
-    });
+//     // plus_btn.addEventListener('click', () => {
+//     //     const currentSize = settings_JSON.font_size;
+//     //     if (currentSize < 20) {
+//     //         let new_size = currentSize + 1
+//     //         updateFontSize(new_size);
+//     //     }
+//     // });
 
-    color_palette_select.addEventListener('change', () => {
-        updateSetting('color', color_palette_select.value);
-        
-        setTimeout(() => {
-            location.reload();
-        }, 1000)
-    });
+//     // minus_btn.addEventListener('click', () => {
+//     //     const currentSize = settings_JSON.font_size;
+//     //     if (currentSize > 14) {
+//     //         let new_size = currentSize - 1
+//     //         updateFontSize(new_size);
+//     //     }
+//     // });
 
-    plus_btn.addEventListener('click', () => {
-        const currentSize = settings_JSON.font_size;
-        if (currentSize < 20) {
-            let new_size = currentSize + 1
-            updateFontSize(new_size);
-
-            if (flage_voice) {
-                setTimeout(() => {
-                    safeSpeakText(`Размер шрифта ${new_size} px`);
-                }, 100);
-            }
-        } else if (flage_voice){
-            setTimeout(() => {
-                safeSpeakText(`Максимальный размер 21px`);
-            }, 100);
-        }
-    });
-
-    minus_btn.addEventListener('click', () => {
-        const currentSize = settings_JSON.font_size;
-        if (currentSize > 14) {
-            let new_size = currentSize - 1
-            updateFontSize(new_size);
-            
-            if (flage_voice) {
-                setTimeout(() => {
-                    safeSpeakText(`Размер шрифта ${new_size} px`);
-                }, 100);
-            }
-        } else if (flage_voice){
-            setTimeout(() => {
-                safeSpeakText(`Минимальный размер 14px`);
-            }, 100);
-        }
-    });
-
-    updateFontSize(settings_JSON.font_size);
+//     updateFontSize(settings_JSON.font_size);
 
     
-    voice_assistant_select.value = settings_JSON.voice_assistant;
-    color_palette_select.value = settings_JSON.color;
+//     color_palette_select.value = settings_JSON.color;
 
-    let flage_voice = voice_assistant_select.value === 'Вкл';
-    console.log(flage_voice)
+//     update_theme(color_palette_select.value)
+// });
 
-    update_theme(color_palette_select.value, flage_voice)
-});
-
-function update_theme(value, flage_voice) {
+function update_theme(value) {
     const all_elements = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, a, li, td, th, caption, span')
     const body = document.querySelector('body')
     if (value === 'Темная') {
@@ -1094,12 +853,6 @@ function update_theme(value, flage_voice) {
             el.classList.add('del_bg')
         })
         chart_container.classList.add('del_bg')
-    }
-
-    if (flage_voice) {
-        setTimeout(() => {
-            safeSpeakText(toString(value));
-        }, 100);
     }
 }
 
