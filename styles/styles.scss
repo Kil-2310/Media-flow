@@ -50,22 +50,10 @@ h3{
     font-size: clamp(1.1rem, 1vw + 0.7vh + 0.8rem, 2.8rem);
     font-weight: 500;
     text-align: center;
+    @include markup();
+    height: clamp(10vh, 4vh + 12vw, 20vh);
 }
 
-@mixin blackout($opacity: 0.1){
-    
-    &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, $opacity);
-        z-index: 1;
-    }
-
-}
 @mixin ecology_markup($bg_url: ''){
     background-image: url($bg_url);
     background-size: cover;
@@ -158,11 +146,12 @@ p{
 }
 h2{
     height: clamp(13vh, 4vh + 12vw, 25vh);
-    font-size: clamp(1.2rem, 1.5vw + 0.9rem, 3rem);
+    font-size: clamp(1.3rem, 1.6vw + 0.9rem, 3rem);
     font-weight: 500;
     @include markup();
     color: rgb(25, 25, 25);
     font-family: 'Roboto Serif', Arial, Helvetica, sans-serif;
+    text-align: center;
 }
 body{
     // margin-top: 12vh;
@@ -387,13 +376,32 @@ body{
             }
 
         }
+
         // second_page
         #second_page{
             height: clamp(55vh, 45vh + 25vw, 100vh);
             background-image: url('../img/second_page_image.jpg');
             background-size: cover;
-            @include blackout($opacity: 0.65);
             position: relative;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.65);
+                z-index: 1;
+            }
+
+            *{
+                color: var(--font_color_white);
+            }
+            
+            p, a{
+                font-size: var(--simple_font_size);
+            }
 
             article{
                 height: 100%;
@@ -402,22 +410,12 @@ body{
                 position: relative;
                 clip-path: polygon(0 0, 100% 0%, 100% 60%, 0% 100%);
 
-
-
                 p{
                     text-align: center;
-                    font-size: clamp(0.7rem, 1.1vw + 0.7rem, 1.6rem);
-                    width: 93vw;
-                    margin: auto;
-                    color: var(--font_color_white);
-                    a{
-                        color: var(--font_color_white);
-                    }
+                    padding-inline: 1em;
                 }
             }
-            h2{
-                color: var(--font_color_white);
-            }
+
             #container_iframe_map{
                 position: absolute;
                 width: 100%;
@@ -431,12 +429,11 @@ body{
                 left: 0;
 
                 #iframe_map{
-                    width: 100%;
-                    height: 100%;
                     pointer-events: none;
                 }
             }
         }
+
         // culture
         #culture{
             margin-bottom: 6vh;
@@ -650,91 +647,108 @@ body{
 
         #quotes{
             aside{
-                margin: auto;
+                margin-inline: auto;
+                margin-block: 10px;
+
                 width: 95vw;
                 @include markup();
-                text-align: center;
+
+                *{
+                    text-align: center;
+                }
+
                 .oval_block{
+                    width: 35%;
                     @include markup();
                     flex-direction: column;
                     row-gap: 15px;
-                    .oval_img{
+
+                    img{
                         border-radius: 50%;
-                        width: clamp(45%, 15vh, 70%);
+                        width: clamp(40%, 15vh, 70%);
                     }
+                    
                     p{
                         font-family: 'Kaisei Decol', Arial;
                         font-size: clamp(0.6rem, 0.5vw + 0.5rem + 0.7vh, 1.2rem);
                     }
                 }
-                .blockquote_block{
 
+                blockquote{
+                    width: 65%;
                     line-height: 2.5rem;
-                    font-size: clamp(1.1rem, 1vw + 0.7rem + 0.4vh, 1.6rem);
-                    
+                    font-size: var(--mini_title_font_size);
                 }
             }
         }
 
-        // feedback
+        
+    }
+    // feedback
+    #feedback{
+        #form_article{
+            @include markup();
+            height: clamp(70vh, 10vw, 80vh);
 
-        #feedback{
-            #form_article{
+            background-color: var(--blue_cilor);
+            border-radius: 10px;
+
+            #form_article_div{
+                width: 50%;
+
                 @include markup();
-                height: clamp(70vh, 10vw, 80vh);
-
-                background-color: var(--blue_cilor);
-                border-radius: 10px;
-
-                #form_article_div{
-                    width: 50%;
-
-                    @include markup();
-                    img{
-                        object-fit: contain;
-                        animation: text-move 4s ease-in-out infinite;
-                    }
+                img{
+                    object-fit: contain;
+                    animation: text-move 4s ease-in-out infinite;
                 }
-                form{
-                    width: 50%;
-                    height: 100%;
+            }
+            form{
+                width: 50%;
+                height: 100%;
 
-                    @include markup($justify-content: space-evenly, $flex-direction: column);
-                    
-                    &>*{
-                        width: 90%;
-                        border: none;
-                        border-radius: 7px;
-                        padding: 0.3em;
-                    }
-                    h3{
+                @include markup($justify-content: space-evenly, $flex-direction: column);
+                
+                &>*{
+                    width: 90%;
+                    border: none;
+                    border-radius: 7px;
+                    padding: 0.3em;
+                }
+                h3{
+                    color: var(--font_color_white);
+                }
+                textarea{
+                    resize: none;
+                    height: 40%;
+                }
+                button{
+                    height: 10%;
+                    transition: all 0.5s ease;  
+                    cursor: pointer;
+
+                    &:hover {
+                        background: linear-gradient(45deg, #764ba2, #667eea);
+                        transform: translateY(-5px);
                         color: var(--font_color_white);
                     }
-                    textarea{
-                        resize: none;
-                        height: 40%;
-                    }
-                    button{
-                        height: 10%;
-                        transition: all 0.5s ease;  
-                        cursor: pointer;
-
-                        &:hover {
-                            background: linear-gradient(45deg, #764ba2, #667eea);
-                            transform: translateY(-5px);
-                            color: var(--font_color_white);
-                        }
-                    }
                 }
             }
-            #info_sources{
-                width: 100%;
-                margin: 5vh;
-            }
+        }
+        #info_sources{
+            width: 100%;
+            margin: 5vh;
         }
     }
     
     footer{
+        ul{
+            margin-left: 5vw;
+            li{
+                &::before{
+                    content: '*';
+                }
+            }
+        }
         aside{
             width: 100%;
             @include markup();
@@ -1139,9 +1153,9 @@ body{
     // main{
     //     margin-top: clamp(9vw, 10vh, 12vh);
     // }
-    .oval_img{
-        height: 70% !important; 
-    }
+    // .oval_img{
+    //     height: 70% !important; 
+    // }
     #form_article{
         flex-direction: column;
     }
@@ -1242,7 +1256,7 @@ body{
         aside{
             flex-direction: column;
         }
-        #replacement_positions{
+        &:nth-child(2){
             order: 1;
         }
         .oval_block{
@@ -1266,6 +1280,8 @@ body{
     // footer
 
     footer{
+
+        
         aside{
             background-image: none !important;
             background-color: var(--blue_cilor) !important;

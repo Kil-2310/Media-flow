@@ -1,5 +1,10 @@
-export async function create_header() {
-    const header = document.createElement('header')
+async function create_header() {
+    const header = document.querySelector('header')
+
+    if (!header){
+        console.log('Элемент header не обнаружен на странице')
+        return
+    }
 
     header.innerHTML = `
     <!-- ПК меню -->
@@ -100,8 +105,6 @@ export async function create_header() {
         </nav>
     `
 
-    document.body.appendChild(header)
-
     window.addEventListener('scroll', () => {
         if (window.scrollY < 50) {
             header.classList.remove('active');
@@ -124,80 +127,89 @@ export async function create_header() {
 }
 
 
-export async function create_settings_with_module_bg() {
-    const settings_panel = document.createElement('aside');
-    settings_panel.id = 'settings_panel';
+async function create_settings_with_module_bg() {
+    const settings_panel = document.getElementById('settings_panel')
+
+    if (!settings_panel){
+        console.log('Элемент settings_panel не обнаружен на странице')
+        return
+    }
 
     settings_panel.innerHTML = `
         <a href="https://webmaster.yandex.ru/siteinfo/?site=https://kursk-region.ru"><img width="88" height="31" alt="Иконка ИКС" border="0" border-radius="8" src="https://yandex.ru/cycounter?https://kursk-region.ru&theme=light&lang=ru"/></a>
         <p>Тема и опции для слабовидящих — в настройках справа.</p>
         <img id="settings" src="./png/settings.png" alt="Настройки">
     `;
-    document.body.appendChild(settings_panel)
 
     const settings = document.getElementById('settings')
     let rorate = 10
+    const module_bg = document.createElement('div')
+    module_bg.id = 'module_bg'
 
     settings.addEventListener('click', () => {
         rotate_settings()
-        // setTimeout(() => {
-        //     module_win.classList.add('active')
-        // }, 100)
+
+        if (module_bg.childElementCount === 0){
+            module_bg.innerHTML = `
+                <section id="module_win">
+                    <span id="exit_btn">X</span>
+        
+                    <aside id="font_size_el">
+                        <p><strong>Размер шрифта</strong></p>
+                        <div>
+                            <button type="button" id="plus_btn">+</button>
+                            <p id="changeable_font_size"><b>16</b></p>
+                            <button type="button" id="minus_btn">-</button>
+                        </div>
+                    </aside>
+        
+                    <aside id="color_palette">
+                        <p><strong>Цветовая палитра</strong></p>
+                        <select name="" id="color_palette_select">
+                            <option value="Светлая">Светлая</option>
+                            <option value="Темная">Темная</option>
+                            <option value="Упрощенная">Для слабовидящих</option>
+                        </select>
+                    </aside>
+                </section>
+            `
+
+            document.body.appendChild(module_bg)
+            
+            module_bg.addEventListener('click', (e) => {
+                if (e.target === module_bg || e.target.id === 'exit_btn') {
+                    remove_wodule_window();
+                }
+            })
+        }
+
+        setTimeout(() => {
+            module_bg.classList.add('active')
+        }, 100)
     })
-
-    // const module_win = document.createElement('div');
-    // module_win.id = 'module_bg';
-
-    // module_win.innerHTML = `
-    //     <section id="module_win">
-    //         <span id="exit_btn">X</span>
-
-    //         <aside id="font_size_el">
-    //             <p><strong>Размер шрифта</strong></p>
-    //             <div>
-    //                 <button type="button" id="plus_btn">+</button>
-    //                 <p id="changeable_font_size"><b>16</b></p>
-    //                 <button type="button" id="minus_btn">-</button>
-    //             </div>
-    //         </aside>
-
-    //         <aside id="color_palette">
-    //             <p><strong>Цветовая палитра</strong></p>
-    //             <select name="" id="color_palette_select">
-    //                 <option value="Светлая">Светлая</option>
-    //                 <option value="Темная">Темная</option>
-    //                 <option value="Упрощенная">Для слабовидящих</option>
-    //             </select>
-    //         </aside>
-    //     </section>
-    // `
-
-    // // Настройки и фунуции для модального окна
-    // const exit_btn = document.getElementById('exit_btn')
     
-
     function rotate_settings(offset = '+') {
         if (offset == '+') {rorate += 180} else {rorate -= 180}
         settings.style.transform = `rotate(${rorate}deg)`
     }
 
-    // function remove_wodule_window() {
-    //     module_win.classList.remove('active')
-    //     rotate_settings('-')
-    // }
+    function remove_wodule_window() {
+        module_bg.classList.remove('active')
+        rotate_settings('-')
+    }
 
-    // module_win.addEventListener('click', (e) => {
-    //     if (e.target === module_win) {
-    //         remove_wodule_window();
-    //     }
-    // })
-    // exit_btn.addEventListener('click', () => {
-    //     remove_wodule_window()
-    // })
+
 }
 
-export async function create_search() {
-    document.getElementById('search_container').innerHTML = `
+async function create_search() {
+    const search_container = document.getElementById('search_container')
+
+    if (!search_container){
+        console.log('Элемент search_container не обнаружен на странице')
+        return
+    }
+
+    search_container.innerHTML = `
         <section id="search">
             <p>🔍</p>
             <input id="input_search" type="search" placeholder="Поиск информации на сайте">
@@ -248,143 +260,28 @@ export async function create_search() {
     })
 }
 
-export async function create_articles_about_region() {
-    const articles_about_region = document.getElementById('articles_about_region');
-    articles_about_region.innerHTML = `
-    <h2>Статьи и публикации на тему Курской области</h2>
+// TODO Сделать полнаценную длгтку функции
+async function create_articles_about_region() {
+    const articles_about_region = document.getElementById('articles_about_region')
 
-            <article>
+    if (!articles_about_region){
+        console.log('Элемент articles_about_region не обнаружен на странице')
+        return
+    }
 
-                <h3>Статьи на тему культуры Курской области</h3>
-                <ul id="links_for_culture">
-                    <li>
-                        <a href="#">Дом культуры</a>
-                    </li>
-                    <li>
-                        <a href="#">Основные направления культуры</a>
-                    </li>
-                    <li>
-                        <a href="#">Известные личности</a>
-                    </li>
-                    <li>
-                        <a href="#">Традиции, праздники, обряды</a>
-                    </li>
-                </ul>
+    articles_about_region.innerHTML = ``
 
-                <a href="https://kursk-region.ru/pages/culture.html" target="_blank">
-                    <aside class="placeholder_beginning_chapter"
-                        data-image="./img/drama_theater_for_main_page.jpg"
-                        data-left-block="Культурный образ"
-                        data-right-block=""
-                        data-title-h="h4">
-                    </aside>
-                </a>
-
-                <h3>Статьи на тему истории и развитии Курской области</h3>
-                <ul id="links_for_history">
-                    <li>
-                        <a href="#">Развитие и биография Курской области</a>
-                    </li>
-                    <li>
-                        <a href="#">Революция 1917 года</a>
-                    </li>
-                    <li>
-                        <a href="#">Курская битва (дуга) 1943 года</a>
-                    </li>
-                    <li>
-                        <a href="#">Современные музеи, посвященные военной истории (СВО)</a>
-                    </li>
-                    <li>
-                        <a href="#">Курская атомная электростанция (Курской АЭС)</a>
-                    </li>
-                    <li>
-                        <a href="#">Герои нашего времени</a>
-                    </li>
-                </ul>
-                <a href="https://kursk-region.ru/pages/history.html">
-                    <aside class="placeholder_beginning_chapter" 
-                        data-image="./img/kurska_duga.jpg"
-                        data-left-block="История"
-                        data-right-block=""
-                        data-title-h="h4">
-                    </aside>
-                </a>
-
-                <h3>Статьи на тему экологии и природы Курской области</h3>
-                <ul id="links_for_ecology">
-                    <li>
-                        <a href="#">Красная книга Курской области</a>
-                    </li>
-                    <li>
-                        <a href="#">Основные характеристики экологии региона</a>
-                    </li>
-                    <li>
-                        <a href="#">Проблемы экологии края</a>
-                    </li>
-                    <li>
-                        <a href="#">Проект "Сохранение лесов" Курской области</a>
-                    </li>
-                </ul>
-
-                <a href="https://kursk-region.ru/pages/ecology.html">
-                    <aside class="placeholder_beginning_chapter" 
-                        data-image="./img/ecology.jpg"
-                        data-left-block="Экология"
-                        data-right-block=""
-                        data-title-h="h4">
-                    </aside>
-                </a>
-
-                <h3>Статьи на тему экономики и ВРП Курской области</h3>
-                <ul id="links_for_economy">
-                    <li>
-                        <a href="#">Курская магнитная аномалия (КМА)</a>
-                    </li>
-                    <li>
-                        <a href="#">Анализ и структура экономики Курской области</a>
-                    </li>
-                    <li>
-                        <a href="#">ВРП Курской области</a>
-                    </li>
-                </ul>
-
-                <a href="https://kursk-region.ru/pages/economy.html">
-                    <aside class="placeholder_beginning_chapter" 
-                        data-image="./img/economy.jpg"
-                        data-left-block="Экономика"
-                        data-right-block=""
-                        data-title-h="h4">
-                    </aside>
-                </a>
-
-                <h3>Статьи на тему туризма, достопремечательности Курской области</h3>
-                <ul id="links_for_tourism">
-                    <li>
-                        <a href="#">Инфроструктура туризма Курской области</a>
-                    </li>
-                    <li>
-                        <a href="#">Уникальные природные объекты</a>
-                    </li>
-                    <li>
-                        <a href="#">Популярные места и достопремечательности</a>
-                    </li>
-                </ul>
-
-                <a href="https://kursk-region.ru/pages/tourism.html">
-                    <aside class="placeholder_beginning_chapter" 
-                        data-image="./img/cathedral.jpg"
-                        data-left-block="Туризм"
-                        data-right-block=""
-                        data-title-h="h4">
-                    </aside>
-                </a>
-            </article>
-    `
 }
 
 
 export async function create_footer(data) {
-    const footer = document.querySelector('footer');
+    const footer = document.querySelector('footer')
+
+    if (!footer){
+        console.log('Элемент footer не обнаружен на странице')
+        return
+    }
+
     footer.innerHTML = `
         <aside>
             <div id="nightingale_div">
@@ -403,16 +300,23 @@ export async function create_footer(data) {
         </article>
     `
 
-    // const footer_ul = document.querySelector('footer ul');
-    // Object.entries(data).forEach(([key, value]) => {
-    //     footer_ul.innerHTML += `
-    //         <li><a class="just_text" target="_blank" href="${key}">${value}</a></li>
-    //     `
-    // })
+    const footer_ul = document.querySelector('footer article ul');
+    Object.entries(data).forEach(([key, value]) => {
+        footer_ul.innerHTML += `
+            <li><a class="just_text" target="_blank" href="${value}">${key}</a></li>
+        `
+    })
 }
 
-export async function create_feedback() {
-    document.getElementById('feedback').innerHTML = `
+async function create_feedback() {
+    const feedback = document.getElementById('feedback')
+
+    if (!feedback){
+        console.log('Элемент feedback не обнаружен на странице')
+        return
+    }
+
+    feedback.innerHTML = `
         <h2>Обратная связь</h2>
 
         <p class="just_text">Разработчиком данного сайта является студент ГБПОУ МО “Воскресенский колледж”. Ссылка на другую мою работу: <a target="_blank" href="https://the-bright-sign.ru">Сайт "Яркий знак"</a>.</p>
@@ -440,3 +344,14 @@ export async function create_feedback() {
         </div>
     `
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('Назало загрузки из файла basic_markup_elements.js')
+
+    create_header()
+    create_search()
+    create_settings_with_module_bg()
+    create_feedback()
+
+    console.log('Конец загрузки из файла basic_markup_elements.js')
+})

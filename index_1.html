@@ -96,30 +96,17 @@
 </head>
 
 <body>
-    <!-- Меню и модальное окно -->
-    <script type="module">
-        import {
-            create_header,
-            create_settings_with_module_bg
-        } from './script/start_sctipt.js'
+    <!-- Шапка сайта -->
+    <header></header>
 
-        create_header()
-        create_settings_with_module_bg()
-    </script>
+    <!-- Панель настроек -->
+    <div id="settings_panel"></div>
 
     <!-- main -->
-
     <main>
+
         <!-- Поиск информации на сайте -->
         <div id="search_container"></div>
-
-        <script type="module">
-            import {
-                create_search
-            } from './script/start_sctipt.js'
-
-            create_search()
-        </script>
 
         <!-- Главная страница -->
         <section id="main_page">
@@ -158,68 +145,210 @@
         </section>
 
         <!-- Статьи о Курской области -->
-        <section id="articles_about_region"></section>
-        <script type="module">
-            import {create_articles_about_region} from './script/start_sctipt.js'
-            create_articles_about_region()
-        </script>
+        <section id="articles_about_region">
+            
+                <h2>Статьи и публикации на тему Курской области</h2>
+
+                <p class="just_text">Чтобы перейти к статье, Вы можете нажать на иллюстрацию, воспользоваться навигацией в шапке сайта или выбрать одну из ссылок, расположенных над изображением статьи.</p>
+
+            <article>
+
+                <h3>Статьи на тему культуры Курской области</h3>
+                <ul id="links_for_culture">
+                    <li>
+                        <a href="#">Дом культуры</a>
+                    </li>
+                    <li>
+                        <a href="#">Основные направления культуры</a>
+                    </li>
+                    <li>
+                        <a href="#">Известные личности</a>
+                    </li>
+                    <li>
+                        <a href="#">Традиции, праздники, обряды</a>
+                    </li>
+                </ul>
+
+                <a href="https://kursk-region.ru/pages/culture.html" target="_blank">
+                    <aside class="placeholder_beginning_chapter"
+                        data-image="./img/drama_theater_for_main_page.jpg"
+                        data-left-block="Культурный образ"
+                        data-right-block=""
+                        data-title-h="h4">
+                    </aside>
+                </a>
+
+                <h3>Статьи на тему истории и развитии Курской области</h3>
+                <ul id="links_for_history">
+                    <li>
+                        <a href="#">Развитие и биография Курской области</a>
+                    </li>
+                    <li>
+                        <a href="#">Революция 1917 года</a>
+                    </li>
+                    <li>
+                        <a href="#">Курская битва (дуга) 1943 года</a>
+                    </li>
+                    <li>
+                        <a href="#">Современные музеи, посвященные военной истории (СВО)</a>
+                    </li>
+                    <li>
+                        <a href="#">Курская атомная электростанция (Курской АЭС)</a>
+                    </li>
+                    <li>
+                        <a href="#">Герои нашего времени</a>
+                    </li>
+                </ul>
+                <a href="https://kursk-region.ru/pages/history.html">
+                    <aside class="placeholder_beginning_chapter" 
+                        data-image="./img/kurska_duga.jpg"
+                        data-left-block="История"
+                        data-right-block=""
+                        data-title-h="h4">
+                    </aside>
+                </a>
+
+                <h3>Статьи на тему экологии и природы Курской области</h3>
+                <ul id="links_for_ecology">
+                    <li>
+                        <a href="#">Красная книга Курской области</a>
+                    </li>
+                    <li>
+                        <a href="#">Основные характеристики экологии региона</a>
+                    </li>
+                    <li>
+                        <a href="#">Проблемы экологии края</a>
+                    </li>
+                    <li>
+                        <a href="#">Проект "Сохранение лесов" Курской области</a>
+                    </li>
+                </ul>
+
+                <a href="https://kursk-region.ru/pages/ecology.html">
+                    <aside class="placeholder_beginning_chapter" 
+                        data-image="./img/ecology.jpg"
+                        data-left-block="Экология"
+                        data-right-block=""
+                        data-title-h="h4">
+                    </aside>
+                </a>
+
+                <h3>Статьи на тему экономики и ВРП Курской области</h3>
+                <ul id="links_for_economy">
+                    <li>
+                        <a href="#">Курская магнитная аномалия (КМА)</a>
+                    </li>
+                    <li>
+                        <a href="#">Анализ и структура экономики Курской области</a>
+                    </li>
+                    <li>
+                        <a href="#">ВРП Курской области</a>
+                    </li>
+                </ul>
+
+                <a href="https://kursk-region.ru/pages/economy.html">
+                    <aside class="placeholder_beginning_chapter" 
+                        data-image="./img/economy.jpg"
+                        data-left-block="Экономика"
+                        data-right-block=""
+                        data-title-h="h4">
+                    </aside>
+                </a>
+
+                <h3>Статьи на тему туризма, достопремечательности Курской области</h3>
+                <ul id="links_for_tourism">
+                    <li>
+                        <a href="#">Инфроструктура туризма Курской области</a>
+                    </li>
+                    <li>
+                        <a href="#">Уникальные природные объекты</a>
+                    </li>
+                    <li>
+                        <a href="#">Популярные места и достопремечательности</a>
+                    </li>
+                </ul>
+
+                <a href="https://kursk-region.ru/pages/tourism.html">
+                    <aside class="placeholder_beginning_chapter" 
+                        data-image="./img/cathedral.jpg"
+                        data-left-block="Туризм"
+                        data-right-block=""
+                        data-title-h="h4">
+                    </aside>
+                </a>
+            </article>
+        </section>
 
         <!-- Цитаты -->
 
         <section id="quotes">
 
-            <h2>Цитаты о Курской области - Соловьином крае России</h2>
+            <h2>Цитаты, комментарии и публикации о Курской области - Соловьином крае России</h2>
 
             <aside>
                 <div class="oval_block">
-                    <img class="oval_img" src="./img/lermontov.jpg" alt="Изображение Лермонтов М. Ю.">
-                    <p class="full_name_human">Лермонтов М. Ю.</p>
+                    <img src="./img/turgenev.jpg" alt="Изображение Тургенева Ивана Сергеевича">
+                    <p>Тургенев И. С.</p>
                 </div>
-                <blockquote lang="ru" class="blockquote_block">
-                    <p>"Где же тот край, где мне дышать так легко, Где в сердце горит любовь и свобода? То Курская земля, то родина моя!"</p>
+                <blockquote lang="ru">
+                    <p>"Курские соловьи поют как никакие другие. У них свои трели, особенные колена, среди которых наиболее редким, своеобразным считается «кукушкин перелет»"</p>
                 </blockquote>
             </aside>
 
             <aside>
-                <blockquote lang="ru" class="blockquote_block" id="replacement_positions">
-                    <p>"Курск — это город, где прошлое живет в настоящем. Его улицы хранят память о многих поколениях, и каждый камень здесь дышит историей."</p>
+                <blockquote lang="ru">
+                    <p>"В самом Курске прелестный сад, город лежит на высокой местности, очень гористой, и раскинут красиво"</p>
                 </blockquote>
                 <div class="oval_block">
-                    <img class="oval_img" src="./img/tolstoy.jpg" alt="Изображение Толстой Л. Н.">
-                    <p class="full_name_human">Толстой Л. Н.</p>
+                    <img src="./img/borodin.jpg" alt="Изображение Александра Бородина Порфирьевича">
+                    <p>Бородин А. П.</p>
                 </div>
             </aside>
 
             <aside>
                 <div class="oval_block">
-                    <img class="oval_img" src="./img/buckwheat.jpg" alt="Изображение Гречко А. А.">
-                    <p class="full_name_human">Гречко А. А.</p>
+                    <img src="./img/zhukov.jpg" alt="Изображение Георгия Константиновича Жукова">
+                    <p>Жуков Г. К.</p>
                 </div>
-                <blockquote lang="ru" class="blockquote_block">
-                    <p>"Курская дуга стала местом, где наша армия доказала свою непобедимость. Здесь закладывались основы будущей победы."</p>
+                <blockquote lang="ru">
+                    <p>"В 2 часа 20 минут утра 5 июля всё вокруг закружилось и завертелось, началась мощная симфония величайшего сражения в районе Курской дуги, в которой особенно выделялись звуки тяжёлой артиллерии и разрывы реактивных снарядов М-31"</p>
                 </blockquote>
             </aside>
+
         </section>
 
         <!-- Форма обратной связи -->
-
         <section id="feedback"></section>
-        <script type="module">
-            import {create_feedback} from './script/start_sctipt.js'
-            create_feedback()
-        </script>
     </main>
-
+    
     <!-- Подвал сайта -->
-
     <footer></footer>
-    <script type="module">
-        import {create_footer} from './script/start_sctipt.js';
-
-        create_footer()
-    </script>
-
 </body>
+
+<script type="module">
+
+    import {create_footer} from './script/basic_markup_elements.js'
+
+    const data_links = {
+        'Фото Жуков Г. К.': 'https://avatars.mds.yandex.net/i?id=63b51091f0fbdb01ca9b04ba94b49c18_l-5233043-images-thumbs&n=13',
+        'Фото Бородин А. П.': 'https://avatars.mds.yandex.net/i?id=06c1278f1dc11c64495135b2016ebfb3_l-5632212-images-thumbs&n=13',
+        'Фото Тургенев И. С.': 'https://i.postimg.cc/MKSYfs8F/z2n-MCBV0gus.jpg',
+        'Фрагменты из основного видео': 'https://rutube.ru/channel/25952800/videos',
+        'Изображение Знаменского собора': 'https://cdn.culture.ru/images/684f2c98-8c4c-5c37-8611-a8aa732fb74b',
+        
+        'Изображение для статьи о культуре Курской области': 'https://sun9-43.userapi.com/impg/Q393EZWk-F1vx6DPBxsLIOWDxTjp9b1jLVz16A/Qxn5mWOeSNk.jpg?size=1280x720&quality=96&sign=f6472be581807801caef6ed7223a994f&c_uniq_tag=vLZPE2Jx-tDsJtKaKzaPlzvKXdXy-jY-FG-3WFV5ooM&type=album',
+        'Изображение для статьи о истории Курской области': 'https://mirbelogorya.ru/images/stories/news/2023/08/memorial2408.jpg',
+        'Изображение для статьи о Экологии Курской области': 'https://avatars.mds.yandex.net/i?id=c76f69f8f352a93f8a9471400e1ae21f_l-5174967-images-thumbs&n=13',
+        'Изображение для статьи о Экономике Курской области': 'https://evrazep.ru/upload/iblock/e10/453.jpg',
+        'Изображение и текст для статьи о Туризме Курской области': 'https://ru.wikipedia.org/wiki/Знаменский_собор_(Курск)',
+        'Изображение письма': 'https://avatars.mds.yandex.net/i?id=0ce1aba54bdbee9055ec3b07da07d4e8_l-5233011-images-thumbs&n=13',
+        'Изображение соловья': 'https://pofoto.club/uploads/posts/2021-12/1640907637_4-pofoto-club-p-solovei-ptitsa-krasivie-foto-8.jpg',
+
+        'Сайт для сжатия изображений': 'https://squoosh.app',
+    }
+    create_footer(data_links)
+</script>
+
 
 <script src="script.js"></script>
 
