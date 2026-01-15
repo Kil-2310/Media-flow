@@ -391,22 +391,7 @@ function creating_chart(color_text='black') {
 // JS - конструкторы
 
 // beginning_chapter
-function fun_create_placeholder_beginning_chapter() {
-    const placeholders = document.querySelectorAll('.placeholder_beginning_chapter');
 
-    placeholders.forEach(placeholder => {
-        const container = document.createElement('div');
-        container.innerHTML = `
-            <section class="container_beginning_chapter">
-                <img loading="lazy" class="container_beginning_chapter_img" src="${placeholder.dataset.image}" alt="Изображение начала главы">
-                <${placeholder.dataset.titleH} class="container_beginning_chapter_title">${placeholder.dataset.leftBlock} Курской области</${placeholder.dataset.titleH}>
-                ${placeholder.dataset.rightBlock ? `<p class="container_beginning_chapter_bottom_text">${placeholder.dataset.rightBlock}</p>` : ''}
-            </section>
-        `;
-
-        placeholder.replaceWith(container.firstElementChild);
-    });
-}
 
 // Carousel
 class Carousel {
@@ -756,7 +741,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Инициализация компонентов
     // initMilitaryMuseumGallery()
-    fun_create_placeholder_beginning_chapter()
+
     // initCarousels()
     // initInterestingFacts()
 })
@@ -855,13 +840,3 @@ function update_theme(value) {
         chart_container.classList.add('del_bg')
     }
 }
-
-// menu
-
-document.addEventListener('click', (e) => {
-    const input = document.querySelector('input');
-    
-    if (!e.target.closest('.burger_menu_elements_position')) {
-        input.checked = false;
-    }
-});

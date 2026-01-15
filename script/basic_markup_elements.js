@@ -1,3 +1,18 @@
+function marking_threshold(number) {
+    return function(targetFunction) {
+        let is_marked = false;
+        
+        return function(...args) {
+            if (!is_marked || document.documentElement.clientHeight > number) {
+                is_marked = true;
+            }
+            
+            return targetFunction(...args);
+        };
+    };
+}
+
+
 async function create_header() {
     const header = document.querySelector('header')
 
@@ -12,7 +27,7 @@ async function create_header() {
             <ul>
                 <li>
                     <a title="Перейти на официальный сайт Курской области" target="_blank" href="https://kursk.ru/?i">
-                        <img src="./png/coat_arms_kursk_region.png" alt="Герб Курской области">
+                        <img src="http://127.0.0.1:5500/png/coat_arms_kursk_region.png" alt="Герб Курской области">
                     </a>
                     <p>Курская<span>область</span></p>
                 </li>
@@ -81,7 +96,7 @@ async function create_header() {
         <!-- Бургер меню -->
         <nav id="burger_menu">
             <aside>
-                <a target="_blank" href="https://kursk.ru/?i"><img title="Официальный герб Курской области, перейти на официальный сайт региона" src="./png/coat_arms_kursk_region.png" alt="Герб Курской области"></a>
+                <a target="_blank" href="https://kursk.ru/?i"><img title="Официальный герб Курской области, перейти на официальный сайт региона" src="http://127.0.0.1:5500/png/coat_arms_kursk_region.png" alt="Герб Курской области"></a>
                 <p>Курская<br><span>область</span></p>
             </aside>
 
@@ -104,6 +119,14 @@ async function create_header() {
             </ul>
         </nav>
     `
+
+    document.addEventListener('click', (e) => {
+        const input = document.querySelector('input');
+        
+        if (!e.target.closest('.burger_menu_elements_position')) {
+            input.checked = false;
+        }
+    });
 
     window.addEventListener('scroll', () => {
         if (window.scrollY < 50) {
@@ -138,7 +161,7 @@ async function create_settings_with_module_bg() {
     settings_panel.innerHTML = `
         <a href="https://webmaster.yandex.ru/siteinfo/?site=https://kursk-region.ru"><img width="88" height="31" alt="Иконка ИКС" border="0" border-radius="8" src="https://yandex.ru/cycounter?https://kursk-region.ru&theme=light&lang=ru"/></a>
         <p>Тема и опции для слабовидящих — в настройках справа.</p>
-        <img id="settings" src="./png/settings.png" alt="Настройки">
+        <img id="settings" src="http://127.0.0.1:5500/png/settings.png" alt="Настройки">
     `;
 
     const settings = document.getElementById('settings')
@@ -260,21 +283,132 @@ async function create_search() {
     })
 }
 
-// TODO Сделать полнаценную длгтку функции
-async function create_articles_about_region() {
-    const articles_about_region = document.getElementById('articles_about_region')
+function get_description(id_fast_links, parent = null){
+    const description = {
+        'links_for_culture': {
+            'title' : 'Статьи на тему культуры Курской области',
+            'links': [
+                {
+                    'link_text': 'теси',
+                    'href': ''
+                },
+                {
+                    'link_text': 'теси',
+                    'href': ''
+                },
+            ]
 
-    if (!articles_about_region){
-        console.log('Элемент articles_about_region не обнаружен на странице')
+        }
+    }
+
+    const element = description[id_fast_links];
+    
+    const ul = document.createElement('ul')
+    
+    parent.innerHTML += `<h3>${element.title}</h3>`
+
+    element.links.forEach(link => {
+        ul.innerHTML += `<li><a target="_blank" href='${link.href}'>${link.link_text}</a></li>`;
+    });
+
+    parent.appendChild(ul)
+}
+
+// TODO Сделать полнаценную логику функции
+export async function create_article_cover(
+    title_level,
+    id_element,
+    articles = [],
+    is_bottom_text = true,
+    parent_id = null
+) {
+    
+    const html_element = document.getElementById(id_element);
+
+    if (!html_element){
+        console.log(`Элемент ${id_element} не обнаружен на странице`)
         return
     }
 
-    articles_about_region.innerHTML = ``
+    html_element.innerHTML = ''
 
+    const dict_of_articles = {
+        'main': {
+            'title': 'Главная страница сайта',
+            'img': 'http://127.0.0.1:5500/img/main_image.jpg',
+            'bottom_text': '',
+            'href': 'http://127.0.0.1:5500/index.html',
+            'id_fast_links': 'links_for_main'
+        },
+        'culture': {
+            'title': 'Культурный образ Курской области',
+            'img': 'http://127.0.0.1:5500/img/drama_theater_for_main_page.jpg',
+            'bottom_text': '',
+            'href': 'http://127.0.0.1:5500/pages/culture.html',
+            'id_fast_links': 'links_for_culture'
+        },
+        'history': {
+            'title': 'История Курской области',
+            'img': 'http://127.0.0.1:5500/img/kurska_duga.jpg',
+            'bottom_text': '',
+            'href': 'http://127.0.0.1:5500/pages/history.html',
+            'id_fast_links': 'links_for_history'
+        },
+        'ecology': {
+            'title': 'Экология Курской области',
+            'img': 'http://127.0.0.1:5500/img/ecology.jpg',
+            'bottom_text': '',
+            'href': 'http://127.0.0.1:5500/pages/ecology.html',
+            'id_fast_links': 'links_for_ecology'
+        },
+        'economy': {
+            'title': 'Экономика Курской области',
+            'img': 'http://127.0.0.1:5500/img/economy.jpg',
+            'bottom_text': '',
+            'href': 'http://127.0.0.1:5500/pages/economy.html',
+            'id_fast_links': 'links_for_economy'
+        },
+        'tourism': {
+            'title': 'Туризм Курской области',
+            'img': 'http://127.0.0.1:5500/img/cathedral.jpg',
+            'bottom_text': '',
+            'href': 'http://127.0.0.1:5500/pages/tourism.html',
+            'id_fast_links': 'links_for_tourism'
+        }
+    }
+
+    const parent = document.getElementById(parent_id)
+
+    Object.entries(dict_of_articles).forEach(([key, value]) => {
+        if (articles.includes(key)){
+
+            if (id_element === 'beginning_chapter'){
+                html_element.innerHTML += `
+                    <section class="container_beginning_chapter">
+                        <img loading="lazy" class="container_beginning_chapter_img" src="${value.img}" alt="Изображение начала главы">
+                        <${title_level} class="container_beginning_chapter_title">${value.title}</${title_level}>
+                        ${is_bottom_text ? `<p class="container_beginning_chapter_bottom_text">${value.bottom_text}</p>` : ''}
+                    </section>
+                `
+            }else{
+                get_description('links_for_culture', parent)
+        
+                parent.innerHTML += `
+                    <a target="_blank" href='${value.href}'>
+                        <section class="container_beginning_chapter">
+                            <img loading="lazy" class="container_beginning_chapter_img" src="${value.img}" alt="Изображение начала главы">
+                            <${title_level} class="container_beginning_chapter_title">${value.title}</${title_level}>
+                            ${is_bottom_text ? `<p class="container_beginning_chapter_bottom_text">${value.bottom_text}</p>` : ''}
+                        </section>
+                    </a>
+                `
+            }
+        }
+    })
 }
 
 
-export async function create_footer(data) {
+async function create_footer_original(data) {
     const footer = document.querySelector('footer')
 
     if (!footer){
@@ -285,12 +419,12 @@ export async function create_footer(data) {
     footer.innerHTML = `
         <aside>
             <div id="nightingale_div">
-                <img src="./png/nightingale.png" alt="Картинка соловья">
+                <img src="http://127.0.0.1:5500/png/nightingale.png" alt="Картинка соловья">
             </div>
             <div id="nightingale_text" class="just_text">
                 <p>Спасибо, что заглянули на мой сайт! Для меня Курская область — родной край. Уникальное сочетание богатой истории, культурных традиций и прекрасной природы создаёт здесь особый, неповторимый мир.</p>
-                <p><a href="./other/privacy-policy.html" target="_blank">Политика конфиденциальности</a></p>
-                <p><a href="./other/contacts.html" target="_blank">Контакты</a></p>
+                <p><a href="http://127.0.0.1:5500/other/privacy-policy.html" target="_blank">Политика конфиденциальности</a></p>
+                <p><a href="http://127.0.0.1:5500/other/contacts.html" target="_blank">Контакты</a></p>
             </div>
         </aside>
 
@@ -308,6 +442,8 @@ export async function create_footer(data) {
     })
 }
 
+export const create_footer = marking_threshold(200)(create_footer_original);
+
 async function create_feedback() {
     const feedback = document.getElementById('feedback')
 
@@ -324,7 +460,7 @@ async function create_feedback() {
         <article id="form_article">
 
             <div id="form_article_div">
-                <img id="letter_image" src="./png/letter.png" alt="Изображение письма">
+                <img id="letter_image" src="http://127.0.0.1:5500/png/letter.png" alt="Изображение письма">
             </div>
             
             <form action="https://api.web3forms.com/submit" method="POST">

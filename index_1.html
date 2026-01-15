@@ -27,10 +27,10 @@
     <!-- /Yandex.Metrika counter -->
 
     <!-- favicon -->
-    <link rel="icon" type="image/png" href="./favicon/favicon-96x96.png" sizes="96x96">
-    <link rel="icon" type="image/svg+xml" href="./favicon/favicon.svg">
-    <link rel="shortcut icon" href="./favicon/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="http://127.0.0.1:5500/favicon/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="http://127.0.0.1:5500/favicon/favicon.svg">
+    <link rel="shortcut icon" href="http://127.0.0.1:5500/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="http://127.0.0.1:5500/favicon/apple-touch-icon.png">
     <meta name="apple-mobile-web-app-title" content="Курская область">
 
     <!-- Open Graph -->
@@ -91,8 +91,8 @@
     }
     </script>
 
-    <link rel="stylesheet" href="./styles/normal.css">
-    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="http://127.0.0.1:5500/styles/normal.css">
+    <link rel="stylesheet" href="http://127.0.0.1:5500/styles/styles.css">
 </head>
 
 <body>
@@ -111,7 +111,7 @@
         <!-- Главная страница -->
         <section id="main_page">
             <h1>Добро пожаловать в Курскую область - наш соловьиный край</h1>
-            <video src="./video/compressed_enter_video.mp4"
+            <video src="http://127.0.0.1:5500/video/compressed_enter_video.mp4"
                 autoplay 
                 muted 
                 loop 
@@ -119,7 +119,7 @@
                 preload="auto"
                 fetchpriority="high"
                 type="video/mp4"
-                poster="./img/main_image.jpg"
+                poster="http://127.0.0.1:5500/img/main_image.jpg"
                 width="1920" 
                 height="1080">
             </video>
@@ -171,7 +171,7 @@
 
                 <a href="https://kursk-region.ru/pages/culture.html" target="_blank">
                     <aside class="placeholder_beginning_chapter"
-                        data-image="./img/drama_theater_for_main_page.jpg"
+                        data-image="http://127.0.0.1:5500/img/drama_theater_for_main_page.jpg"
                         data-left-block="Культурный образ"
                         data-right-block=""
                         data-title-h="h4">
@@ -201,7 +201,7 @@
                 </ul>
                 <a href="https://kursk-region.ru/pages/history.html">
                     <aside class="placeholder_beginning_chapter" 
-                        data-image="./img/kurska_duga.jpg"
+                        data-image="http://127.0.0.1:5500/img/kurska_duga.jpg"
                         data-left-block="История"
                         data-right-block=""
                         data-title-h="h4">
@@ -226,7 +226,7 @@
 
                 <a href="https://kursk-region.ru/pages/ecology.html">
                     <aside class="placeholder_beginning_chapter" 
-                        data-image="./img/ecology.jpg"
+                        data-image="http://127.0.0.1:5500/img/ecology.jpg"
                         data-left-block="Экология"
                         data-right-block=""
                         data-title-h="h4">
@@ -234,7 +234,7 @@
                 </a>
 
                 <h3>Статьи на тему экономики и ВРП Курской области</h3>
-                <ul id="links_for_economy">
+                <ul id="links_for_tourism">
                     <li>
                         <a href="#">Курская магнитная аномалия (КМА)</a>
                     </li>
@@ -248,7 +248,7 @@
 
                 <a href="https://kursk-region.ru/pages/economy.html">
                     <aside class="placeholder_beginning_chapter" 
-                        data-image="./img/economy.jpg"
+                        data-image="http://127.0.0.1:5500/img/economy.jpg"
                         data-left-block="Экономика"
                         data-right-block=""
                         data-title-h="h4">
@@ -270,7 +270,7 @@
 
                 <a href="https://kursk-region.ru/pages/tourism.html">
                     <aside class="placeholder_beginning_chapter" 
-                        data-image="./img/cathedral.jpg"
+                        data-image="http://127.0.0.1:5500/img/cathedral.jpg"
                         data-left-block="Туризм"
                         data-right-block=""
                         data-title-h="h4">
@@ -287,7 +287,7 @@
 
             <aside>
                 <div class="oval_block">
-                    <img src="./img/turgenev.jpg" alt="Изображение Тургенева Ивана Сергеевича">
+                    <img src="http://127.0.0.1:5500/img/turgenev.jpg" alt="Изображение Тургенева Ивана Сергеевича">
                     <p>Тургенев И. С.</p>
                 </div>
                 <blockquote lang="ru">
@@ -300,14 +300,14 @@
                     <p>"В самом Курске прелестный сад, город лежит на высокой местности, очень гористой, и раскинут красиво"</p>
                 </blockquote>
                 <div class="oval_block">
-                    <img src="./img/borodin.jpg" alt="Изображение Александра Бородина Порфирьевича">
+                    <img src="http://127.0.0.1:5500/img/borodin.jpg" alt="Изображение Александра Бородина Порфирьевича">
                     <p>Бородин А. П.</p>
                 </div>
             </aside>
 
             <aside>
                 <div class="oval_block">
-                    <img src="./img/zhukov.jpg" alt="Изображение Георгия Константиновича Жукова">
+                    <img src="http://127.0.0.1:5500/img/zhukov.jpg" alt="Изображение Георгия Константиновича Жукова">
                     <p>Жуков Г. К.</p>
                 </div>
                 <blockquote lang="ru">
@@ -327,7 +327,9 @@
 
 <script type="module">
 
-    import {create_footer} from './script/basic_markup_elements.js'
+    import {create_footer, create_articles_about_region} from 'http://127.0.0.1:5500/script/basic_markup_elements.js'
+
+    // create_articles_about_region('h1', ['culture', 'history', ''])
 
     const data_links = {
         'Фото Жуков Г. К.': 'https://avatars.mds.yandex.net/i?id=63b51091f0fbdb01ca9b04ba94b49c18_l-5233043-images-thumbs&n=13',

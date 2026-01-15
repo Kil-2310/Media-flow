@@ -1,7 +1,29 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Kaisei+Decol&family=Montserrat:ital,wght@0,100..900;1,100..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Kaisei+Decol&family=Montserrat:ital,wght@0,100..900;1,100..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("http://127.0.0.1:5500/fonts/Cormorant_Garamond/CormorantGaramond-VariableFont_wght.ttf") format("truetype-variations");
+  font-weight: 300 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("http://127.0.0.1:5500/fonts/Cormorant_Garamond/CormorantGaramond-Italic-VariableFont_wght.ttf") format("truetype-variations");
+  font-weight: 300 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Kaisei Decol";
+  src: url("http://127.0.0.1:5500/fonts/Kaisei_Decol/KaiseiDecol-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Roboto Serif";
+  src: url("http://127.0.0.1:5500/fonts/Roboto_Serif/RobotoSerif-VariableFont_GRAD,opsz,wdth,wght.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-variation-settings: "opsz" 14;
+}
 * {
   scroll-behavior: smooth;
   padding: 0;
@@ -170,6 +192,14 @@ p {
 
 .add_bg {
   background-color: #505050 !important;
+}
+
+h1 {
+  color: var(--font_color_white);
+  font-size: clamp(1.5rem, 2.5vw + 1rem, 5rem) !important;
+  font-family: "Cormorant Garamond", Arial, Helvetica, sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+  text-align: center;
 }
 
 h2 {
@@ -437,7 +467,7 @@ body main #main_page video {
 }
 body main #second_page {
   height: clamp(55vh, 45vh + 25vw, 100vh);
-  background-image: url("../img/second_page_image.jpg");
+  background-image: url("http://127.0.0.1:5500/img/second_page_image.jpg");
   background-size: cover;
   position: relative;
 }
@@ -681,7 +711,7 @@ body main #ecology .forest_conservation_project_reserve {
   background-repeat: no-repeat;
 }
 body main #ecology #reserve {
-  background-image: url("./img/reserve.jpg");
+  background-image: url("http://127.0.0.1:5500/img/reserve.jpg");
   background-size: cover;
 }
 body main #ecology #reserve div {
@@ -704,7 +734,7 @@ body main #ecology #reserve div a {
 }
 body main #ecology #forest_conservation_project {
   margin-top: 5vh;
-  background-image: url("./img/forest_conservation_project.jpg");
+  background-image: url("http://127.0.0.1:5500/img/forest_conservation_project.jpg");
   background-size: cover;
 }
 body main #ecology #forest_conservation_project div {
@@ -724,10 +754,6 @@ body main #ecology #forest_conservation_project div a {
   color: gold;
   font-size: clamp(0.7rem, 1vw + 0.6rem, 1.3rem);
   padding: 0.5em;
-}
-body main #economy .container_beginning_chapter .container_beginning_chapter_bottom_text {
-  text-align: left;
-  left: 0;
 }
 body main #economy .chart-container {
   display: -webkit-box;
@@ -1150,7 +1176,7 @@ body footer aside #nightingale_text p, body footer aside #nightingale_text a {
 }
 
 .container_beginning_chapter {
-  height: clamp(50vh, 40vw + 10vh, 100vh);
+  height: clamp(50vh, 30vw + 10vh, 100vh);
   position: relative;
 }
 .container_beginning_chapter * {
@@ -1181,9 +1207,6 @@ body footer aside #nightingale_text p, body footer aside #nightingale_text a {
   position: absolute;
   top: 0;
   left: 0;
-  font-weight: bold;
-  text-align: center;
-  font-size: clamp(1.3rem, 1.7vw + 1.1vh + 0.7rem, 3rem);
 }
 .container_beginning_chapter .container_beginning_chapter_bottom_text {
   width: clamp(90vw, 40vw + 40vh, 100vw);
@@ -1805,10 +1828,12 @@ body footer aside #nightingale_text p, body footer aside #nightingale_text a {
     margin: 2px;
   }
 }
-#articles_about_region {
+#articles_about_region,
+#beginning_chapter {
   width: 100vw;
 }
-#articles_about_region article {
+#articles_about_region article,
+#beginning_chapter article {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1818,8 +1843,9 @@ body footer aside #nightingale_text p, body footer aside #nightingale_text a {
       -ms-flex-direction: column;
           flex-direction: column;
 }
-#articles_about_region article .container_beginning_chapter {
-  height: clamp(30vh, 32vw, 85vh) !important;
+#articles_about_region article .container_beginning_chapter,
+#beginning_chapter article .container_beginning_chapter {
+  height: clamp(30vh, 20vw, 80vh) !important;
 }
 
 #search_container {

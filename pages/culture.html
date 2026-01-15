@@ -13,10 +13,10 @@
     <link rel="canonical" href="https://kursk-region.ru/pages/culture.html">
 
     <!-- favicon -->
-    <link rel="icon" type="image/png" href="../favicon/favicon-96x96.png" sizes="96x96">
-    <link rel="icon" type="image/svg+xml" href="../favicon/favicon.svg">
-    <link rel="shortcut icon" href="../favicon/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="http://127.0.0.1:5500/favicon/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="http://127.0.0.1:5500/favicon/favicon.svg">
+    <link rel="shortcut icon" href="http://127.0.0.1:5500/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="http://127.0.0.1:5500/favicon/apple-touch-icon.png">
     <meta name="apple-mobile-web-app-title" content="Курская область">
 
     <!-- Open Graph -->
@@ -115,6 +115,64 @@
     }
     </script>
 
-    <link rel="stylesheet" href="../styles/normal.css">
-    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href=http://127.0.0.1:5500/styles/normal.css>
+    <link rel="stylesheet" href="http://127.0.0.1:5500/styles/styles.css">
 </head>
+
+<body>
+    <!-- Шапка сайта -->
+    <header></header>
+
+    <!-- Панель настроек -->
+    <div id="settings_panel"></div>
+
+    <!-- main -->
+    <main>
+        <!-- Поиск информации на сайте -->
+        <div id="search_container"></div>
+
+        <div id="beginning_chapter"></div>
+
+        <aside class="introductory-chapter-text">
+            <p>Культура Курской области многогранна, она богата фольклором, традициями и народными промыслами. Этот регион, расположенный на Русско-Украинской границе, впитал и смешал бесценный опыт двух стран, воплотив его в музеях, учреждениях культуры, ремеслах и многом другом.</p>
+        </aside>
+        <hr class="enter_hr">
+
+        <h2>Основные направления культуры Курской области</h4>
+
+        <!-- Статьи о регионе -->
+        <div id="parent_articles_about_region">
+            <div id="articles_about_region"></div>
+        </div>
+
+        <!-- Форма обратной связи -->
+        <section id="feedback"></section>
+    </main>
+    
+    <!-- Подвал сайта -->
+    <footer></footer>
+</body>
+
+<script type="module">
+
+    import {create_footer, create_article_cover} from 'http://127.0.0.1:5500/script/basic_markup_elements.js'
+    
+    create_article_cover('h1', 'beginning_chapter', ['culture'], false)
+    create_article_cover('h3', 'articles_about_region', ['main', 'history', 'ecology', 'economy', 'tourism'], false, 'parent_articles_about_region')
+    
+    const data_links = {
+        'Изображение для статьи о культуре Курской области': 'https://sun9-43.userapi.com/impg/Q393EZWk-F1vx6DPBxsLIOWDxTjp9b1jLVz16A/Qxn5mWOeSNk.jpg?size=1280x720&quality=96&sign=f6472be581807801caef6ed7223a994f&c_uniq_tag=vLZPE2Jx-tDsJtKaKzaPlzvKXdXy-jY-FG-3WFV5ooM&type=album',
+        'Изображение для статьи о истории Курской области': 'https://mirbelogorya.ru/images/stories/news/2023/08/memorial2408.jpg',
+        'Изображение для статьи о Экологии Курской области': 'https://avatars.mds.yandex.net/i?id=c76f69f8f352a93f8a9471400e1ae21f_l-5174967-images-thumbs&n=13',
+        'Изображение для статьи о Экономике Курской области': 'https://evrazep.ru/upload/iblock/e10/453.jpg',
+        'Изображение и текст для статьи о Туризме Курской области': 'https://ru.wikipedia.org/wiki/Знаменский_собор_(Курск)',
+        'Изображение письма': 'https://avatars.mds.yandex.net/i?id=0ce1aba54bdbee9055ec3b07da07d4e8_l-5233011-images-thumbs&n=13',
+        'Изображение соловья': 'https://pofoto.club/uploads/posts/2021-12/1640907637_4-pofoto-club-p-solovei-ptitsa-krasivie-foto-8.jpg',
+    }
+    create_footer(data_links)
+</script>
+
+
+<script src="http://127.0.0.1:5500/script.js"></script>
+
+</html>
