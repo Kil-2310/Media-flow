@@ -6,7 +6,7 @@
         {
             "label": "From SCSS to CSS",
             "type": "shell",
-            "command": "sass styles/styles.scss styles/styles.css",
+            "command": "sass ./frontend/styles/styles.scss ./frontend/styles/styles.css",
             "group": "build"
         }
     ]
