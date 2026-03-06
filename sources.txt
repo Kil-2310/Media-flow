@@ -9,3 +9,6 @@ industrial_pollution.jpg - https://naked-science.ru/wp-content/uploads/2020/02/r
 entrance_region.jpg - https://static.nv.ua/shared/system/Article/posters/002/724/756/original/32f3da773f255acb699591a281054d23.jpg?q=85&stamp=20230805035618
 garbage_pollution.jpg - https://www.worldbank.org/content/dam/photos/780x439/2020/sep/landfill.jpg
 impact_agriculture.webp - https://kuzinfo.ru/images/Ru-News/03-Innovation/selhoz.jpg
+kursk_region_map.jpg - https://www.sharada.ru/katalog/maps/regions/centralnyj-fed-okrug/kurskaja-oblast-geograficheskaja-karta
+georgy_vasilyevich_sviridov.jpg - https://veraifoma.ru/wp-content/uploads/Georgij-Sviridov-1024x576-1.jpg
+alexander_alexandrovich_deineka.webp - https://avatars.mds.yandex.net/i?id=b6807722fb67aea92b85f417e5e48a1a-5448488-images-thumbs&n=13
