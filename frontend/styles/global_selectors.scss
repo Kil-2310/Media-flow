@@ -1,0 +1,66 @@
+@import './scss_functions.scss';
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    color: var(--const_font_black_color);
+    transition: all 0.3s ease;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+.title{
+    margin-block: clamp(5vw, 5vh, 10vw);
+    font-weight: 100;
+    font-size: var(--h2_font_size);
+    padding-inline: 0.5em;
+
+    @include markup();
+}
+
+.simple_text{
+    font-size: var(--simple_text_size);
+    text-align: center;
+    padding: 0.5em;
+    a,p{
+        font-size: var(--simple_text_size);
+        text-align: center;
+        padding: 0.5em;
+    }
+}
+
+.smolle_text{
+    font-size: var(--smolle_text_size);
+    text-align: left;
+    padding: 0.4em;
+    a,
+    p{
+        font-size: var(--smolle_text_size);
+        text-align: left;
+        padding: 0.4em;
+    }
+}
+
+#container_iframe_map{
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+
+    iframe{
+        position: absolute;
+        z-index: 1;
+    }
+}

@@ -1,0 +1,65 @@
+@import './scss_functions.scss';
+
+#articles_about_region{
+
+    .articles_about_region__block{
+        width: 100vw;
+
+        .articles_about_region__image{
+            width: 100%;
+            height: clamp(35vh, 45vw, 60vh);
+
+            position: relative;
+            top: 0;
+            right: 0;
+
+            @include markup();
+            justify-content: start;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 2;
+            }
+
+            img{
+                position: absolute;
+                z-index: 1;
+                object-fit: cover;
+
+                width: 100%;
+                height: 100%;
+            }
+
+
+            a{
+                position: absolute;
+                z-index: 3;
+
+                font-weight: bold;
+                text-decoration: underline;
+
+                font-size: var(--h3_font_size);
+                margin-left: 30px;
+                color: var(--const_font_white_color);
+            }
+        }
+
+        .articles_about_region__links{
+            margin-block: 5vh;
+
+            li{
+                text-align: left;
+
+                a{
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
