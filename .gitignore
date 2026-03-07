@@ -4,7 +4,7 @@ __pycache__/
 *$py.class
 
 # NodeJs
-node_modules/
+node_modules
 
 # .vscode
 .vscode/
@@ -16,7 +16,7 @@ node_modules/
 .Python
 build/
 develop-eggs/
-dist/
+dist
 downloads/
 eggs/
 .eggs/
