@@ -1,7 +1,10 @@
 @font-face {
-    font-family: 'Roboto Serif';
-    src: url('../media/fonts/Roboto_Serif/RobotoSerif-VariableFont_GRAD\,opsz\,wdth\,wght.ttf');
+    font-family: 'RobotoSerif';
+    src: 
+        local('Roboto Serif'),
+        local('RobotoSerif'),
+        url('../../shared/assets/fonts/Roboto_Serif/RobotoSerif-VariableFont_GRAD,opsz,wdth,wght.ttf') format('truetype');
     font-weight: 100 900;
     font-style: normal;
-    font-variation-settings: 'opsz' 14;
+    font-display: swap;
 }

@@ -6,28 +6,8 @@
     <title>Политика конфиденциальности</title>
     <meta name="description" content="Политика конфиденциальности сайта, описание cookie">
 </head>
-<body>
-    <h1>Политика конфиденциальности</h1>
-    
-    <h2>Использование Cookie</h2>
-    <p>Cайт использует только технически необходимые cookie для:</p>
-    <ul>
-        <li>Сохранения выбранной темы оформления</li>
-        <li>Сохранения настроек размера шрифта</li>
-        <li>Сохранения состояния голосового помощника</li>
-    </ul>
-    
-    <p><strong>Эти данные не передаются третьим лицам и не используются для отслеживания.</strong></p>
-    
-    <h2>Обработка данных</h2>
-    <p>Мы не собираем и не обрабатываем персональные данные пользователей.</p>
-    
-        <section id="articles_about_region"></section>
-</body>
-    <script type="module" defer>
-        import { create_articles } from '/scripts/elements.js'
-        
-        create_articles('ecology', 'culture', 'history')
+    <div id="root"></div>
 
-    </script>
+    <script type="module" src="../../src/app/main.js"></script>
+    <script type="module" src="../../src/pages/PrivacyPolicyPage/index.jsx"></script>
 </html>
