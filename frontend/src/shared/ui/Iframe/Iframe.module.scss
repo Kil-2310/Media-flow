@@ -1,0 +1,10 @@
+.container_iframe{
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+
+    iframe{
+        position: absolute;
+        z-index: 1;
+    }
+}

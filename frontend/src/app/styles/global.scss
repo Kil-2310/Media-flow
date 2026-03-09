@@ -1,4 +1,4 @@
-@import './scss_functions.scss';
+@use '@/shared/styles/mixins' as *;
 
 *{
     box-sizing: border-box;
@@ -42,7 +42,7 @@ ul, ol {
     }
 }
 
-.smolle_text{
+.smalle_text{
     font-size: var(--smolle_text_size);
     text-align: left;
     padding: 0.4em;
@@ -54,13 +54,3 @@ ul, ol {
     }
 }
 
-#container_iframe_map{
-    position: relative;
-    z-index: 2;
-    cursor: pointer;
-
-    iframe{
-        position: absolute;
-        z-index: 1;
-    }
-}
