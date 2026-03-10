@@ -2,4 +2,3 @@ import './normalize.css'
 import './variables.css'
 
 import './global.scss'
-import './fonts.scss'

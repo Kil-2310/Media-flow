@@ -1,6 +1,7 @@
-import React from 'react'
 import styles from './Header.module.scss'
-import coatOfArms from '@/shared/assets/images/global/coat_arms_kursk_region.png'
+
+import Link from 'next/link'
+import Image from 'next/image'
 
 const Header = () => {
     return (
@@ -8,94 +9,110 @@ const Header = () => {
             <nav className={styles.pc_menu}>
                 <ul>
                     <li className={styles.pc_menu__logo}>
-                        <a target='_blank' href='' rel='noopener noreferrer'>
-                            <img src={coatOfArms} alt='Герб региона' />
-                        </a>
+                        <Link href="/" aria-label="На главную">
+                            <Image 
+                                src='/images/global/coat_arms_kursk_region.png' 
+                                alt="Герб Курской области" 
+                                width={50} 
+                                height={60}
+                                priority
+                            />
+                        </Link>
                     </li>
     
                     <li className={styles.pc_menu__title_region}>
-                        Курская
-                        <small>область</small>
+                        <Link href="/">
+                            Курская
+                            <small>область</small>
+                        </Link>
                     </li>
     
                     <li>
-                        <select name='' id=''>
-                            <option value='' selected>Культура</option>
-                            <option value=''>Основные направления культуры</option>
-                            <option value=''>Курский соловей</option>
-                            <option value=''>Известные личности Курской области</option>
-                            <option value=''>Традиции Курской области</option>
+                        <select name="culture" defaultValue="" aria-label="Раздел культуры">
+                            <option value="" disabled>Культура</option>
+                            <option value="/culture/directions">Основные направления культуры</option>
+                            <option value="/culture/nightingale">Курский соловей</option>
+                            <option value="/culture/personalities">Известные личности Курской области</option>
+                            <option value="/culture/traditions">Традиции Курской области</option>
                         </select>
                     </li>
     
                     <li>
-                        <select name='' id=''>
-                            <option value='' selected>История</option>
-                            <option value=''>История развития региона</option>
-                            <option value=''>Революция 1917 года</option>
-                            <option value=''>Курская АЭС</option>
-                            <option value=''>Курская АЭС-2</option>
-                            <option value=''>Последствия Чернобыльской катастрофы</option>
-                            <option value=''>Курская дуга 1943 года</option>
-                            <option value=''>Герои нашего времени</option>
-                            <option value=''>Современные музеи, посвященные Специальной Военной Операции</option>
+                        <select name="history" defaultValue="" aria-label="Раздел истории">
+                            <option value="" disabled>История</option>
+                            <option value="/history/development">История развития региона</option>
+                            <option value="/history/revolution">Революция 1917 года</option>
+                            <option value="/history/npp">Курская АЭС</option>
+                            <option value="/history/npp2">Курская АЭС-2</option>
+                            <option value="/history/chernobyl">Последствия Чернобыльской катастрофы</option>
+                            <option value="/history/kursk-bulge">Курская дуга 1943 года</option>
+                            <option value="/history/heroes">Герои нашего времени</option>
+                            <option value="/history/svo-museums">Современные музеи, посвященные СВО</option>
                         </select>
                     </li>
     
                     <li>
-                        <select name='' id=''>
-                            <option value='' selected>Экология</option>
-                            <option value=''>3 основные характеристики экологии</option>
-                            <option value=''>Центрально-Чернозёмный государственный заповедник</option>
-                            <option value=''>Проблемы экологии</option>
-                            <option value=''>Красная книга</option>
-                            <option value=''>Проект &quot;Сохранение лесов&quot;</option>
+                        <select name="ecology" defaultValue="" aria-label="Раздел экологии">
+                            <option value="" disabled>Экология</option>
+                            <option value="/ecology/characteristics">3 основные характеристики экологии</option>
+                            <option value="/ecology/reserve">Центрально-Чернозёмный государственный заповедник</option>
+                            <option value="/ecology/problems">Проблемы экологии</option>
+                            <option value="/ecology/red-book">Красная книга</option>
+                            <option value="/ecology/forest-project">Проект &quot;Сохранение лесов&quot;</option>
                         </select>
                     </li>
     
                     <li>
-                        <select name='' id=''>
-                            <option value='' selected>Экономика</option>
-                            <option value=''>Анализ ВРП Курской области</option>
-                            <option value=''>Сравнительная таблица ключевых направлений ВРП</option>
-                            <option value=''>Курская магнитная аномалия</option>
+                        <select name="economy" defaultValue="" aria-label="Раздел экономики">
+                            <option value="" disabled>Экономика</option>
+                            <option value="/economy/analysis">Анализ ВРП Курской области</option>
+                            <option value="/economy/comparison">Сравнительная таблица ключевых направлений ВРП</option>
+                            <option value="/economy/kma">Курская магнитная аномалия</option>
                         </select>
                     </li>
     
                     <li>
-                        <select name='' id=''>
-                            <option value='' selected>Туризм</option>
-                            <option value=''>Инфраструктура туризма</option>
-                            <option value=''>Популярные места и достопримечательности</option>
-                            <option value=''>Уникальные природные объекты</option>
+                        <select name="tourism" defaultValue="" aria-label="Раздел туризма">
+                            <option value="" disabled>Туризм</option>
+                            <option value="/tourism/infrastructure">Инфраструктура туризма</option>
+                            <option value="/tourism/places">Популярные места и достопримечательности</option>
+                            <option value="/tourism/nature">Уникальные природные объекты</option>
                         </select>
                     </li>
     
                     <li>
-                        <a target='_blank' href='' rel='noopener noreferrer'>Отзывы</a>
+                        <Link href="/reviews" target="_blank" rel="noopener noreferrer">
+                            Отзывы
+                        </Link>
                     </li>
     
                     <li>
-                        <select name='' id=''>
-                            <option value='' selected disabled>Города</option>
-                            <option value=''>В разработке</option>
+                        <select name="cities" defaultValue="" aria-label="Города">
+                            <option value="" disabled>Города</option>
+                            <option value="/cities">В разработке</option>
                         </select>
                     </li>
                 </ul>
             </nav>
     
             <nav className={styles.burger_menu}>
-                <a className={styles.burger_menu__logo} href='' target='_blank' rel='noopener noreferrer'>
-                    <img src={coatOfArms} alt='Герб региона' />
-                </a>
+                <Link href="/" className={styles.burger_menu__logo} aria-label="На главную">
+                    <Image 
+                        src='/images/global/coat_arms_kursk_region.png'
+                        alt="Герб Курской области" 
+                        width={40} 
+                        height={48}
+                        priority
+                    />
+                </Link>
     
-                <button className={styles.burger_menu__ui} aria-label='Открыть меню'>
+                <button className={styles.burger_menu__ui} aria-label="Открыть меню">
                     <div></div>
                     <div></div>
                     <div></div>
                 </button>
     
-                <input type='checkbox' className={styles.burger_menu__checkbox} />
+                <input type="checkbox" className={styles.burger_menu__checkbox} />
     
                 <aside className={styles.burger_menu__panel}>
                     <ul>
@@ -103,10 +120,10 @@ const Header = () => {
                             <details>
                                 <summary>Культура</summary>
                                 <ul>
-                                    <li><a href='' target='_blank' rel='noopener noreferrer'>Основные направления культуры</a></li>
-                                    <li><a href='' target='_blank' rel='noopener noreferrer'>Курский соловей</a></li>
-                                    <li><a href='' target='_blank' rel='noopener noreferrer'>Известные личности Курской области</a></li>
-                                    <li><a href='' target='_blank' rel='noopener noreferrer'>Традиции Курской области</a></li>
+                                    <li><Link href="/culture/directions">Основные направления культуры</Link></li>
+                                    <li><Link href="/culture/nightingale">Курский соловей</Link></li>
+                                    <li><Link href="/culture/personalities">Известные личности Курской области</Link></li>
+                                    <li><Link href="/culture/traditions">Традиции Курской области</Link></li>
                                 </ul>
                             </details>
                         </li>
@@ -115,14 +132,14 @@ const Header = () => {
                             <details>
                                 <summary>История</summary>
                                 <ul>
-                                    <li><a href='' target='_blank' rel='noopener noreferrer'>История развития региона</a></li>
-                                    <li><a href='' target='_blank' rel='noopener noreferrer'>Революция 1917 года</a></li>
-                                    <li><a href='' target='_blank' rel='noopener noreferrer'>Курская АЭС</a></li>
-                                    <li><a href='' target='_blank' rel='noopener noreferrer'>Курская АЭС-2</a></li>
-                                    <li><a href='' target='_blank' rel='noopener noreferrer'>Последствия Чернобыльской катастрофы</a></li>
-                                    <li><a href='' target='_blank' rel='noopener noreferrer'>Курская дуга 1943 года</a></li>
-                                    <li><a href='' target='_blank' rel='noopener noreferrer'>Герои нашего времени</a></li>
-                                    <li><a href='' target='_blank' rel='noopener noreferrer'>Современные музеи, посвященные Специальной Военной Операции</a></li>
+                                    <li><Link href="/history/development">История развития региона</Link></li>
+                                    <li><Link href="/history/revolution">Революция 1917 года</Link></li>
+                                    <li><Link href="/history/npp">Курская АЭС</Link></li>
+                                    <li><Link href="/history/npp2">Курская АЭС-2</Link></li>
+                                    <li><Link href="/history/chernobyl">Последствия Чернобыльской катастрофы</Link></li>
+                                    <li><Link href="/history/kursk-bulge">Курская дуга 1943 года</Link></li>
+                                    <li><Link href="/history/heroes">Герои нашего времени</Link></li>
+                                    <li><Link href="/history/svo-museums">Современные музеи, посвященные Специальной Военной Операции</Link></li>
                                 </ul>
                             </details>
                         </li>
@@ -131,11 +148,11 @@ const Header = () => {
                             <details>
                                 <summary>Экология</summary>
                                 <ul>
-                                    <li><a href='' target='_blank' rel='noopener noreferrer'>3 основные характеристики экологии</a></li>
-                                    <li><a href='' target='_blank' rel='noopener noreferrer'>Центрально-Чернозёмный государственный заповедник</a></li>
-                                    <li><a href='' target='_blank' rel='noopener noreferrer'>Проблемы экологии</a></li>
-                                    <li><a href='' target='_blank' rel='noopener noreferrer'>Красная книга</a></li>
-                                    <li><a href='' target='_blank' rel='noopener noreferrer'>Проект &quot;Сохранение лесов&quot;</a></li>
+                                    <li><Link href="/ecology/characteristics">3 основные характеристики экологии</Link></li>
+                                    <li><Link href="/ecology/reserve">Центрально-Чернозёмный государственный заповедник</Link></li>
+                                    <li><Link href="/ecology/problems">Проблемы экологии</Link></li>
+                                    <li><Link href="/ecology/red-book">Красная книга</Link></li>
+                                    <li><Link href="/ecology/forest-project">Проект &quot;Сохранение лесов&quot;</Link></li>
                                 </ul>
                             </details>
                         </li>
@@ -144,9 +161,9 @@ const Header = () => {
                             <details>
                                 <summary>Экономика</summary>
                                 <ul>
-                                    <li><a href='' target='_blank' rel='noopener noreferrer'>Анализ ВРП Курской области</a></li>
-                                    <li><a href='' target='_blank' rel='noopener noreferrer'>Сравнительная таблица ключевых направлений ВРП</a></li>
-                                    <li><a href='' target='_blank' rel='noopener noreferrer'>Курская магнитная аномалия</a></li>
+                                    <li><Link href="/economy/analysis">Анализ ВРП Курской области</Link></li>
+                                    <li><Link href="/economy/comparison">Сравнительная таблица ключевых направлений ВРП</Link></li>
+                                    <li><Link href="/economy/kma">Курская магнитная аномалия</Link></li>
                                 </ul>
                             </details>
                         </li>
@@ -155,20 +172,20 @@ const Header = () => {
                             <details>
                                 <summary>Туризм</summary>
                                 <ul>
-                                    <li><a href='' target='_blank' rel='noopener noreferrer'>Инфраструктура туризма</a></li>
-                                    <li><a href='' target='_blank' rel='noopener noreferrer'>Популярные места и достопримечательности</a></li>
-                                    <li><a href='' target='_blank' rel='noopener noreferrer'>Уникальные природные объекты</a></li>
+                                    <li><Link href="/tourism/infrastructure">Инфраструктура туризма</Link></li>
+                                    <li><Link href="/tourism/places">Популярные места и достопримечательности</Link></li>
+                                    <li><Link href="/tourism/nature">Уникальные природные объекты</Link></li>
                                 </ul>
                             </details>
                         </li>
     
-                        <li><a href='' target='_blank' rel='noopener noreferrer'>Отзывы</a></li>
+                        <li><Link href="/reviews">Отзывы</Link></li>
     
                         <li>
                             <details>
                                 <summary>Города</summary>
                                 <ul>
-                                    <li><a href='' target='_blank' rel='noopener noreferrer'>В разработке</a></li>
+                                    <li><Link href="/cities">В разработке</Link></li>
                                 </ul>
                             </details>
                         </li>
