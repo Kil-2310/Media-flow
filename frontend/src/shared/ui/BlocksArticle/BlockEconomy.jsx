@@ -2,12 +2,11 @@ import React from "react";
 import styles from './styles.module.scss'
 
 const BlockEconomy = () => {
-  const imagePath = '@/shared/assets/images/region/economy.jpg';
   
   return (
     <section className={`${styles.articles_about_region__block}`}>
       <aside className={`${styles.articles_about_region__image}`}>
-        <img src={imagePath} alt='Экономика Курской области' />
+        <img src='/images/region/economy.jpg' alt='Экономика Курской области' />
         <a target='_blank' href=''>Экономика Курской области</a>
       </aside>
       <aside className={`${styles.articles_about_region__links}`}>

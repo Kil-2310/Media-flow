@@ -1,6 +1,6 @@
 .footer{
     width: 100%;
-    padding: 0.6em;
+    padding: 0.5em;
 
     background-image: linear-gradient(
         to right,
@@ -11,5 +11,10 @@
     p,
     a{
         color: var(--const_font_white_color);
+        font-size: var(--smolle_text_size);
+    }
+
+    a{
+        text-decoration: underline;
     }
 }

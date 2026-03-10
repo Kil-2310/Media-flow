@@ -24,13 +24,15 @@
         }
     
         .pc_menu__title_region {
-            @include markup();
-            flex-direction: column;
             font-weight: bold;
-    
             font-size: clamp(1.3rem, 5vw, 1.5rem);
-    
+            
             border-right: 4px solid var(--const_font_white_color);
+
+            a{
+                @include markup();
+                flex-direction: column;
+            }
         }
     
         .pc_menu__logo {

@@ -2,12 +2,11 @@ import React from "react";
 import styles from './styles.module.scss'
 
 const BlockHistory = () => {
-  const imagePath = '@/shared/assets/images/region/kurska_duga.jpg';
   
   return (
     <section className={`${styles.articles_about_region__block}`}>
       <aside className={`${styles.articles_about_region__image}`}>
-        <img src={imagePath} alt='История Курской области' />
+        <img src='/images/region/kurska_duga.jpg' alt='История Курской области' />
         <a target='_blank' href=''>История Курской области</a>
       </aside>
       <aside className={`${styles.articles_about_region__links}`}>

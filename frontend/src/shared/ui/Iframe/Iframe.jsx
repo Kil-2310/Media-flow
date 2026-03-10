@@ -1,6 +1,7 @@
+'use client'
+
 import { useEffect } from 'react'
 import styles from './Iframe.module.scss'
-import React from 'react'
 
 const Iframe = (props) => {
     const { mapSrc } = props
