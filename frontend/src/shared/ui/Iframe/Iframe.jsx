@@ -1,34 +1,24 @@
 'use client'
+import { useRef } from 'react'
 
-import { useEffect } from 'react'
 import styles from './Iframe.module.scss'
 
 const Iframe = (props) => {
     const { mapSrc } = props
 
-    useEffect(() => {
-        const container = document.querySelector(`.${styles.container_iframe}`)
-        const iframe = container?.querySelector('iframe')
+    const iframeRef = useRef(null)
 
-        if (container && iframe) {
-            iframe.style.pointerEvents = 'none'
-
-            const handleClick = () => { iframe.style.pointerEvents = 'auto' }
-            const handleMouseLeave = () => { iframe.style.pointerEvents = 'none' }
-
-            container.addEventListener('click', handleClick)
-            container.addEventListener('mouseleave', handleMouseLeave)
-
-            return () => {
-                container.removeEventListener('click', handleClick)
-                container.removeEventListener('mouseleave', handleMouseLeave)
-            }
-        }
-    }, [])
+    const handleClick = () => { iframeRef.current.style.pointerEvents = 'auto' }
+    const handleMouseLeave = () => { iframeRef.current.style.pointerEvents = 'none' }
 
     return (
-        <aside className={styles.container_iframe}>
+        <aside
+            onClick={handleClick}
+            onMouseLeave={handleMouseLeave}
+            className={styles.container_iframe}>
+
             <iframe
+                ref={iframeRef}
                 src={mapSrc}
                 width="100%"
                 height="100%"

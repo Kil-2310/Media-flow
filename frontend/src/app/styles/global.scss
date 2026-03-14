@@ -1,4 +1,4 @@
-@use '@/shared/styles/mixins' as *;
+@use './mixins' as *;
 
 *{
     box-sizing: border-box;
@@ -36,22 +36,11 @@ ul, ol {
     font-size: var(--simple_text_size);
     text-align: center;
     padding: 0.5em;
-    a,p{
-        font-size: var(--simple_text_size);
-        text-align: center;
-        padding: 0.5em;
-    }
 }
 
-.smalle_text{
+.smolle_text{
     font-size: var(--smolle_text_size);
     text-align: left;
     padding: 0.4em;
-    a,
-    p{
-        font-size: var(--smolle_text_size);
-        text-align: left;
-        padding: 0.4em;
-    }
 }
 

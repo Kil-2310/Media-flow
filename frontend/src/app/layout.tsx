@@ -1,11 +1,11 @@
-// app/layout.tsx
-import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./styles";
+import type { Metadata, Viewport } from "next"
+import { Geist, Geist_Mono } from "next/font/google"
+import "./styles"
 
-// import { ContestProvider } from '../entities/model/ContestProvider'
-import Header from "@/shared/ui/Header";
-import Footer from "@/shared/ui/Footer";
+import { ContestProvider } from '@/entities/model/ContestProvider'
+import Header from "@/shared/ui/Header"
+import Footer from "@/shared/ui/Footer"
+import SettingsPanel from "@/entities/ui/SettingsPanel"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -66,13 +66,14 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {/* <ContestProvider> */}
-          <Header />
-          <main>
-            {children}
-          </main>
-          <Footer />
-        {/* </ContestProvider> */}
+        <ContestProvider>
+            <SettingsPanel />
+            <Header />
+            <main>
+                {children}
+            </main>
+            <Footer />
+        </ContestProvider>
       </body>
     </html>
   );

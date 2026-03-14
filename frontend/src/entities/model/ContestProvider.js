@@ -1,22 +1,39 @@
 'use client'
 
-import { createContext, useContext } from 'react'
+import {createContext, useMemo} from 'react'
+import useSettings from './useSettings'
 
 const ContestContext = createContext(null)
 
+export const ContestProvider = (props) => {
+    const { children } = props
 
-export function ContestProvider({ children }) {
+    const {
+        changingFont,
+        handleThemeChange,
+        simpleThemeRef,
+        darkThemeRef,
+        lightThemeRef
+    } = useSettings()
+
+    const value = useMemo(() => ({
+        changingFont,
+        handleThemeChange,
+        simpleThemeRef,
+        darkThemeRef,
+        lightThemeRef
+    }), [
+        changingFont,
+        handleThemeChange,
+        simpleThemeRef,
+        darkThemeRef,
+        lightThemeRef
+    ])
 
 
     return (
-        <ContestContext.Provider value={{
-
-        }}>
+        <ContestContext.Provider value={value}>
             {children}
         </ContestContext.Provider>
     )
 }
-
-
-
-export default ContestProvider

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import EnterVideo from "@/shared/ui/EnterVideo"
 import DescriptionRegion from "@/features/description_region"
-import ArticlesAboutRegion from "@/features/articles_about_region"
+import BlockArticles from "@/shared/ui/BlocksArticle"
 
 export const metadata: Metadata = {
   title: "Курск и Курская область на карте России: экология, экономика, история, культура, туризм",
@@ -62,7 +62,7 @@ export default function HomePage() {
             <EnterVideo />
             <DescriptionRegion />
 
-            <ArticlesAboutRegion 
+            <BlockArticles 
                 articles = {[
                     'cities',
                     'culture',

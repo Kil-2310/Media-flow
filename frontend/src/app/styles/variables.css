@@ -5,6 +5,9 @@
     --const_font_white_color: rgb(246, 246, 246);
     --const_font_black_color:rgb(17, 17, 17);
 
+    --const_font_white_color_for_bg_settings: rgb(77, 77, 77);
+    --const_font_white_color_for_bg_btn_settings: #909090;
+
     --linear_gradient: linear-gradient(
         to right,
         rgb(185, 185, 185) 10%,
