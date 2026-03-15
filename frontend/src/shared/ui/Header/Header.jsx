@@ -1,3 +1,4 @@
+'use client'
 import styles from './Header.module.scss'
 
 import Link from 'next/link'
@@ -28,7 +29,7 @@ const Header = () => {
                     </li>
     
                     <li>
-                        <select name="culture" defaultValue="" aria-label="Раздел культуры">
+                        <select onChange={(e) => window.location.href = e.target.value} name="culture" defaultValue="" aria-label="Раздел культуры">
                             <option value="" disabled>Культура</option>
                             <option value="/culture/directions">Основные направления культуры</option>
                             <option value="/culture/nightingale">Курский соловей</option>
