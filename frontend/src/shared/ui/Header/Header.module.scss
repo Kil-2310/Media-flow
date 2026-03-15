@@ -66,6 +66,10 @@
     
                 option{
                     color: var(--const_font_black_color);
+
+                    &:first-child{
+                        display: none;
+                    }
                 }
             }
     

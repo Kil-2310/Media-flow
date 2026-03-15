@@ -1,10 +1,28 @@
 'use client'
-import styles from './Header.module.scss'
 
+import styles from './Header.module.scss'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useEffect } from 'react'
 
 const Header = () => {
+    const router = useRouter()
+    
+    const ChangeLocation = (e) => {
+        const to = e.target.value
+        
+        router.push(to, { scroll: false })
+    }
+
+    useEffect(() => {
+        const totalSelect = document.querySelectorAll('select')
+
+        totalSelect.forEach((el) => {
+            el.value = ''
+        })
+    }, [])
+
     return (
         <header className={styles.header}>
             <nav className={styles.pc_menu}>
@@ -20,27 +38,29 @@ const Header = () => {
                             />
                         </Link>
                     </li>
-    
+
                     <li className={styles.pc_menu__title_region}>
                         <Link href="/">
                             Курская
                             <small>область</small>
                         </Link>
                     </li>
-    
+
                     <li>
-                        <select onChange={(e) => window.location.href = e.target.value} name="culture" defaultValue="" aria-label="Раздел культуры">
-                            <option value="" disabled>Культура</option>
+                        <select onChange={ChangeLocation} name="culture" defaultValue="" aria-label="Раздел культуры">
+                            <option value="">Культура</option>
+                            <option value="/culture">Культура Курской области</option>
                             <option value="/culture/directions">Основные направления культуры</option>
                             <option value="/culture/nightingale">Курский соловей</option>
                             <option value="/culture/personalities">Известные личности Курской области</option>
                             <option value="/culture/traditions">Традиции Курской области</option>
                         </select>
                     </li>
-    
+
                     <li>
-                        <select name="history" defaultValue="" aria-label="Раздел истории">
-                            <option value="" disabled>История</option>
+                        <select onChange={ChangeLocation} name="history" defaultValue="" aria-label="Раздел истории">
+                            <option value="">История</option>
+                            <option value="/history">История Курской области</option>
                             <option value="/history/development">История развития региона</option>
                             <option value="/history/revolution">Революция 1917 года</option>
                             <option value="/history/npp">Курская АЭС</option>
@@ -51,10 +71,11 @@ const Header = () => {
                             <option value="/history/svo-museums">Современные музеи, посвященные СВО</option>
                         </select>
                     </li>
-    
+
                     <li>
-                        <select name="ecology" defaultValue="" aria-label="Раздел экологии">
-                            <option value="" disabled>Экология</option>
+                        <select onChange={ChangeLocation} name="ecology" defaultValue="" aria-label="Раздел экологии">
+                            <option value="">Экология</option>
+                            <option value="/ecology">Экология Курской области</option>
                             <option value="/ecology/characteristics">3 основные характеристики экологии</option>
                             <option value="/ecology/reserve">Центрально-Чернозёмный государственный заповедник</option>
                             <option value="/ecology/problems">Проблемы экологии</option>
@@ -62,35 +83,37 @@ const Header = () => {
                             <option value="/ecology/forest-project">Проект &quot;Сохранение лесов&quot;</option>
                         </select>
                     </li>
-    
+
                     <li>
-                        <select name="economy" defaultValue="" aria-label="Раздел экономики">
-                            <option value="" disabled>Экономика</option>
+                        <select onChange={ChangeLocation} name="economy" defaultValue="" aria-label="Раздел экономики">
+                            <option value="">Экономика</option>
+                            <option value="/economy">Экономика Курской области</option>
                             <option value="/economy/analysis">Анализ ВРП Курской области</option>
                             <option value="/economy/comparison">Сравнительная таблица ключевых направлений ВРП</option>
                             <option value="/economy/kma">Курская магнитная аномалия</option>
                         </select>
                     </li>
-    
+
                     <li>
-                        <select name="tourism" defaultValue="" aria-label="Раздел туризма">
-                            <option value="" disabled>Туризм</option>
+                        <select onChange={ChangeLocation} name="tourism" defaultValue="" aria-label="Раздел туризма">
+                            <option value="">Туризм</option>
+                            <option value="/tourism">Туризм Курской области</option>
                             <option value="/tourism/infrastructure">Инфраструктура туризма</option>
                             <option value="/tourism/places">Популярные места и достопримечательности</option>
                             <option value="/tourism/nature">Уникальные природные объекты</option>
                         </select>
                     </li>
-    
+
                     <li>
                         <Link href="/reviews" target="_blank" rel="noopener noreferrer">
                             Отзывы
                         </Link>
                     </li>
-    
+
                     <li>
                         <select name="cities" defaultValue="" aria-label="Города">
-                            <option value="" disabled>Города</option>
-                            <option value="/cities">В разработке</option>
+                            <option value="">Города</option>
+                            <option value="/cities">Города Курской области</option>
                         </select>
                     </li>
                 </ul>

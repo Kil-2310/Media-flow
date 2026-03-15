@@ -47,12 +47,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Курск и Курская область на карте России",
     description: "Подробная информация об экологии, экономике, истории, культуре и туризме региона",
-  },
-  charset: "UTF-8",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-  },
+  }
 };
 
 
