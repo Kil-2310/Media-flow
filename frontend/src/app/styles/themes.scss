@@ -1,0 +1,36 @@
+
+.theme_light{
+    --changeable_font_color: rgb(17, 17, 17);
+
+    body{
+        background-color: white;
+    }
+}
+
+.theme_dark{
+    --changeable_font_color: rgb(246, 246, 246);
+
+    body{
+        background-color: rgb(108, 108, 108);
+    }
+}
+
+.theme_simple{
+    --changeable_font_color: rgb(17, 17, 17);
+
+    body{
+        background-color: white;
+    }
+
+    #section_main_video{
+        background-image: url('/images/region/main_image.jpg');
+
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100% 100%;
+    }
+
+    video{
+        display: none;
+    }
+}

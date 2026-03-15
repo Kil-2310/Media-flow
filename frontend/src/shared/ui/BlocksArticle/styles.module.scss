@@ -56,9 +56,11 @@
 
         li{
             text-align: left;
+            color: var(--changeable_font_color);
 
             a{
                 text-decoration: underline;
+                color: var(--changeable_font_color);
             }
         }
     }

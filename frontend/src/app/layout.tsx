@@ -6,6 +6,7 @@ import { ContestProvider } from '@/entities/model/ContestProvider'
 import Header from "@/shared/ui/Header"
 import Footer from "@/shared/ui/Footer"
 import SettingsPanel from "@/entities/ui/SettingsPanel"
+import ThemeProvider from "./ThemeProvider"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -67,12 +68,14 @@ export default function RootLayout({
     <html lang="ru">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ContestProvider>
+          <ThemeProvider>
             <SettingsPanel />
             <Header />
             <main>
-                {children}
+              {children}
             </main>
             <Footer />
+          </ThemeProvider>
         </ContestProvider>
       </body>
     </html>

@@ -1,32 +1,52 @@
 'use client';
 import styles from './SettingsPanel.module.scss';
-import { useRef, useEffect, useState } from 'react';
-import useSettings from '@/entities/model/useSettings';
+import { memo, useContext } from 'react';
+import ContestContext from '@/entities/model/ContestProvider' 
 
 const SettingsPanel = () => {
 
+    const {
+        useUserTheme,
+        useFontSize,
+        setUserTheme,
+        setFontSize
+    } = useContext(ContestContext)
+
+    const updateFontSize = (method) => {
+        let newFontSize = useFontSize
+
+        if (method === 'add'){
+            newFontSize += 2
+        }else{
+            newFontSize -= 2
+        }
+
+        if (newFontSize <= 20 && newFontSize >= 12){
+            setFontSize(newFontSize)
+        }
+    }
 
     return (
         <aside className={`${styles.settings_panel}`}>
             <div className={`${styles.settings_panel__changing_font}`}>
-                <button onClick={() => changingFont('add')}>+</button>
-                <p ref={fontRef}>{fontSize}</p>
-                <button onClick={() => changingFont('remove')}>-</button>
+                <button onClick={() => updateFontSize('add')}>+</button>
+                <p>{useFontSize}</p>
+                <button onClick={() => updateFontSize('remove')}>-</button>
             </div>
 
             <div className={`${styles.settings_panel__themes}`}>
-                <div onClick={() => handleThemeChange('light')}>
-                    <input ref={lightThemeRef} type="checkbox" readOnly />
+                <div onClick={() => setUserTheme('light')}>
+                    <input checked={useUserTheme === 'light'} type="checkbox" readOnly />
                     <p>☀️</p>
                 </div>
 
-                <div onClick={() => handleThemeChange('dark')}>
-                    <input ref={darkThemeRef} type="checkbox" readOnly />
+                <div onClick={() => setUserTheme('dark')}>
+                    <input checked={useUserTheme === 'dark'} type="checkbox" readOnly />
                     <p>🌙</p>
                 </div>
 
-                <div onClick={() => handleThemeChange('simple')}>
-                    <input ref={simpleThemeRef} type="checkbox" readOnly />
+                <div onClick={() => setUserTheme('simple')}>
+                    <input checked={useUserTheme === 'simple'} type="checkbox" readOnly />
                     <p>👓</p>
                 </div>
             </div>
@@ -34,4 +54,4 @@ const SettingsPanel = () => {
     );
 };
 
-export default SettingsPanel;
+export default memo(SettingsPanel);

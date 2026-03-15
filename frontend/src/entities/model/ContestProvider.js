@@ -1,35 +1,27 @@
 'use client'
-
 import {createContext, useMemo} from 'react'
 import useSettings from './useSettings'
 
 const ContestContext = createContext(null)
 
-export const ContestProvider = (props) => {
-    const { children } = props
+export const ContestProvider = ({ children }) => {
 
     const {
-        changingFont,
-        handleThemeChange,
-        simpleThemeRef,
-        darkThemeRef,
-        lightThemeRef
+        useUserTheme,
+        useFontSize,
+        setUserTheme,
+        setFontSize
     } = useSettings()
 
     const value = useMemo(() => ({
-        changingFont,
-        handleThemeChange,
-        simpleThemeRef,
-        darkThemeRef,
-        lightThemeRef
+        useUserTheme,
+        useFontSize,
+        setUserTheme,
+        setFontSize
     }), [
-        changingFont,
-        handleThemeChange,
-        simpleThemeRef,
-        darkThemeRef,
-        lightThemeRef
+        useUserTheme,
+        useFontSize
     ])
-
 
     return (
         <ContestContext.Provider value={value}>
@@ -37,3 +29,5 @@ export const ContestProvider = (props) => {
         </ContestContext.Provider>
     )
 }
+
+export default ContestContext

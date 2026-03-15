@@ -28,6 +28,7 @@ ul, ol {
     font-size: var(--h2_font_size);
     padding-inline: 0.5em;
     text-align: center;
+    color: var(--changeable_font_color);
 
     @include markup();
 }
@@ -38,7 +39,7 @@ ul, ol {
     padding: 0.5em;
 }
 
-.smolle_text{
+.smalle_text{
     font-size: var(--smolle_text_size);
     text-align: left;
     padding: 0.4em;
