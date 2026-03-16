@@ -12,7 +12,7 @@ const Header = () => {
     const ChangeLocation = (e) => {
         const to = e.target.value
         
-        router.push(to, { scroll: false })
+        router.push(to)
     }
 
     useEffect(() => {

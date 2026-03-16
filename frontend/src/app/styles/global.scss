@@ -18,6 +18,10 @@ a {
     text-decoration: none;
 }
 
+p{
+    margin: 0;
+}
+
 ul, ol {
     list-style: none;
 }
@@ -31,6 +35,12 @@ ul, ol {
     color: var(--changeable_font_color);
 
     @include markup();
+}
+
+hr{
+    background-color: var(--const_font_blue_color);
+    width: 30vw;
+    height: 2px;
 }
 
 .simple_text{

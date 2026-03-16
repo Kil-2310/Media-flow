@@ -3,9 +3,7 @@ import { useRef } from 'react'
 
 import styles from './Iframe.module.scss'
 
-const Iframe = (props) => {
-    const { mapSrc } = props
-
+const Iframe = ({ mapSrc }) => {
     const iframeRef = useRef(null)
 
     const handleClick = () => { iframeRef.current.style.pointerEvents = 'auto' }

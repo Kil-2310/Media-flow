@@ -1,8 +1,7 @@
 import Articles from './Articles.js'
 import styles from './styles.module.scss'
 
-const BlockArticles = (props) => {
-    const { articles } = props
+const BlockArticles = ({ articles }) => {
 
     return (
         <section>
