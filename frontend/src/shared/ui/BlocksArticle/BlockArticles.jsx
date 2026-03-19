@@ -1,43 +1,36 @@
-import Articles from './Articles.js'
+import dataArticles from './dataArticles.js'
 import styles from './styles.module.scss'
 
-const BlockArticles = ({ articles }) => {
+const BlockArticles = () => {
 
     return (
         <section>
-            <h2 className='title'>Статьи о Курской области</h2>
+            <h2>Статьи о Курской области</h2>
 
-            {articles.map((el) => {
-                const articleData = Articles[el]
-                
-                if (!articleData) return null
-                
-                return (
-                    <section 
-                        key={el}
-                        className={styles.articles_about_region__block}
+            {dataArticles.map((article, index) => (
+                <section 
+                    key={index}
+                    className={styles.articles_about_region__block}
+                >
+                    <aside className={styles.articles_about_region__image}>
+                        <img 
+                            src={article[0]} 
+                            alt='Изображение для статьи' 
+                        />
+                        <span dangerouslySetInnerHTML={{ __html: article[1] }} />
+                    </aside>
+                    
+                    <aside 
+                        className={styles.articles_about_region__links}
                     >
-                        <aside className={styles.articles_about_region__image}>
-                            <img 
-                                src={articleData[0]} 
-                                alt='Изображение для статьи' 
-                            />
-                            <div dangerouslySetInnerHTML={{ __html: articleData[1] }} />
-                        </aside>
-                        
-                        <aside 
-                            className={styles.articles_about_region__links}
-                        >
-                            <ul className="simple_text">
-                                {articleData.slice(2).map((item, index) => {
-                                    return <li key={index} dangerouslySetInnerHTML={{__html: item}}></li>
-                                })}
-                            </ul>
-                        </aside>
-
-                    </section>
-                )
-            })}
+                        <ul className="simple_text">
+                            {article.slice(2).map((item, index) => {
+                                return <li key={index} dangerouslySetInnerHTML={{__html: item}}></li>
+                            })}
+                        </ul>
+                    </aside>
+                </section>
+            ))}
         </section>
     )
 }

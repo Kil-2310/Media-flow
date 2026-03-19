@@ -56,17 +56,6 @@ export default function HomePage() {
         <>
             <EnterVideo />
             <DescriptionRegion />
-
-            <BlockArticles 
-                articles = {[
-                    'cities',
-                    'culture',
-                    'history',
-                    'ecology',
-                    'economy',
-                    'tourism',
-                ]}
-            />
         </>
     )
 }

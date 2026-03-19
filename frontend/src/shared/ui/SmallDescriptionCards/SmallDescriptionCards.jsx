@@ -2,8 +2,8 @@ import styles from './SmallDescriptionCards.module.scss'
 import dataSmallDescriptionCards from './dataSmallDescriptionCards'
 import Image from 'next/image'
 
-const SmallDescriptionCards = ({ cardsPema }) => {
-    const cardsData = dataSmallDescriptionCards[cardsPema];
+const SmallDescriptionCards = ({ cardsTitle }) => {
+    const cardsData = dataSmallDescriptionCards[cardsTitle]
     
     return (
         <section className={`${styles.container_small_cards}`}>

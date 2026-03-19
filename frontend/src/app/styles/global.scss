@@ -31,7 +31,8 @@ ul, ol {
     list-style: none;
 }
 
-.title{
+.title,
+h2{
     margin-block: clamp(5vw, 5vh, 10vw);
     font-weight: 100;
     font-size: var(--h2_font_size);
@@ -50,8 +51,8 @@ hr{
 
 .simple_text{
     font-size: var(--simple_text_size);
-    text-align: center;
-    padding: 0.5em;
+    text-indent: 1.2em;
+    padding: 0.6em;
 }
 
 .smalle_text{
