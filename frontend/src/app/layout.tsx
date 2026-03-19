@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google"
 import "./styles"
 
 import { ContestProvider } from '@/entities/model/ContestProvider'
+import YandexMetrica from "@/shared/ui/YandexMetrica"
+
 import Header from "@/shared/ui/Header"
 import Footer from "@/shared/ui/Footer"
 import SettingsPanel from "@/entities/ui/SettingsPanel"
@@ -67,6 +69,8 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <YandexMetrica />
+
         <ContestProvider>
           <ThemeProvider>
             <SettingsPanel />

@@ -10,8 +10,8 @@ const PreviewArticle = ({ preview  }) => {
             <Image 
                 src={previewData[1]}
                 alt={`Превью ${previewData[0]}`}
-                width={400}
-                height={300}
+                width={900}
+                height={600}
             />
             <h1>{previewData[0]}</h1>
         </section>

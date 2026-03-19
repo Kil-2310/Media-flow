@@ -96,11 +96,6 @@
             width: 30%;
             height: 100%;
         }
-
-        &__ui{
-            background: none;
-            border: none;
-        }
         
 
         &__logo{
@@ -114,6 +109,9 @@
         &__ui{
             @include markup($justify-content: space-evenly);
             flex-direction: column;
+
+            background: none;
+            border: none;
 
             div{
                 width: 90%;
@@ -155,12 +153,6 @@
                 grid-template-rows: repeat(7, 1fr);
 
                 padding: 0.5em;
-                
-                li{
-                    list-style: circle !important;
-                    @include markup();
-                    justify-content: flex-start;
-                }
             }
 
             li{

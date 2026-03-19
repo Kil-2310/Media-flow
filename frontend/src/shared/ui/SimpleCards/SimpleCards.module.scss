@@ -1,0 +1,50 @@
+@use '@/app/styles/mixins' as *;
+
+.container{
+    width: 100vw;
+
+    @include markup();
+    row-gap: 7vh;
+    flex-direction: column;
+
+    &__simple_card{
+        margin: auto;
+        width: 90%;
+
+        @include markup();
+
+        background-color: var(--bg_simple_cards);
+        border-radius: 10px;
+        
+
+        strong,
+        li{
+            padding: 0.6em;
+            font-size: var(--smolle_text_size);
+            text-align: center;
+        }
+
+        strong{
+            width: 40%;
+            min-height: 30vh;
+
+            border-left: 2px solid var(--const_font_blue_color);
+
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+
+            @include markup();
+
+        }
+
+        ul{
+            width: 60%;
+            height: 100%;
+
+            text-decoration: underline;
+
+            @include markup();
+            flex-direction: column;
+        }
+    }
+}

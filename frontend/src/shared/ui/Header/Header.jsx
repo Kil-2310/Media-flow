@@ -4,24 +4,16 @@ import styles from './Header.module.scss'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useEffect } from 'react'
 
 const Header = () => {
     const router = useRouter()
     
     const ChangeLocation = (e) => {
         const to = e.target.value
+        e.target.value = ''
         
         router.push(to)
     }
-
-    useEffect(() => {
-        const totalSelect = document.querySelectorAll('select')
-
-        totalSelect.forEach((el) => {
-            el.value = ''
-        })
-    }, [])
 
     return (
         <header className={styles.header}>
@@ -50,10 +42,10 @@ const Header = () => {
                         <select onChange={ChangeLocation} name="culture" defaultValue="" aria-label="Раздел культуры">
                             <option value="">Культура</option>
                             <option value="/culture">Культура Курской области</option>
-                            <option value="/culture/directions">Основные направления культуры</option>
-                            <option value="/culture/nightingale">Курский соловей</option>
-                            <option value="/culture/personalities">Известные личности Курской области</option>
-                            <option value="/culture/traditions">Традиции Курской области</option>
+                            <option value="/culture#directions">Основные направления культуры</option>
+                            <option value="/culture#nightingale">Курский соловей</option>
+                            <option value="/culture#personalities">Известные личности Курской области</option>
+                            <option value="/culture#traditions">Традиции Курской области</option>
                         </select>
                     </li>
 
