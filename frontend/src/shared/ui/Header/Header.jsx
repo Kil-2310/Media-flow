@@ -90,9 +90,9 @@ const Header = () => {
                         <select onChange={ChangeLocation} name="tourism" defaultValue="" aria-label="Раздел туризма">
                             <option value="">Туризм</option>
                             <option value="/tourism">Туризм Курской области</option>
-                            <option value="/tourism/infrastructure">Инфраструктура туризма</option>
-                            <option value="/tourism/places">Популярные места и достопримечательности</option>
-                            <option value="/tourism/nature">Уникальные природные объекты</option>
+                            <option value="/tourism#tourism_infrastructure">Инфраструктура туризма</option>
+                            <option value="/tourism#attractions">Популярные места и достопримечательности</option>
+                            <option value="/tourism#natural_attractions">Уникальные природные объекты</option>
                         </select>
                     </li>
 

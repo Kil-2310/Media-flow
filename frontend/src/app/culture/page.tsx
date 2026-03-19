@@ -4,7 +4,6 @@ import PreviewArticle from "@/shared/ui/PreviewArticle"
 import IntroductoryTextArticle from "@/shared/ui/IntroductoryTextArticle"
 import SmallDescriptionCards from "@/shared/ui/SmallDescriptionCards"
 import AsideBlock from "@/shared/ui/AsideBlock"
-import BlockArticles from "@/shared/ui/BlocksArticle"
 import SimpleCards from "@/shared/ui/SimpleCards"
 
 export const metadata: Metadata = {
@@ -85,7 +84,7 @@ export default function CulturePage() {
 
             <h2 id="directions" className="title">Основные направления културы Курской области</h2>
 
-            <SmallDescriptionCards cardsPema={'cultural_trends'}/>
+            <SmallDescriptionCards cardsTitle={'cultural_trends'}/>
 
             <h2 id="nightingale" className="title">Курский соловей — пернатый символ соловьиного края</h2>
 
@@ -93,21 +92,11 @@ export default function CulturePage() {
 
             <h2 id="personalities" className="title">Известные личности Курской области</h2>
 
-            <SmallDescriptionCards cardsPema={'notable_figures'}/>
+            <SmallDescriptionCards cardsTitle={'notable_figures'}/>
 
             <h2 id="traditions" className="title">Традиции Курской области</h2>
 
             <SimpleCards TitleSimpleCards={'traditions'}/>
-
-            <BlockArticles 
-                articles = {[
-                    'cities',
-                    'history',
-                    'ecology',
-                    'economy',
-                    'tourism',
-                ]}
-            />
         </>
     )
 }

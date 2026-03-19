@@ -9,6 +9,7 @@ import Header from "@/shared/ui/Header"
 import Footer from "@/shared/ui/Footer"
 import SettingsPanel from "@/entities/ui/SettingsPanel"
 import ThemeProvider from "./ThemeProvider"
+import BlockArticles from "@/shared/ui/BlocksArticle"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -78,6 +79,7 @@ export default function RootLayout({
             <main>
               {children}
             </main>
+            <BlockArticles />
             <Footer />
           </ThemeProvider>
         </ContestProvider>
