@@ -9,11 +9,13 @@
   },
   "dependencies": {
     "next": "15.2.4",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "recharts": "^3.8.0",
     "sass": "^1.98.0"
   },
   "devDependencies": {
+    "@recharts/devtools": "^0.0.11",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^18",
