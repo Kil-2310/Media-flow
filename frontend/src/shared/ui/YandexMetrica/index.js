@@ -1,1 +1,1 @@
-export { default } from './YandexMetrica'
+export { default } from './YandexMetrica';

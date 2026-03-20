@@ -1,1 +1,1 @@
-export { default } from './NotFoundSection'
+export { default } from './NotFoundSection';

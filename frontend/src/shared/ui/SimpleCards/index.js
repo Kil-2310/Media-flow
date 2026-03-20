@@ -1,1 +1,1 @@
-export { default } from './SimpleCards'
+export { default } from './SimpleCards';

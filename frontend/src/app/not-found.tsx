@@ -1,7 +1,5 @@
-import NotFoundSection from "@/shared/ui/NotFoundSection"
+import NotFoundSection from '@/shared/ui/NotFoundSection';
 
 export default function NotFound() {
-  return (
-    <NotFoundSection/>
-  );
+    return <NotFoundSection />;
 }

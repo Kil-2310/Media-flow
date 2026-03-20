@@ -1,20 +1,24 @@
-'use client'
-import { useRef } from 'react'
+'use client';
+import { useRef } from 'react';
 
-import styles from './Iframe.module.scss'
+import styles from './Iframe.module.scss';
 
 const Iframe = ({ mapSrc }) => {
-    const iframeRef = useRef(null)
+    const iframeRef = useRef(null);
 
-    const handleClick = () => { iframeRef.current.style.pointerEvents = 'auto' }
-    const handleMouseLeave = () => { iframeRef.current.style.pointerEvents = 'none' }
+    const handleClick = () => {
+        iframeRef.current.style.pointerEvents = 'auto';
+    };
+    const handleMouseLeave = () => {
+        iframeRef.current.style.pointerEvents = 'none';
+    };
 
     return (
         <aside
             onClick={handleClick}
             onMouseLeave={handleMouseLeave}
-            className={styles.container_iframe}>
-
+            className={styles.container_iframe}
+        >
             <iframe
                 ref={iframeRef}
                 src={mapSrc}
@@ -26,7 +30,7 @@ const Iframe = ({ mapSrc }) => {
                 title="Курская область на карте России"
             />
         </aside>
-    )
-}
+    );
+};
 
-export default Iframe
+export default Iframe;

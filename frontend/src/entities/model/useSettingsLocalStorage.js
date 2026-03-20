@@ -3,7 +3,7 @@ const useSettingsLocalStorage = () => {
         if (typeof window === 'undefined') {
             return null;
         }
-        
+
         const saved = localStorage.getItem('settings');
         return saved ? JSON.parse(saved) : null;
     };
@@ -14,8 +14,8 @@ const useSettingsLocalStorage = () => {
 
     return {
         savedSettings: getSavedSettings(),
-        saveSettings
+        saveSettings,
     };
 };
 
-export default useSettingsLocalStorage
+export default useSettingsLocalStorage;
