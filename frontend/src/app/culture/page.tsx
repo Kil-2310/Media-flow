@@ -81,9 +81,9 @@ export default function CulturePage() {
     const articleName = 'culture';
     return (
         <>
-            <PreviewArticle preview={articleName} />
+            <PreviewArticle previewTitle={articleName} />
 
-            <IntroductoryTextArticle articleName={articleName} />
+            <IntroductoryTextArticle articleTitle={articleName} />
 
             <hr />
 

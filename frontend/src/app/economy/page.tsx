@@ -89,9 +89,9 @@ export default function EconomyPage() {
 
     return (
         <>
-            <PreviewArticle preview={articleName} />
+            <PreviewArticle previewTitle={articleName} />
 
-            <IntroductoryTextArticle articleName={articleName} />
+            <IntroductoryTextArticle articleTitle={articleName} />
 
             <hr />
 

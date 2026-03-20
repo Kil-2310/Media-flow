@@ -10,6 +10,14 @@ const dataSimpleCards = {
         ['/images/region/npp_museum.jpg', '11 основных экскурсионных маршрутов по Курской области'],
         ['/images/region/landscape.jpg', '1 межрегиональный туристический маршрут'],
     ],
+
+    environmental_issues: [
+        ['/images/global/impact_agriculture.webp', 'Влияние сельского хозяйства'],
+        ['/images/global/garbage_pollution.jpg', 'Отходы человеческой деятельности'],
+        ['/images/global/industrial_pollution.jpg', 'Промышленное загрязнение'],
+        ['/images/region/vehicle_pollution.jpg', 'Загрязнение автотранспортом'],
+        ['/images/region/photo_1970_1980.jpg', 'Радиактивное загрязнение'],
+    ],
 };
 
 export default dataSimpleCards;
