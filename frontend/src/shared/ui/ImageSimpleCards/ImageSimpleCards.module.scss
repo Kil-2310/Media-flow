@@ -10,7 +10,7 @@
     }
 
     &__image_simple_card {
-        width: clamp(30%, 10vh, 50%);
+        width: clamp(30%, 35vh, 75%);
         height: clamp(30vh, 20vw, 45vh);
         background-color: var(--bg_simple_cards);
 

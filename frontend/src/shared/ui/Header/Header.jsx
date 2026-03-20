@@ -80,9 +80,9 @@ const Header = () => {
                         <select onChange={ChangeLocation} name="economy" defaultValue="" aria-label="Раздел экономики">
                             <option value="">Экономика</option>
                             <option value="/economy">Экономика Курской области</option>
-                            <option value="/economy/analysis">Анализ ВРП Курской области</option>
-                            <option value="/economy/comparison">Сравнительная таблица ключевых направлений ВРП</option>
-                            <option value="/economy/kma">Курская магнитная аномалия</option>
+                            <option value="/economy#vrp_analysis">Анализ ВРП Курской области</option>
+                            <option value="/economy#table_vrp">Сравнительная таблица ключевых направлений ВРП</option>
+                            <option value="/economy#kursk_magnetic_anomaly">Курская магнитная аномалия</option>
                         </select>
                     </li>
 

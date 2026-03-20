@@ -84,7 +84,7 @@ export const metadata: Metadata = {
   }
 }
 
-export default function CulturePage() {
+export default function TourismPage() {
     const articleName = 'tourism'
     
     return (

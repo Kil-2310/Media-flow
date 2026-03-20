@@ -44,7 +44,6 @@ const ImageSimpleCards = ({ TitleSimpleCards }) => {
                     <div className={styles.container__cards}>
                         {hiddenArea}
                     </div>
-
                 </details>
             )}
         </section>
