@@ -2,8 +2,8 @@ import styles from './AsideBlock.module.scss'
 import Image from 'next/image'
 import dataAsideBlock from './dataAsideBlock'
 
-const AsideBlock = ({ asideName }) => {
-    const AsideData = dataAsideBlock[asideName]
+const AsideBlock = ({ asideTitle }) => {
+    const AsideData = dataAsideBlock[asideTitle]
 
     return (
         <aside className={`${styles.aside_block}`}>
@@ -15,7 +15,9 @@ const AsideBlock = ({ asideName }) => {
 
             <div>
                 <p>{AsideData[1]}</p>
-                <audio src={AsideData[2]} controls></audio>
+                {AsideData[2] && (
+                    <audio src={AsideData[2]} controls />
+                )}
             </div>
         </aside>
     )

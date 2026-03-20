@@ -88,7 +88,7 @@ export default function CulturePage() {
 
             <h2 id="nightingale" className="title">Курский соловей — пернатый символ соловьиного края</h2>
 
-            <AsideBlock asideName={'kursk_nightingale'}/>
+            <AsideBlock asideTitle={'kursk_nightingale'}/>
 
             <h2 id="personalities" className="title">Известные личности Курской области</h2>
 

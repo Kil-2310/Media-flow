@@ -15,7 +15,6 @@
 
         background-color: var(--bg_simple_cards);
         border-radius: 10px;
-        
 
         strong,
         li{
@@ -34,7 +33,6 @@
             transform: rotate(180deg);
 
             @include markup();
-
         }
 
         ul{

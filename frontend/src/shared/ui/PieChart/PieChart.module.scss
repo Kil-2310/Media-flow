@@ -1,0 +1,9 @@
+@use '@/app/styles/mixins' as *;
+
+.container_pie_chart{
+    width: 100vw;
+    height: 90vh;
+
+    @include markup();
+    flex-direction: column;
+}
