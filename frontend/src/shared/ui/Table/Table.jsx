@@ -1,9 +1,8 @@
-import dataTable from './dataTable'
-import styles from './Table.module.scss'
-
+import dataTable from './dataTable';
+import styles from './Table.module.scss';
 
 const Table = ({ TitleTable }) => {
-    const data = dataTable[TitleTable]
+    const data = dataTable[TitleTable];
 
     return (
         <section className={`${styles.container}`}>
@@ -26,8 +25,7 @@ const Table = ({ TitleTable }) => {
                 </tbody>
             </table>
         </section>
-    )
+    );
+};
 
-}
-
-export default Table
+export default Table;

@@ -1,30 +1,24 @@
 'use client';
 import styles from './SettingsPanel.module.scss';
 import { memo, useContext } from 'react';
-import ContestContext from '@/entities/model/ContestProvider' 
+import ContestContext from '@/entities/model/ContestProvider';
 
 const SettingsPanel = () => {
-
-    const {
-        useUserTheme,
-        useFontSize,
-        setUserTheme,
-        setFontSize
-    } = useContext(ContestContext)
+    const { useUserTheme, useFontSize, setUserTheme, setFontSize } = useContext(ContestContext);
 
     const updateFontSize = (method) => {
-        let newFontSize = useFontSize
+        let newFontSize = useFontSize;
 
-        if (method === 'add'){
-            newFontSize += 2
-        }else{
-            newFontSize -= 2
+        if (method === 'add') {
+            newFontSize += 2;
+        } else {
+            newFontSize -= 2;
         }
 
-        if (newFontSize <= 20 && newFontSize >= 12){
-            setFontSize(newFontSize)
+        if (newFontSize <= 20 && newFontSize >= 12) {
+            setFontSize(newFontSize);
         }
-    }
+    };
 
     return (
         <aside className={`${styles.settings_panel}`}>

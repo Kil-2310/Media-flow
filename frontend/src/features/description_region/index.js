@@ -1,1 +1,1 @@
-export { default } from './DescriptionRegion'
+export { default } from './DescriptionRegion';

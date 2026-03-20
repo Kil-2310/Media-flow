@@ -1,10 +1,10 @@
-import styles from './SmallDescriptionCards.module.scss'
-import dataSmallDescriptionCards from './dataSmallDescriptionCards'
-import Image from 'next/image'
+import styles from './SmallDescriptionCards.module.scss';
+import dataSmallDescriptionCards from './dataSmallDescriptionCards';
+import Image from 'next/image';
 
 const SmallDescriptionCards = ({ cardsTitle }) => {
-    const cardsData = dataSmallDescriptionCards[cardsTitle]
-    
+    const cardsData = dataSmallDescriptionCards[cardsTitle];
+
     return (
         <section className={`${styles.container_small_cards}`}>
             {Object.entries(cardsData).map(([title, [description, image, link]]) => (
@@ -21,6 +21,6 @@ const SmallDescriptionCards = ({ cardsTitle }) => {
             ))}
         </section>
     );
-}
+};
 
-export default SmallDescriptionCards
+export default SmallDescriptionCards;
