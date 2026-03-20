@@ -2,8 +2,8 @@ import styles from './PreviewArticle.module.scss';
 import dataPreviewArticle from './dataPreviewArticle';
 import Image from 'next/image';
 
-const PreviewArticle = ({ preview }) => {
-    const previewData = dataPreviewArticle[preview];
+const PreviewArticle = ({ previewTitle }) => {
+    const previewData = dataPreviewArticle[previewTitle];
 
     return (
         <section className={`${styles.preview_article}`}>

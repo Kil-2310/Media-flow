@@ -4,8 +4,8 @@ import styles from './ImageSimpleCards.module.scss';
 import dataSimpleCards from './dataImageSimpleCards';
 import Image from 'next/image';
 
-const ImageSimpleCards = ({ TitleSimpleCards }) => {
-    const data = dataSimpleCards[TitleSimpleCards];
+const ImageSimpleCards = ({ simpleCardsTitle }) => {
+    const data = dataSimpleCards[simpleCardsTitle];
 
     const visibleArea = [];
     const hiddenArea = [];

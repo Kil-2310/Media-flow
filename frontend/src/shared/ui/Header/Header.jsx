@@ -91,15 +91,15 @@ const Header = () => {
                         >
                             <option value="">Экология</option>
                             <option value="/ecology">Экология Курской области</option>
-                            <option value="/ecology/characteristics">
+                            <option value="/ecology#environmental_characteristics">
                                 3 основные характеристики экологии
                             </option>
-                            <option value="/ecology/reserve">
+                            <option value="/ecology#state_nature_reserve">
                                 Центрально-Чернозёмный государственный заповедник
                             </option>
-                            <option value="/ecology/problems">Проблемы экологии</option>
-                            <option value="/ecology/red-book">Красная книга</option>
-                            <option value="/ecology/forest-project">
+                            <option value="/ecology#environmental_issues">Проблемы экологии</option>
+                            <option value="/ecology#red_book">Красная книга Курской области</option>
+                            <option value="/ecology#forest_conservation_project">
                                 Проект &quot;Сохранение лесов&quot;
                             </option>
                         </select>

@@ -92,9 +92,9 @@ export default function TourismPage() {
 
     return (
         <>
-            <PreviewArticle preview={articleName} />
+            <PreviewArticle previewTitle={articleName} />
 
-            <IntroductoryTextArticle articleName={articleName} />
+            <IntroductoryTextArticle articleTitle={articleName} />
 
             <hr />
 
@@ -104,7 +104,7 @@ export default function TourismPage() {
                 По состоянию на 25.06.2020 г. туристская инфраструктура региона включает:
             </p>
 
-            <ImageSimpleCards TitleSimpleCards={'tourism_infrastructure'} />
+            <ImageSimpleCards simpleCardsTitle={'tourism_infrastructure'} />
 
             <h2 id="attractions">Популярные места и достопремечательности Курской области</h2>
 
