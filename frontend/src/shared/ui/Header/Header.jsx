@@ -67,16 +67,18 @@ const Header = () => {
                         >
                             <option value="">История</option>
                             <option value="/history">История Курской области</option>
-                            <option value="/history/development">История развития региона</option>
-                            <option value="/history/revolution">Революция 1917 года</option>
-                            <option value="/history/npp">Курская АЭС</option>
-                            <option value="/history/npp2">Курская АЭС-2</option>
-                            <option value="/history/chernobyl">
+                            <option value="/history#history_kursk_region">
+                                История развития региона
+                            </option>
+                            <option value="/history#revolution">Революция 1917 года</option>
+                            <option value="/history#kursk_npp">Курская АЭС</option>
+                            <option value="/history#kursk_npp_2">Курская АЭС-2</option>
+                            <option value="/history#consequences_chernobyl">
                                 Последствия Чернобыльской катастрофы
                             </option>
-                            <option value="/history/kursk-bulge">Курская дуга 1943 года</option>
-                            <option value="/history/heroes">Герои нашего времени</option>
-                            <option value="/history/svo-museums">
+                            <option value="/history#kursk_bulge">Курская дуга 1943 года</option>
+                            <option value="/history#heroes_our_time">Герои нашего времени</option>
+                            <option value="/history#museum_ponyri">
                                 Современные музеи, посвященные СВО
                             </option>
                         </select>
@@ -214,7 +216,7 @@ const Header = () => {
                                 <summary>История</summary>
                                 <ul>
                                     <li>
-                                        <Link href="/history/development">
+                                        <Link href="/history/history_kursk_region">
                                             История развития региона
                                         </Link>
                                     </li>
@@ -233,15 +235,17 @@ const Header = () => {
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link href="/history/kursk-bulge">
+                                        <Link href="/history/kursk_bulge">
                                             Курская дуга 1943 года
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link href="/history/heroes">Герои нашего времени</Link>
+                                        <Link href="/history/heroes_our_time">
+                                            Герои нашего времени
+                                        </Link>
                                     </li>
                                     <li>
-                                        <Link href="/history/svo-museums">
+                                        <Link href="/history/museum_ponyri">
                                             Современные музеи, посвященные Специальной Военной
                                             Операции
                                         </Link>

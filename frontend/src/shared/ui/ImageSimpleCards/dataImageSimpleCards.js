@@ -18,6 +18,15 @@ const dataSimpleCards = {
         ['/images/region/vehicle_pollution.jpg', 'Загрязнение автотранспортом'],
         ['/images/region/photo_1970_1980.jpg', 'Радиактивное загрязнение'],
     ],
+
+    heroes_our_time: [
+        ['/images/region/solder_1.webp', 'Дамир Гилемханов'],
+        ['/images/region/solder_2.webp', 'Александр Белоглазов'],
+        ['/images/region/solder_3.webp', 'Дамир Исламов'],
+        ['/images/region/solder_4.webp', 'Антон Старостин'],
+        ['/images/region/solder_7.webp', 'Дмитрий Беляев'],
+        ['/images/region/solder_6.webp', 'Сухарев Сергей'],
+    ],
 };
 
 export default dataSimpleCards;

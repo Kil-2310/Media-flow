@@ -1,6 +1,6 @@
 :root{
     --simple_text_size: clamp(1.2rem, 1.7vw + 0.3rem, 1.8rem);
-    --smolle_text_size: clamp(1.1rem, 4vw + 0.3rem, 1.3rem);
+    --smalle_text_size: clamp(1.1rem, 4vw + 0.3rem, 1.3rem);
 
     --const_font_white_color: rgb(246, 246, 246);
     --const_font_black_color:rgb(17, 17, 17);
