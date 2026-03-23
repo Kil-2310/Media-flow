@@ -150,9 +150,7 @@ const Header = () => {
                     </li>
 
                     <li>
-                        <Link href="/reviews" target="_blank" rel="noopener noreferrer">
-                            Отзывы
-                        </Link>
+                        <Link href="/reviews">Отзывы</Link>
                     </li>
 
                     <li>
