@@ -1,0 +1,29 @@
+@use '@/app/styles/mixins' as *;
+
+.form{
+    width: 100vw;
+
+    textarea,
+    ::placeholder{
+        color: var(--const_font_black_color);
+        font-size: var(--smalle_text_size);
+        padding: 0.7em;
+    }
+    
+    textarea{
+        display: block;
+        margin: auto;
+        
+        width: 70vw;
+        height: 50vh;
+        resize: none;
+        background-color: var(--bg_simple_cards);
+        margin-block: 7vh;
+        border-radius: 10px;
+    }
+
+    &__markup_buttons{
+        width: 100%;
+        @include markup($justify-content: space-around);
+    }
+}

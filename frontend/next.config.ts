@@ -1,11 +1,18 @@
 const nextConfig = {
+  output: 'export',
+  distDir: 'out',
+  images: {
+    unoptimized: true,
+  },
+  trailingSlash: true,
+  
   experimental: {
     turbo: {
       resolveAlias: {
         '@': './src'
       }
     }
-  }
+  },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
