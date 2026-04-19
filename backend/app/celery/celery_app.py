@@ -7,8 +7,8 @@ redis_client = redis.Redis(host='localhost', port=6379, db=1)
 
 celery = Celery(
     'celery_app',
-    broker='redis://localhost:6379/0',
-    backend='redis://localhost:6379/0',
+    broker='redis://localhost:6379/0', # Очередь задач (БД №0)
+    backend='redis://localhost:6379/0', # Хранилище результатов (БД №0)
 )
 
 @celery.task

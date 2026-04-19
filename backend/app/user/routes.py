@@ -18,15 +18,27 @@ def register_user_routes(app: FastAPI):
         summary='Отправка письма на почту автора',
         response_model=ServerBoolAnswer,
     )
-    async def send_feedback(feedback: FeedbackCreate):
+    async def send_feedback(feedback: FeedbackCreate) -> ServerBoolAnswer:
         """Отправка письма на почту автора"""
         logger.debug("Отправка письма на почту автора")
+
+        user_email = feedback.email
+
+        print(user_email)
 
         task = celery_send_email.delay(
             receiver=SMTP_USER,
             subject="Новый отзыв от пользователя",
-            content=feedback.content,
+            content=feedback.content + user_email,
             file_name_message="message_for_me.html"
         )
+
+        if user_email is not None:
+            celery_send_email.delay(
+                receiver=user_email,
+                subject="Благодарность пользователю",
+                content=feedback.content,
+                file_name_message="gratitude_for_user.html"
+            )
 
         return ServerBoolAnswer()

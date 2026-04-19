@@ -17,4 +17,4 @@ SMTP_HOST = "smtp.gmail.com"
 SMTP_PORT = 587
 
 
-SERVER_URL = os.getenv("SERVER_URL")
+FRONTEND_URL = os.getenv("FRONTEND_URL")
