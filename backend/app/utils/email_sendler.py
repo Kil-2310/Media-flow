@@ -1,0 +1,31 @@
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
+import aiofiles
+
+from pathlib import Path
+
+from ..config_data import SMTP_HOST, SMTP_PORT, SMTP_PASSWORD, SMTP_USER
+
+
+def send_email(receiver: str, subject: str, content: str,  file_name_message: str) -> None:
+    with smtplib.SMTP(SMTP_HOST, SMTP_PORT) as server:
+        server.starttls()
+        server.login(SMTP_USER, SMTP_PASSWORD)
+
+        email = MIMEMultipart()
+        email['Subject'] = subject
+        email['From'] = SMTP_USER
+        email['To'] = receiver
+
+        path_for_template = Path(__file__).parent.parent / 'templates' / file_name_message
+
+        with open(path_for_template, mode="r", encoding="utf-8") as f:
+            html_message = f.read()
+
+            message = html_message.format(content)
+
+            email.attach(MIMEText(message, 'html', 'utf-8'))
+
+        server.sendmail(SMTP_USER, receiver, email.as_string())

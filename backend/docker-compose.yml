@@ -1,0 +1,26 @@
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      - POSTGRES_USER={DB_USER}
+      - POSTGRES_PASSWORD={DB_PASSWORD}
+      - POSTGRES_DB={DB_NAME}
+    ports:
+      - '5433:5432'
+    networks:
+      - app_network
+    env_file:
+      - ./.env
+
+  backend:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
