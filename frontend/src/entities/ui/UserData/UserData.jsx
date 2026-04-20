@@ -11,12 +11,12 @@ const UserData = () => {
         e.preventDefault();
         setIsSubmitting(true);
 
-//         const formData = new FormData(e.target);
+        //         const formData = new FormData(e.target);
 
         const formData = {
             email: '',
-            content: e.target.message.value
-        }
+            content: e.target.message.value,
+        };
 
         try {
             const response = await fetch('http://localhost:8000/api/user/send_feedback', {
