@@ -11,12 +11,20 @@ const UserData = () => {
         e.preventDefault();
         setIsSubmitting(true);
 
-        const formData = new FormData(e.target);
+//         const formData = new FormData(e.target);
+
+        const formData = {
+            email: '',
+            content: e.target.message.value
+        }
 
         try {
-            const response = await fetch('https://api.web3forms.com/submit', {
+            const response = await fetch('http://localhost:8000/api/user/send_feedback', {
                 method: 'POST',
-                body: formData,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
             });
 
             const result = await response.json();
@@ -38,8 +46,6 @@ const UserData = () => {
     return (
         <form onSubmit={submitForm} className={`${styles.form}`}>
             <textarea name="message" placeholder="Текст комментария ..." required></textarea>
-
-            <input type="hidden" name="access_key" value="2f1f0478-ef9d-4435-9275-32265dc800bd" />
 
             <div className={`${styles.form__markup_buttons}`}>
                 <Button className={'blue_button'} type={'submit'} isDisabled={isSubmitting}>
