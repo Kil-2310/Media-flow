@@ -3,9 +3,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.loader import create_app
 from app.config_data import FRONTEND_URL
 
-app = create_app()
 
-app.debug = True
+app = create_app()
 
 app.add_middleware(
     CORSMiddleware,

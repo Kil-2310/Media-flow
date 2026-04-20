@@ -18,3 +18,5 @@ SMTP_PORT = 587
 
 
 FRONTEND_URL = os.getenv("FRONTEND_URL")
+
+IS_PROD=os.getenv("IS_PROD")
