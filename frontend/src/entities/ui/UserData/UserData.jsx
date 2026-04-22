@@ -1,53 +1,39 @@
 'use client';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { useState } from 'react';
 import styles from './UserData.module.scss';
 import Button from '@/shared/ui/Button';
+import useUser from '@/entities/model/useUser'
 
 const UserData = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const { sendFeedback } = useUser();
 
     const submitForm = async (e) => {
         e.preventDefault();
+        
+        const email = e.target.email.value || '';
+        const content = e.target.content.value;
+        
         setIsSubmitting(true);
-
-        //         const formData = new FormData(e.target);
-
-        const formData = {
-            email: '',
-            content: e.target.message.value,
-        };
-
-        try {
-            const response = await fetch('http://localhost:8000/api/user/send_feedback', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            });
-
-            const result = await response.json();
-
-            if (result.success) {
-                e.target.reset();
-                alert('Сообщение успешно отправлено!');
-            } else {
-                alert('Ошибка отправки');
-            }
-        } catch (error) {
-            console.error('Ошибка:', error);
-            alert('Произошла ошибка при отправке');
-        } finally {
-            setIsSubmitting(false);
-        }
+        
+        await sendFeedback(content, email, setIsSubmitting);
     };
 
     return (
         <form onSubmit={submitForm} className={`${styles.form}`}>
-            <textarea name="message" placeholder="Текст комментария ..." required></textarea>
+            <div className="mb-3">
+                <label htmlFor="email" className="form-label">Электронная почта (необязательно)</label>
+                <input type="email" className="form-control" id="email" placeholder="name@example.com" name='email'/>
+            </div>
 
-            <div className={`${styles.form__markup_buttons}`}>
+            <div className="mb-3">
+                <label htmlFor="content" className="form-label">Комментарий</label>
+                <textarea className="form-control" id="content" rows="3" name='content' required></textarea>
+            </div>
+
+            <div className={`${styles.form__markup_buttons} d-flex gap-2 mt-4`}>
                 <Button className={'blue_button'} type={'submit'} isDisabled={isSubmitting}>
                     {isSubmitting ? 'Отправка...' : 'Отправить'}
                 </Button>

@@ -21,11 +21,11 @@ async def test_send_feedback_success(client):
         assert mock_celery.call_count == 2
 
         # Первый вызов (письмо пользователю)
-        second_call_args = mock_celery.call_args_list[0][1]
-        assert second_call_args['receiver'] == "user@example.com"
-        assert "Благодарность" in second_call_args['subject']
+        first_call_args = mock_celery.call_args_list[0][1]
+        assert first_call_args['receiver'] == "user@example.com"
+        assert "Благодарность" in first_call_args['subject']
 
         # Второй вызов (письмо автору)
-        first_call_args = mock_celery.call_args_list[1][1]
-        assert first_call_args['receiver'] == SMTP_USER
-        assert "Новый отзыв" in first_call_args['subject']
+        second_call_args = mock_celery.call_args_list[1][1]
+        assert second_call_args['receiver'] == SMTP_USER
+        assert "Новый отзыв" in second_call_args['subject']

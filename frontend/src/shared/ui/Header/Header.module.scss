@@ -1,60 +1,42 @@
 @use '@/app/styles/mixins' as *;
 
 .header{
-    width: 100vw;
-    height: clamp(13vh, 3rem, 15vh);
+    height: clamp(10vh, 7vw, 14vh);
 
     position: sticky;
     top: 0;
-    right: 0;
+    left: 0;
     z-index: 10;
 
     background-image: var(--linear_gradient);
 
-    font-family: 'Roboto Serif', Arial, Helvetica, sans-serif;
     .pc_menu{
-        width: 100%;
         height: 100%;
 
         a,
         select,
         li,
-        small{
+        small,
+        strong{
             color: var(--const_font_white_color);
         }
     
-        &__title_region {
-            font-weight: bold;
-            font-size: clamp(1.3rem, 5vw, 1.5rem);
+        ul{
+            height: 100%;
             
-            border-right: 4px solid var(--const_font_white_color);
+            display: grid;
+            grid-template-columns: 0.5fr 1fr 1.1fr 1fr 1.1fr 1.2fr 1fr 0.9fr 0.9fr;
 
-            a{
-                @include markup();
-                flex-direction: column;
-            }
-        }
+            .title_region {
+                font-weight: bold;
+                
+                border-right: 4px solid var(--const_font_white_color);
     
-        &__logo {
-            a{
-                width: 100%;
-                height: 100%;
-    
-                @include markup();
-    
-                img{
-                    object-fit: cover;
+                a{
+                    @include markup();
+                    flex-direction: column;
                 }
             }
-        }
-    
-        ul{
-            width: 100%;
-            height: 100%;
-    
-            display: grid;
-            grid-template-rows: 100%;
-            grid-template-columns: 0.5fr 1fr 1.1fr 1fr 1.1fr 1.2fr 1fr 0.9fr 0.9fr;
     
             li,
             select{
@@ -65,8 +47,6 @@
                 font-size: var(--simple_text_size);
     
                 option{
-                    color: var(--const_font_black_color);
-
                     &:first-child{
                         display: none;
                     }
@@ -83,30 +63,29 @@
 
     // burger_menu
     .burger_menu{
-        width: 100%;
         height: 100%;
 
         @include markup($justify-content: space-between);
+        padding-inline: 5vw;
 
         display: none;
 
-        &__logo,
-        &__ui,
-        &__checkbox{
-            width: 30%;
+        .ui,
+        .checkbox{
+            width: 25%;
             height: 100%;
         }
-        
 
-        &__logo{
-            @include markup();
-
-            img{
-                height: 80%;
-            }
+        .logo{
+            height: 100%;
+            padding: 5px;
         }
 
-        &__ui{
+        img{
+            width: 100%;
+        }
+
+        .ui{
             @include markup($justify-content: space-evenly);
             flex-direction: column;
 
@@ -122,7 +101,7 @@
             }
         }
 
-        &__checkbox{
+        .checkbox{
             position: absolute;
             top: 0;
             right: 0;
@@ -131,22 +110,20 @@
             z-index: 11;
         }
 
-        &__panel{
+        .panel{
             position: fixed;
             top: 15vh;
             left: 0;
 
-            width: 75vw;
+            width: 50vw;
             height: 80vh;
 
             background-color: #d6d6d6;
 
             transform: translateX(-100%);
             overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
 
             & > ul{
-                width: 100%;
                 height: 100%;
 
                 display: grid;
@@ -157,10 +134,14 @@
 
             li{
                 font-size: var(--simple_text_size);
+
+                a{
+                    text-decoration: underline;
+                }
             }
         }
 
-        .burger_menu__checkbox:checked ~ .burger_menu__panel{
+        .checkbox:checked ~ .panel{
             transform: translateX(0);
         }
 

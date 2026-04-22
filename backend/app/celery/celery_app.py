@@ -1,7 +1,7 @@
 from celery import Celery
 
 from ..utils.email_sendler import send_email
-from ..config_data import IS_PROD
+from ..config_data import IS_PROD, REDIS_BROKER, REDIS_BACKEND
 
 
 if IS_PROD == "False":
@@ -15,8 +15,8 @@ else:
     # Режим продакшена
     celery = Celery(
         'celery_app',
-        broker='redis://redis:6379/0',  # Очередь задач (БД №0)
-        backend='redis://redis:6379/0',  # Хранилище результатов (БД №0)
+        broker=REDIS_BROKER,  # Очередь задач (БД №0)
+        backend=REDIS_BACKEND,  # Хранилище результатов (БД №0)
     )
 
 @celery.task

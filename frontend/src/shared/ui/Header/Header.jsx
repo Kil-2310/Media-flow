@@ -19,7 +19,7 @@ const Header = () => {
         <header className={styles.header}>
             <nav className={styles.pc_menu}>
                 <ul>
-                    <li className={styles.pc_menu__logo}>
+                    <li className={styles.logo}>
                         <Link href="/" aria-label="На главную">
                             <Image
                                 src="/images/global/coat_arms_kursk_region.png"
@@ -31,9 +31,9 @@ const Header = () => {
                         </Link>
                     </li>
 
-                    <li className={styles.pc_menu__title_region}>
+                    <li className={styles.title_region}>
                         <Link href="/">
-                            Курская
+                            <strong>Курская</strong>
                             <small>область</small>
                         </Link>
                     </li>
@@ -163,7 +163,7 @@ const Header = () => {
             </nav>
 
             <nav className={styles.burger_menu}>
-                <Link href="/" className={styles.burger_menu__logo} aria-label="На главную">
+                <Link href="/" className={styles.logo} aria-label="На главную">
                     <Image
                         src="/images/global/coat_arms_kursk_region.png"
                         alt="Герб Курской области"
@@ -173,35 +173,35 @@ const Header = () => {
                     />
                 </Link>
 
-                <button className={styles.burger_menu__ui} aria-label="Открыть меню">
+                <button className={styles.ui} aria-label="Открыть меню">
                     <div></div>
                     <div></div>
                     <div></div>
                 </button>
 
-                <input type="checkbox" className={styles.burger_menu__checkbox} />
+                <input type="checkbox" className={styles.checkbox} />
 
-                <aside className={styles.burger_menu__panel}>
+                <aside className={styles.panel}>
                     <ul>
                         <li>
                             <details>
                                 <summary>Культура</summary>
                                 <ul>
                                     <li>
-                                        <Link href="/culture/directions">
+                                        <Link href="/culture#directions">
                                             Основные направления культуры
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link href="/culture/nightingale">Курский соловей</Link>
+                                        <Link href="/culture#nightingale">Курский соловей</Link>
                                     </li>
                                     <li>
-                                        <Link href="/culture/personalities">
+                                        <Link href="/culture#personalities">
                                             Известные личности Курской области
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link href="/culture/traditions">
+                                        <Link href="/culture#traditions">
                                             Традиции Курской области
                                         </Link>
                                     </li>
@@ -214,36 +214,36 @@ const Header = () => {
                                 <summary>История</summary>
                                 <ul>
                                     <li>
-                                        <Link href="/history/history_kursk_region">
+                                        <Link href="/history#history_kursk_region">
                                             История развития региона
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link href="/history/revolution">Революция 1917 года</Link>
+                                        <Link href="/history#revolution">Революция 1917 года</Link>
                                     </li>
                                     <li>
-                                        <Link href="/history/npp">Курская АЭС</Link>
+                                        <Link href="/history#kursk_npp">Курская АЭС</Link>
                                     </li>
                                     <li>
-                                        <Link href="/history/npp2">Курская АЭС-2</Link>
+                                        <Link href="/history#kursk_npp_2">Курская АЭС-2</Link>
                                     </li>
                                     <li>
-                                        <Link href="/history/chernobyl">
+                                        <Link href="/history#consequences_chernobyl">
                                             Последствия Чернобыльской катастрофы
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link href="/history/kursk_bulge">
+                                        <Link href="/history#kursk_bulge">
                                             Курская дуга 1943 года
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link href="/history/heroes_our_time">
+                                        <Link href="/history#heroes_our_time">
                                             Герои нашего времени
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link href="/history/museum_ponyri">
+                                        <Link href="/history#museum_ponyri">
                                             Современные музеи, посвященные Специальной Военной
                                             Операции
                                         </Link>
@@ -257,23 +257,25 @@ const Header = () => {
                                 <summary>Экология</summary>
                                 <ul>
                                     <li>
-                                        <Link href="/ecology/characteristics">
+                                        <Link href="/ecology#environmental_characteristics">
                                             3 основные характеристики экологии
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link href="/ecology/reserve">
+                                        <Link href="/ecology#state_nature_reserve">
                                             Центрально-Чернозёмный государственный заповедник
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link href="/ecology/problems">Проблемы экологии</Link>
+                                        <Link href="/ecology#environmental_issues">
+                                            Проблемы экологии
+                                        </Link>
                                     </li>
                                     <li>
-                                        <Link href="/ecology/red-book">Красная книга</Link>
+                                        <Link href="/ecology#red_book">Красная книга</Link>
                                     </li>
                                     <li>
-                                        <Link href="/ecology/forest-project">
+                                        <Link href="/ecology#forest_conservation_project">
                                             Проект &quot;Сохранение лесов&quot;
                                         </Link>
                                     </li>
@@ -286,17 +288,19 @@ const Header = () => {
                                 <summary>Экономика</summary>
                                 <ul>
                                     <li>
-                                        <Link href="/economy/analysis">
+                                        <Link href="/economy#vrp_analysis">
                                             Анализ ВРП Курской области
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link href="/economy/comparison">
+                                        <Link href="/economy#table_vrp">
                                             Сравнительная таблица ключевых направлений ВРП
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link href="/economy/kma">Курская магнитная аномалия</Link>
+                                        <Link href="/economy#kursk_magnetic_anomaly">
+                                            Курская магнитная аномалия
+                                        </Link>
                                     </li>
                                 </ul>
                             </details>
@@ -307,17 +311,17 @@ const Header = () => {
                                 <summary>Туризм</summary>
                                 <ul>
                                     <li>
-                                        <Link href="/tourism/infrastructure">
+                                        <Link href="/tourism#tourism_infrastructure">
                                             Инфраструктура туризма
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link href="/tourism/places">
+                                        <Link href="/tourism#attractions">
                                             Популярные места и достопримечательности
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link href="/tourism/nature">
+                                        <Link href="/tourism#natural_attractions">
                                             Уникальные природные объекты
                                         </Link>
                                     </li>
@@ -334,7 +338,7 @@ const Header = () => {
                                 <summary>Города</summary>
                                 <ul>
                                     <li>
-                                        <Link href="/cities">В разработке</Link>
+                                        <Link href="/cities">Города Курской области</Link>
                                     </li>
                                 </ul>
                             </details>
