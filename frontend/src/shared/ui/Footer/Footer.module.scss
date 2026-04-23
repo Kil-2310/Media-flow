@@ -1,7 +1,4 @@
 .footer{
-    width: 100%;
-    padding: 0.5em;
-
     background-image: linear-gradient(
         to right,
         #4D89AE 10%,
@@ -11,7 +8,11 @@
     p,
     a{
         color: var(--const_font_white_color);
-        font-size: var(--smolle_text_size);
+        font-size: var(--smalle_text_size);  
+    }
+
+    p{
+        padding: 0.5em 0.3em 0.3em 0.7em;
     }
 
     a{

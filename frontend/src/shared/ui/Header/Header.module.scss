@@ -29,7 +29,6 @@
 
             .title_region {
                 font-weight: bold;
-                
                 border-right: 4px solid var(--const_font_white_color);
     
                 a{
@@ -37,55 +36,44 @@
                     flex-direction: column;
                 }
             }
+
+            select, li {
+                @include markup();
+                font-size: var(--simple_text_size);
+            }
     
-            li,
             select{
                 width: 100%;
                 height: 100%;
-                @include markup();
-    
-                font-size: var(--simple_text_size);
-    
+                background: none;
+                padding-left: 0.4em;
+                cursor: pointer;
+
                 option{
                     &:first-child{
                         display: none;
                     }
                 }
             }
-    
-            select{
-                background: none;
-                padding-left: 0.4em;
-                cursor: pointer;
-            }
         }
     }
 
-    // burger_menu
     .burger_menu{
         height: 100%;
-
+        
         @include markup($justify-content: space-between);
         padding-inline: 5vw;
 
-        display: none;
-
-        .ui,
-        .checkbox{
-            width: 25%;
-            height: 100%;
-        }
-
-        .logo{
-            height: 100%;
-            padding: 5px;
-        }
+        display: none; // Обязательно после flex в функции markup
 
         img{
-            width: 100%;
+            width: 50px;
         }
 
         .ui{
+            width: 25%;
+            height: 100%;
+
             @include markup($justify-content: space-evenly);
             flex-direction: column;
 
@@ -102,6 +90,9 @@
         }
 
         .checkbox{
+            width: 30%;
+            height: 100%;
+
             position: absolute;
             top: 0;
             right: 0;
@@ -116,7 +107,7 @@
             left: 0;
 
             width: 50vw;
-            height: 80vh;
+            height: 70vh;
 
             background-color: #d6d6d6;
 
@@ -144,7 +135,6 @@
         .checkbox:checked ~ .panel{
             transform: translateX(0);
         }
-
     }
 }
 

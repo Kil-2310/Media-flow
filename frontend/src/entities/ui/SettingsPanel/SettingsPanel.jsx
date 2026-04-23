@@ -22,13 +22,13 @@ const SettingsPanel = () => {
 
     return (
         <aside className={`${styles.settings_panel}`}>
-            <div className={`${styles.settings_panel__changing_font}`}>
+            <div className={`${styles.changing_font}`}>
                 <button onClick={() => updateFontSize('add')}>+</button>
                 <p>{useFontSize}</p>
                 <button onClick={() => updateFontSize('remove')}>-</button>
             </div>
 
-            <div className={`${styles.settings_panel__themes}`}>
+            <div className={`${styles.themes}`}>
                 <div onClick={() => setUserTheme('light')}>
                     <input checked={useUserTheme === 'light'} type="checkbox" readOnly />
                     <p>☀️</p>

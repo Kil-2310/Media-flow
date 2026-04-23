@@ -1,8 +1,6 @@
 import styles from './DescriptionRegion.module.scss';
 import Iframe from '@/shared/ui/Iframe';
 
-import React from 'react';
-
 const DescriptionRegion = () => {
     return (
         <section className={`${styles.description_region}`}>

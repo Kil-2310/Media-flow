@@ -68,15 +68,11 @@ export default function RootLayout({
     return (
         <html lang="ru">
             <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-                <YandexMetrica />
-
                 <ContestProvider>
                     <ThemeProvider>
                         <SettingsPanel />
                         <Header />
                         <main>{children}</main>
-                        <BlockArticles />
-                        <Footer />
                     </ThemeProvider>
                 </ContestProvider>
             </body>

@@ -8,7 +8,7 @@ import Image from 'next/image';
 const Header = () => {
     const router = useRouter();
 
-    const ChangeLocation = (e) => {
+    const changeLocation = (e) => {
         const to = e.target.value;
         e.target.value = '';
 
@@ -40,7 +40,7 @@ const Header = () => {
 
                     <li>
                         <select
-                            onChange={ChangeLocation}
+                            onChange={changeLocation}
                             name="culture"
                             defaultValue=""
                             aria-label="Раздел культуры"
@@ -60,7 +60,7 @@ const Header = () => {
 
                     <li>
                         <select
-                            onChange={ChangeLocation}
+                            onChange={changeLocation}
                             name="history"
                             defaultValue=""
                             aria-label="Раздел истории"
@@ -86,7 +86,7 @@ const Header = () => {
 
                     <li>
                         <select
-                            onChange={ChangeLocation}
+                            onChange={changeLocation}
                             name="ecology"
                             defaultValue=""
                             aria-label="Раздел экологии"
@@ -109,7 +109,7 @@ const Header = () => {
 
                     <li>
                         <select
-                            onChange={ChangeLocation}
+                            onChange={changeLocation}
                             name="economy"
                             defaultValue=""
                             aria-label="Раздел экономики"
@@ -130,7 +130,7 @@ const Header = () => {
 
                     <li>
                         <select
-                            onChange={ChangeLocation}
+                            onChange={changeLocation}
                             name="tourism"
                             defaultValue=""
                             aria-label="Раздел туризма"

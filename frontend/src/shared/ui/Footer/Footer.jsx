@@ -4,16 +4,6 @@ import { useEffect, useState } from 'react';
 import styles from './Footer.module.scss';
 
 const Footer = () => {
-    const [is404, setIs404] = useState(false);
-
-    useEffect(() => {
-        const [entry] = performance.getEntriesByType('navigation');
-        if (entry?.responseStatus === 404) {
-            setIs404(true);
-        }
-    }, []);
-
-    if (is404) return null;
 
     return (
         <footer className={styles.footer}>

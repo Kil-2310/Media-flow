@@ -1,9 +1,12 @@
-import { NEXT_PUBLIC_SERVER_URL, headers } from '@/shared/api/apiClient.js'
+import { headers } from '@/shared/api/apiClient.js'
+import { SERVER_URL } from '/config_data'
 
 const userAPI = {
     APISendFeedback: async (data) => {
 
-        return fetch(`${NEXT_PUBLIC_SERVER_URL}/api/user/send_feedback`, {
+        console.log('is', SERVER_URL)
+
+        return fetch(`${SERVER_URL}/api/user/send_feedback`, {
             method: 'POST',
             headers,
             body: JSON.stringify(data)

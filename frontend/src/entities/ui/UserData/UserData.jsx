@@ -1,5 +1,4 @@
 'use client';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { useState } from 'react';
 import styles from './UserData.module.scss';
@@ -16,7 +15,7 @@ const UserData = () => {
         const email = e.target.email.value || '';
         const content = e.target.content.value;
         
-        setIsSubmitting(true);
+        console.log(content)
         
         await sendFeedback(content, email, setIsSubmitting);
     };
