@@ -1,1 +1,0 @@
-npx prettier --config ./frontend/.prettierrc --write "frontend/src/**/*.{js,jsx,ts,tsx,json}"

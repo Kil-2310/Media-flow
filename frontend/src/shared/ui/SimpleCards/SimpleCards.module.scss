@@ -1,14 +1,13 @@
 @use '@/app/styles/mixins' as *;
 
 .container{
-    width: 100vw;
-
     @include markup();
     row-gap: 7vh;
     flex-direction: column;
 
-    &__simple_card{
+    .simple_card{
         margin: auto;
+        height: 35vh;
         width: 90%;
 
         @include markup();
@@ -19,13 +18,13 @@
         strong,
         li{
             padding: 0.6em;
-            font-size: var(--smolle_text_size);
+            font-size: var(--smalle_text_size);
             text-align: center;
         }
 
         strong{
-            width: 40%;
-            min-height: 30vh;
+            width: clamp(10vw, 20vw, 40vw);
+            height: 100%;
 
             border-left: 2px solid var(--const_font_blue_color);
 
@@ -36,7 +35,7 @@
         }
 
         ul{
-            width: 60%;
+            width: clamp(60vw, 20vw, 75vw);
             height: 100%;
 
             text-decoration: underline;

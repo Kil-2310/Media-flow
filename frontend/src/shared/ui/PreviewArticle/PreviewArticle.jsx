@@ -7,8 +7,13 @@ const PreviewArticle = ({ previewTitle }) => {
 
     return (
         <section className={`${styles.preview_article}`}>
-            <Image src={previewData[1]} alt={`Превью ${previewData[0]}`} width={900} height={600} />
-            <h1>{previewData[0]}</h1>
+            <Image
+                src={previewData.image}
+                alt={`Превью ${previewData.title}`}
+                width={900}
+                height={600}
+            />
+            <h1>{previewData.title}</h1>
         </section>
     );
 };

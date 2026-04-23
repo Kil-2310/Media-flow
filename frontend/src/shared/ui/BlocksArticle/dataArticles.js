@@ -1,60 +1,178 @@
 const dataArticles = [
-    [
-        '/images/region/kursk_region_map.jpg',
-        '<a href="">Города Курской области</a>',
-        '🏙️ <a href="https://example.com/kursk">Курск</a> — областной центр и древний город (основан в 1032 году), знаменитый своей литературной историей («Слово о полку Игореве») и крупнейшей в России Курской магнитной аномалией.',
-        '🏙️ <a href="https://example.com/kurchatov">Курчатов</a> — самый молодой город области (основан в 1968 году) и город атомщиков, возникший как спутник Курской АЭС.',
-        '🏙️ <a href="https://example.com/zheleznogorsk">Железногорск</a> — второй по величине город региона и центр горнодобывающей промышленности, где ведется добыча и обогащение железной руды (Михайловский ГОК).',
-        '🏙️ <a href="https://example.com/lgov">Льгов</a> — старинный город (известен с 1152 года) на берегу реки Сейм, тесно связанный с жизнью поэта Н.Н. Асеева и историей дворянского рода Барятинских.',
-        '🏙️ <a href="https://example.com/sudzha">Суджа</a> — небольшой город с богатой историей (известен с XVII века), важный транзитный пункт для российского газа, поступающего в Европу через газоизмерительную станцию.',
-    ],
-
-    [
-        '/images/region/culture.jpg',
-        '<a href="">Культурный образ курской области</a>',
-        '✴ <a href="https://example.com/personalities">Известный личности</a>: Александр Александрович Дейнека, Георгий Васильевич Свиридов, Святитель Иоасаф Белгородский, Преподобный Серафим Саровский.',
-        '✴ <a href="https://example.com/culture-directions">Основные направления культуры Курской области</a>: народные промыслы, учреждения культуры, фестивали, народная кухня, направления религии.',
-        '✴ <a href="https://example.com/traditions">Традиции Курской области</a>: календарные, аграрные, войсковые, кулинарный, культурные.',
-        '✴ <a href="https://example.com/nightingale">Курский соловей</a>.',
-    ],
-
-    [
-        '/images/region/ecology.jpg',
-        '<a href="">Экология Курской области</a>',
-        '🌿 <a href="https://example.com/ecology-problems">Проблемы экологии Курской области и их решения</a>.',
-        '🌿 <a href="https://example.com/reserve">Центрально-Чернозёмный государственный природный биосферный заповедник имени профессора В. В. Алёхина</a>.',
-        '🌿 <a href="https://example.com/ecology-characteristics">3 основные характеристики экологии Курской области: климат, гидрография и рельеф</a>.',
-        '🌿 <a href="https://example.com/red-book">Красная книга региона</a>.',
-        '🌿 <a href="https://example.com/forest-projects">Национальные проекты: "Сохранение лесов"</a>.',
-    ],
-
-    [
-        '/images/region/economy.jpg',
-        '<a href="">Экономика Курской области</a>',
-        '💵 <a href="https://example.com/grp-analysis">Анализ ВРП региона</a>.',
-        '💵 <a href="https://example.com/kma">Курская магнитная аномалия (КМА)</a>.',
-        '💵 <a href="https://example.com/grp-table">Сравнительная таблица основных направлений ВРП Курской области</a>.',
-    ],
-
-    [
-        '/images/region/kurska_duga.jpg',
-        '<a href="">История Курской области</a>',
-        '⭐ <a href="https://example.com/history-1917-present">Познакомтесь с историей региона с 1917 года по наши дни</a>.',
-        '⭐ <a href="https://example.com/revolution-1917">Революция 1917 года</a>.',
-        '⭐ <a href="https://example.com/svo-museums">Современные музеи, посвященные СВО</a>.',
-        '⭐ <a href="https://example.com/kursk-battle">Курская битва 1943 года</a>.',
-        '⭐ <a href="https://example.com/chernobyl">Последствия Чернобыльской катастрофы 1986 года</a>.',
-        '⭐ <a href="https://example.com/kursk-npp-2">Курская АЭС-2</a>.',
-        '⭐ <a href="https://example.com/heroes-of-our-time">Герои нашего времени</a>.',
-    ],
-
-    [
-        '/images/region/cathedral.jpg',
-        '<a href="">Туризм Курской области</a>',
-        '🌍 <a href="pages/region/tourism.html">Инфраструктура туризма Курской области</a>.',
-        '🌍 <a href="pages/region/tourism.html">Популярные достопримечательности и места: Усадьба А. А. Фета, Марьино (усадьба Барятинских), Центр общественной информации Курской АЭС</a>.',
-        '🌍 <a href="pages/region/tourism.html">Уникальные природные объекты: Клюквенное озеро, Заказник «Гнилуша», Железногорский дендрологический парк, Гладиолусовые луга, Гора "Фагор"</a>.',
-    ],
+    {
+        image: '/images/region/culture.jpg',
+        alt: 'Культурные символы и достопримечательности Курской области',
+        title: 'Культурный образ курской области',
+        titleLink: '/culture',
+        links: [
+            {
+                icon: '✴',
+                text: 'Известные личности',
+                href: '/culture#personalities',
+                description:
+                    ': Александр Александрович Дейнека, Георгий Васильевич Свиридов, Святитель Иоасаф Белгородский, Преподобный Серафим Саровский.',
+            },
+            {
+                icon: '✴',
+                text: 'Основные направления культуры Курской области',
+                href: '/culture#directions',
+                description:
+                    ': народные промыслы, учреждения культуры, фестивали, народная кухня, направления религии.',
+            },
+            {
+                icon: '✴',
+                text: 'Традиции Курской области',
+                href: '/culture#traditions',
+                description: ': календарные, аграрные, войсковые, кулинарный, культурные.',
+            },
+            {
+                icon: '✴',
+                text: 'Курский соловей',
+                href: '/culture#nightingale',
+                description: '.',
+            },
+        ],
+    },
+    {
+        image: '/images/region/ecology.jpg',
+        alt: 'Природа и экология Курской области',
+        title: 'Экология Курской области',
+        titleLink: '/ecology',
+        links: [
+            {
+                icon: '🌿',
+                text: 'Проблемы экологии Курской области и их решения',
+                href: '/ecology#environmental_issues',
+                description: '.',
+            },
+            {
+                icon: '🌿',
+                text: 'Центрально-Чернозёмный государственный природный биосферный заповедник имени профессора В. В. Алёхина',
+                href: '/ecology#state_nature_reserve',
+                description: '.',
+            },
+            {
+                icon: '🌿',
+                text: '3 основные характеристики экологии Курской области: климат, гидрография и рельеф',
+                href: '/ecology#environmental_characteristics',
+                description: '.',
+            },
+            {
+                icon: '🌿',
+                text: 'Красная книга региона',
+                href: '/ecology#red_book',
+                description: '.',
+            },
+            {
+                icon: '🌿',
+                text: 'Национальные проекты: "Сохранение лесов"',
+                href: '/ecology#forest_conservation_project',
+                description: '.',
+            },
+        ],
+    },
+    {
+        image: '/images/region/economy.jpg',
+        alt: 'Экономика и промышленность Курской области',
+        title: 'Экономика Курской области',
+        titleLink: '/economy',
+        links: [
+            {
+                icon: '💵',
+                text: 'Анализ ВРП региона',
+                href: '/economy#vrp_analysis',
+                description: '.',
+            },
+            {
+                icon: '💵',
+                text: 'Курская магнитная аномалия (КМА)',
+                href: '/economy#kursk_magnetic_anomaly',
+                description: '.',
+            },
+            {
+                icon: '💵',
+                text: 'Сравнительная таблица основных направлений ВРП Курской области',
+                href: '/economy#table_vrp',
+                description: '.',
+            },
+        ],
+    },
+    {
+        image: '/images/region/kurska_duga.jpg',
+        alt: 'Исторические события Курской области, Курская дуга',
+        title: 'История Курской области',
+        titleLink: '/history',
+        links: [
+            {
+                icon: '⭐',
+                text: 'Познакомтесь с историей региона с 1917 года по наши дни',
+                href: '/history#history_kursk_region',
+                description: '.',
+            },
+            {
+                icon: '⭐',
+                text: 'Революция 1917 года',
+                href: '/history#revolution',
+                description: '.',
+            },
+            {
+                icon: '⭐',
+                text: 'Современные музеи, посвященные СВО',
+                href: '/history#museum_ponyri',
+                description: '.',
+            },
+            {
+                icon: '⭐',
+                text: 'Курская битва 1943 года',
+                href: '/history#kursk_bulge',
+                description: '.',
+            },
+            {
+                icon: '⭐',
+                text: 'Последствия Чернобыльской катастрофы 1986 года',
+                href: '/history#consequences_chernobyl',
+                description: '.',
+            },
+            {
+                icon: '⭐',
+                text: 'Курская АЭС-2',
+                href: '/history#kursk_npp_2',
+                description: '.',
+            },
+            {
+                icon: '⭐',
+                text: 'Герои нашего времени',
+                href: '/history#heroes_our_time',
+                description: '.',
+            },
+        ],
+    },
+    {
+        image: '/images/region/cathedral.jpg',
+        alt: 'Туристические достопримечательности Курской области',
+        title: 'Туризм Курской области',
+        titleLink: '/tourism',
+        links: [
+            {
+                icon: '🌍',
+                text: 'Инфраструктура туризма Курской области',
+                href: '/tourism#tourism_infrastructure',
+                description: '.',
+            },
+            {
+                icon: '🌍',
+                text: 'Популярные достопримечательности и места: Усадьба А. А. Фета, Марьино (усадьба Барятинских), Центр общественной информации Курской АЭС',
+                href: '/tourism#attractions',
+                description: '.',
+            },
+            {
+                icon: '🌍',
+                text: 'Уникальные природные объекты: Клюквенное озeро, Заказник «Гнилуша», Железногорский дендрологический парк, Гладиолусовые луга, Гора "Фагор"',
+                href: '/tourism#natural_attractions',
+                description: '.',
+            },
+        ],
+    },
 ];
 
 export default dataArticles;

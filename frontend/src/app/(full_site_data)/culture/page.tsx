@@ -87,27 +87,19 @@ export default function CulturePage() {
 
             <hr />
 
-            <h2 id="directions" className="title">
-                Основные направления културы Курской области
-            </h2>
+            <h2 id="directions">Основные направления културы Курской области</h2>
 
             <SmallDescriptionCards cardsTitle={'cultural_trends'} />
 
-            <h2 id="nightingale" className="title">
-                Курский соловей — пернатый символ соловьиного края
-            </h2>
+            <h2 id="nightingale">Курский соловей — пернатый символ соловьиного края</h2>
 
             <AsideBlock asideTitle={'kursk_nightingale'} />
 
-            <h2 id="personalities" className="title">
-                Известные личности Курской области
-            </h2>
+            <h2 id="personalities">Известные личности Курской области</h2>
 
             <SmallDescriptionCards cardsTitle={'notable_figures'} />
 
-            <h2 id="traditions" className="title">
-                Традиции Курской области
-            </h2>
+            <h2 id="traditions">Традиции Курской области</h2>
 
             <SimpleCards TitleSimpleCards={'traditions'} />
         </>

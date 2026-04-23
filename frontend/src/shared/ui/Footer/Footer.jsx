@@ -1,31 +1,17 @@
-'use client';
-
-import { useEffect, useState } from 'react';
 import styles from './Footer.module.scss';
+import Link from 'next/link';
 
 const Footer = () => {
-
     return (
         <footer className={styles.footer}>
             <p>Благодарю вас за посещение моего сайта!</p>
             <p>Обратите внимание: данный ресурс не является официальным источником информации.</p>
             <p>
-                Если вы хотите оставить отзыв о визите, воспользуйтесь ссылкой:{' '}
-                <a target="_blank" href="">
-                    Комментарии.
-                </a>
-            </p>
-            <p>
                 Политика конфиденциальности:{' '}
-                <a target="_blank" href="">
-                    Политика конфиденциальности.
-                </a>
+                <Link href="/privacy_policy">Политика конфиденциальности.</Link>
             </p>
             <p>
-                Все источники текста и картинок сайта:{' '}
-                <a target="_blank" href="">
-                    Источники.
-                </a>
+                Все источники текста и картинок сайта: <Link href="/sources">Источники.</Link>
             </p>
         </footer>
     );

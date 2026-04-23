@@ -3,3 +3,14 @@
     justify-content: $justify-content;
     align-items: $align-items;
 }
+
+@mixin blackout($value: 0.7, $z-index: 1){
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: rgba(0, 0, 0, $value);
+        z-index: $z-index;
+    }
+
+}

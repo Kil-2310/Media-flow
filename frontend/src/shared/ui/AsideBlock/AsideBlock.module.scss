@@ -1,7 +1,5 @@
 .aside_block{
-    width: 100vw;
     position: relative;
-    
 
     img{
         position: absolute;
@@ -37,5 +35,11 @@
             padding: 0.6em;
             width: 60%;
         }
+    }
+}
+
+@media (max-width: 1024px){
+    .aside_block div{
+        width: 100%;
     }
 }

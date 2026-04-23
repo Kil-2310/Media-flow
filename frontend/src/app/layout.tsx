@@ -3,13 +3,10 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './styles';
 
 import { ContestProvider } from '@/entities/model/ContestProvider';
-import YandexMetrica from '@/shared/ui/YandexMetrica';
 
 import Header from '@/shared/ui/Header';
-import Footer from '@/shared/ui/Footer';
 import SettingsPanel from '@/entities/ui/SettingsPanel';
 import ThemeProvider from './ThemeProvider';
-import BlockArticles from '@/shared/ui/BlocksArticle';
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -36,7 +33,13 @@ export const metadata: Metadata = {
             { url: '/favicon/favicon.svg', type: 'image/svg+xml' },
             { url: '/favicon/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
         ],
-        apple: [{ url: '/favicon/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+        apple: [
+            {
+                url: '/favicon/apple-touch-icon.png',
+                sizes: '180x180',
+                type: 'image/png',
+            },
+        ],
     },
     openGraph: {
         title: 'Курская область: культура, история, экология и экономика',
@@ -67,7 +70,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="ru">
-            <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+            <body className={`${geistSans.variable} ${geistMono.variable}`}>
                 <ContestProvider>
                     <ThemeProvider>
                         <SettingsPanel />

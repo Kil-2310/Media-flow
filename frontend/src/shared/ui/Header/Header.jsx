@@ -8,7 +8,7 @@ import Image from 'next/image';
 const Header = () => {
     const router = useRouter();
 
-    const changeLocation = (e) => {
+    const ChangeLocation = (e) => {
         const to = e.target.value;
         e.target.value = '';
 
@@ -40,7 +40,7 @@ const Header = () => {
 
                     <li>
                         <select
-                            onChange={changeLocation}
+                            onChange={ChangeLocation}
                             name="culture"
                             defaultValue=""
                             aria-label="Раздел культуры"
@@ -60,7 +60,7 @@ const Header = () => {
 
                     <li>
                         <select
-                            onChange={changeLocation}
+                            onChange={ChangeLocation}
                             name="history"
                             defaultValue=""
                             aria-label="Раздел истории"
@@ -86,7 +86,7 @@ const Header = () => {
 
                     <li>
                         <select
-                            onChange={changeLocation}
+                            onChange={ChangeLocation}
                             name="ecology"
                             defaultValue=""
                             aria-label="Раздел экологии"
@@ -109,7 +109,7 @@ const Header = () => {
 
                     <li>
                         <select
-                            onChange={changeLocation}
+                            onChange={ChangeLocation}
                             name="economy"
                             defaultValue=""
                             aria-label="Раздел экономики"
@@ -130,7 +130,7 @@ const Header = () => {
 
                     <li>
                         <select
-                            onChange={changeLocation}
+                            onChange={ChangeLocation}
                             name="tourism"
                             defaultValue=""
                             aria-label="Раздел туризма"
@@ -173,178 +173,171 @@ const Header = () => {
                     />
                 </Link>
 
-                <button className={styles.ui} aria-label="Открыть меню">
+                <div className={styles.ui} aria-label="Открыть меню">
                     <div></div>
                     <div></div>
                     <div></div>
-                </button>
+                </div>
 
                 <input type="checkbox" className={styles.checkbox} />
 
-                <aside className={styles.panel}>
-                    <ul>
-                        <li>
-                            <details>
-                                <summary>Культура</summary>
-                                <ul>
-                                    <li>
-                                        <Link href="/culture#directions">
-                                            Основные направления культуры
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/culture#nightingale">Курский соловей</Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/culture#personalities">
-                                            Известные личности Курской области
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/culture#traditions">
-                                            Традиции Курской области
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </details>
-                        </li>
+                <ul className={styles.panel}>
+                    <li>
+                        <details>
+                            <summary>Культура</summary>
+                            <ul>
+                                <li>
+                                    <Link href="/culture#directions">
+                                        Основные направления культуры
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/culture#nightingale">Курский соловей</Link>
+                                </li>
+                                <li>
+                                    <Link href="/culture#personalities">
+                                        Известные личности Курской области
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/culture#traditions">Традиции Курской области</Link>
+                                </li>
+                            </ul>
+                        </details>
+                    </li>
 
-                        <li>
-                            <details>
-                                <summary>История</summary>
-                                <ul>
-                                    <li>
-                                        <Link href="/history#history_kursk_region">
-                                            История развития региона
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/history#revolution">Революция 1917 года</Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/history#kursk_npp">Курская АЭС</Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/history#kursk_npp_2">Курская АЭС-2</Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/history#consequences_chernobyl">
-                                            Последствия Чернобыльской катастрофы
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/history#kursk_bulge">
-                                            Курская дуга 1943 года
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/history#heroes_our_time">
-                                            Герои нашего времени
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/history#museum_ponyri">
-                                            Современные музеи, посвященные Специальной Военной
-                                            Операции
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </details>
-                        </li>
+                    <li>
+                        <details>
+                            <summary>История</summary>
+                            <ul>
+                                <li>
+                                    <Link href="/history#history_kursk_region">
+                                        История развития региона
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/history#revolution">Революция 1917 года</Link>
+                                </li>
+                                <li>
+                                    <Link href="/history#kursk_npp">Курская АЭС</Link>
+                                </li>
+                                <li>
+                                    <Link href="/history#kursk_npp_2">Курская АЭС-2</Link>
+                                </li>
+                                <li>
+                                    <Link href="/history#consequences_chernobyl">
+                                        Последствия Чернобыльской катастрофы
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/history#kursk_bulge">Курская дуга 1943 года</Link>
+                                </li>
+                                <li>
+                                    <Link href="/history#heroes_our_time">
+                                        Герои нашего времени
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/history#museum_ponyri">
+                                        Современные музеи, посвященные Специальной Военной Операции
+                                    </Link>
+                                </li>
+                            </ul>
+                        </details>
+                    </li>
 
-                        <li>
-                            <details>
-                                <summary>Экология</summary>
-                                <ul>
-                                    <li>
-                                        <Link href="/ecology#environmental_characteristics">
-                                            3 основные характеристики экологии
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/ecology#state_nature_reserve">
-                                            Центрально-Чернозёмный государственный заповедник
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/ecology#environmental_issues">
-                                            Проблемы экологии
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/ecology#red_book">Красная книга</Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/ecology#forest_conservation_project">
-                                            Проект &quot;Сохранение лесов&quot;
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </details>
-                        </li>
+                    <li>
+                        <details>
+                            <summary>Экология</summary>
+                            <ul>
+                                <li>
+                                    <Link href="/ecology#environmental_characteristics">
+                                        3 основные характеристики экологии
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/ecology#state_nature_reserve">
+                                        Центрально-Чернозёмный государственный заповедник
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/ecology#environmental_issues">
+                                        Проблемы экологии
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/ecology#red_book">Красная книга</Link>
+                                </li>
+                                <li>
+                                    <Link href="/ecology#forest_conservation_project">
+                                        Проект &quot;Сохранение лесов&quot;
+                                    </Link>
+                                </li>
+                            </ul>
+                        </details>
+                    </li>
 
-                        <li>
-                            <details>
-                                <summary>Экономика</summary>
-                                <ul>
-                                    <li>
-                                        <Link href="/economy#vrp_analysis">
-                                            Анализ ВРП Курской области
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/economy#table_vrp">
-                                            Сравнительная таблица ключевых направлений ВРП
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/economy#kursk_magnetic_anomaly">
-                                            Курская магнитная аномалия
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </details>
-                        </li>
+                    <li>
+                        <details>
+                            <summary>Экономика</summary>
+                            <ul>
+                                <li>
+                                    <Link href="/economy#vrp_analysis">
+                                        Анализ ВРП Курской области
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/economy#table_vrp">
+                                        Сравнительная таблица ключевых направлений ВРП
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/economy#kursk_magnetic_anomaly">
+                                        Курская магнитная аномалия
+                                    </Link>
+                                </li>
+                            </ul>
+                        </details>
+                    </li>
 
-                        <li>
-                            <details>
-                                <summary>Туризм</summary>
-                                <ul>
-                                    <li>
-                                        <Link href="/tourism#tourism_infrastructure">
-                                            Инфраструктура туризма
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/tourism#attractions">
-                                            Популярные места и достопримечательности
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/tourism#natural_attractions">
-                                            Уникальные природные объекты
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </details>
-                        </li>
+                    <li>
+                        <details>
+                            <summary>Туризм</summary>
+                            <ul>
+                                <li>
+                                    <Link href="/tourism#tourism_infrastructure">
+                                        Инфраструктура туризма
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/tourism#attractions">
+                                        Популярные места и достопримечательности
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/tourism#natural_attractions">
+                                        Уникальные природные объекты
+                                    </Link>
+                                </li>
+                            </ul>
+                        </details>
+                    </li>
 
-                        <li>
-                            <Link href="/reviews">Отзывы</Link>
-                        </li>
+                    <li>
+                        <Link href="/reviews">Отзывы</Link>
+                    </li>
 
-                        <li>
-                            <details>
-                                <summary>Города</summary>
-                                <ul>
-                                    <li>
-                                        <Link href="/cities">Города Курской области</Link>
-                                    </li>
-                                </ul>
-                            </details>
-                        </li>
-                    </ul>
-                </aside>
+                    <li>
+                        <details>
+                            <summary>Города</summary>
+                            <ul>
+                                <li>
+                                    <Link href="/cities">Города Курской области</Link>
+                                </li>
+                            </ul>
+                        </details>
+                    </li>
+                </ul>
             </nav>
         </header>
     );

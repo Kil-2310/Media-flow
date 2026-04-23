@@ -1,13 +1,11 @@
 @use '@/app/styles/mixins' as *;
 
 .preview_article{
-    width: 100vw;
-    height: clamp(80vh, 25vw, 100vh);
+    height: clamp(50vh, 50vw, 100vh);
 
     @include markup($justify-content: flex-start);
     position: relative;
     
-
     img{
         position: absolute;
         
@@ -23,5 +21,16 @@
         color: var(--const_font_white_color);
 
         padding-left: 1em;
+    }
+}
+
+@media (max-width: 1024px){
+    .preview_article{
+        justify-content: center !important;
+
+        h1{
+            padding-inline: 0.3em;
+            text-align: center;
+        }
     }
 }

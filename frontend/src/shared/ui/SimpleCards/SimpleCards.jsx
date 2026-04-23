@@ -4,16 +4,24 @@ import dataSimpleCards from './dataSimpleCards';
 const SimpleCards = ({ TitleSimpleCards }) => {
     const categoryData = dataSimpleCards[TitleSimpleCards];
 
+    if (!categoryData) {
+        return null;
+    }
+
     return (
         <section className={styles.container}>
-            {Object.entries(categoryData).map(([category, items]) => (
-                <aside key={category} className={styles.container__simple_card}>
-                    <strong dangerouslySetInnerHTML={{ __html: category }} />
+            {categoryData.map((category, idx) => (
+                <aside key={idx} className={styles.simple_card}>
+                    <strong
+                        dangerouslySetInnerHTML={{
+                            __html: `${category.icon} ${category.category}`,
+                        }}
+                    />
 
                     <ul>
-                        {items.map((item, index) => (
-                            <li key={index}>
-                                <span dangerouslySetInnerHTML={{ __html: item }} />
+                        {category.items.map((item, itemIdx) => (
+                            <li key={itemIdx}>
+                                {item.icon} <a href="${item.href}">{item.text}</a>
                             </li>
                         ))}
                     </ul>

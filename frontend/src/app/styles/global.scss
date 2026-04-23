@@ -31,13 +31,22 @@ ul, ol {
     list-style: none;
 }
 
-.title,
+h1,
+h2,
+h3,
+h4{
+    text-align: center;
+}
+
+h1{
+    font-size: var(--h1_font_size);
+}
+
 h2{
     margin-block: clamp(5vw, 5vh, 10vw);
     font-weight: 100;
     font-size: var(--h2_font_size);
     padding-inline: 0.5em;
-    text-align: center;
     color: var(--changeable_font_color);
 
     @include markup();

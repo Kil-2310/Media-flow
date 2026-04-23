@@ -29,7 +29,7 @@ jobs:
       - name: Check formatting with Prettier JavaScript
         run: |
           cd frontend
-          npx prettier --check "src/**/*.{js,jsx,ts,tsx,json}"
+          npx prettier --check "src/**/*.{js,jsx,ts,tsx,json}" --config ./config_data/.prettierrc
           
           
 

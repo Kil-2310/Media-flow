@@ -1,5 +1,6 @@
 'use client';
 import styles from './SettingsPanel.module.scss';
+
 import { memo, useContext } from 'react';
 import ContestContext from '@/entities/model/ContestProvider';
 

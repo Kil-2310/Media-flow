@@ -1,5 +1,6 @@
 const useSettingsLocalStorage = () => {
     const getSavedSettings = () => {
+        // Проверка на SSR (серверный рендеринг)
         if (typeof window === 'undefined') {
             return null;
         }

@@ -5,13 +5,17 @@ import dataAsideBlock from './dataAsideBlock';
 const AsideBlock = ({ asideTitle }) => {
     const AsideData = dataAsideBlock[asideTitle];
 
+    if (!AsideData) {
+        return <p>Данные не найдены</p>;
+    }
+
     return (
         <aside className={`${styles.aside_block}`}>
-            <Image src={AsideData[0]} width={1000} height={500} />
+            <Image src={AsideData.image} alt={AsideData.alt} width={1000} height={500} />
 
             <div>
-                <p>{AsideData[1]}</p>
-                {AsideData[2] && <audio src={AsideData[2]} controls />}
+                <p>{AsideData.description}</p>
+                {AsideData.audio && <audio src={AsideData.audio} controls />}
             </div>
         </aside>
     );

@@ -1,19 +1,19 @@
 @use '@/app/styles/mixins' as *;
 
 .settings_panel{
-    height: clamp(8vh, 20vw, 11vh);
+    height: clamp(7vh, 20vw, 10vh);
 
     background-color: #535353;
 
     @include markup($justify-content: space-between);
-    padding-inline: 3vw;
+    padding-inline: 2vw;
 
     p{
         font-size: var(--smolle_text_size);
     }
 
     .changing_font{
-        width: clamp(60px, 20%, 20%);
+        width: clamp(10vh, 20vh + 10vw, 25%);
 
         display: grid;
         grid-template-columns: 1fr 2fr 1fr;
@@ -25,17 +25,13 @@
         p,
         button{
             color: var(--const_font_white_color);
-            
             font-weight: bold;
-            @include markup();
-
-            padding: 0.15em;
         }
 
         p{
             background-color: #909090;
             border-radius: 10px;
-            height: 100%;
+            @include markup();
         }
 
         button{
@@ -46,13 +42,13 @@
 
     .themes{
         height: 100%;
-        width: clamp(60%, 70%, 80%);
+        width: clamp(50%, 65vh, 70%);
 
         @include markup($justify-content: space-between);
 
         div{
             width: clamp(60px, 40%, 30%);
-            height: clamp(50%, 2rem, 65%);
+            height: 48%;
             
             position: relative;
             background-color: #323232;

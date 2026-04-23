@@ -1,10 +1,28 @@
 const dataPreviewArticle = {
-    cities: ['Города Курской области', '/images/region/kursk_region_map.jpg'],
-    culture: ['Культурный образ Курской области', '/images/region/culture.jpg'],
-    ecology: ['Экология и природа Курской области', '/images/region/ecology.jpg'],
-    economy: ['Экономика и ВРП Курской области', '/images/region/economy.jpg'],
-    history: ['История развития Курской области', '/images/region/kurska_duga.jpg'],
-    tourism: ['Туризм Курской области', '/images/region/cathedral.jpg'],
+    cities: {
+        title: 'Города Курской области',
+        image: '/images/region/kursk_region_map.jpg',
+    },
+    culture: {
+        title: 'Культурный образ Курской области',
+        image: '/images/region/culture.jpg',
+    },
+    ecology: {
+        title: 'Экология и природа Курской области',
+        image: '/images/region/ecology.jpg',
+    },
+    economy: {
+        title: 'Экономика и ВРП Курской области',
+        image: '/images/region/economy.jpg',
+    },
+    history: {
+        title: 'История развития Курской области',
+        image: '/images/region/kurska_duga.jpg',
+    },
+    tourism: {
+        title: 'Туризм Курской области',
+        image: '/images/region/cathedral.jpg',
+    },
 };
 
 export default dataPreviewArticle;

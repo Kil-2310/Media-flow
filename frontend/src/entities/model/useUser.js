@@ -1,26 +1,23 @@
-import { useCallback } from "react";
+import { useCallback } from 'react';
 import { userAPI } from '@/shared/api';
 
 const useUser = () => {
-    const sendFeedback = useCallback(async (content, email, setIsSubmitting) => {
+    const sendFeedback = useCallback((content, email, setIsSubmitting) => {
         const formData = {
             email: email,
-            content: content
-        }
+            content: content,
+        };
 
-        try {
-            const response = await userAPI.APISendFeedback(formData);
-            console.log('✅ Feedback sent successfully', response);
-        } catch (error) {
-            console.error('❌ Failed to send feedback:', error);
-        } finally {
-            setIsSubmitting(false);
-        }
-    }, [])
-    
+        userAPI
+            .APISendFeedback(formData)
+            .then(() => alert('Успешно'))
+            .catch(() => alert('Ошибка отправки ('))
+            .finally(() => setIsSubmitting(false));
+    }, []);
+
     return {
-        sendFeedback
-    }
-}
+        sendFeedback,
+    };
+};
 
 export default useUser;

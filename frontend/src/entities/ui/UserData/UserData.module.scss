@@ -1,8 +1,31 @@
 @use '@/app/styles/mixins' as *;
 
 .form{
-    width: 80vw;
+    width: 65vw;
     margin: 5vh auto;
+
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 3vh;
+
+    div{
+        @include markup($justify-content: space-between);
+        margin-block: 5ch;
+
+        &:last-child{
+            padding-inline: 5vw;
+        }
+    }
+
+    textarea,
+    input{
+        width: 60%;
+    }
+
+    textarea{
+        resize: vertical;
+    }
+
 
     &__markup_buttons{
         @include markup($justify-content: space-around);

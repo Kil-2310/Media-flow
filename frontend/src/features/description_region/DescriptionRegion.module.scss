@@ -3,40 +3,38 @@
 .description_region{
     margin-top: 1px;
     
-    width: 100vw;
-    height: clamp(60vh, 35vw, 80vh);
     position: relative;
+    
     background-image: url('/images/region/second_page_image.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
 
-    display: grid;
-    grid-template-rows: 25% 30% 40%;
+    padding-bottom: 5vh;
 
-    &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.7);
-        z-index: 1;
-    }
+    @include blackout();
 
     h2,
     p,
-    strong,
-    #container_iframe_map{
+    strong{
         position: relative;
         z-index: 2;
         color: var(--const_font_white_color);
     }
 
     h2{
-        font-size: var(--h2_font_size);
+        height: clamp(15vh, 10vw, 20vh);
+        margin: 0;
+
         @include markup();
-        font-weight: 100;
+        text-align: center;
+    }
+
+    p{
+        font-size: var(--simple_text_size);
+        padding: 0.5em 5vw;
+        text-align: center;
+
+        min-height: 30vh;
     }
 }

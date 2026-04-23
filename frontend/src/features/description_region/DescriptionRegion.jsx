@@ -4,9 +4,9 @@ import Iframe from '@/shared/ui/Iframe';
 const DescriptionRegion = () => {
     return (
         <section className={`${styles.description_region}`}>
-            <h2>Курская область на карте россии</h2>
+            <h2>Курская область на карте России</h2>
 
-            <p className="simple_text">
+            <p>
                 <a target="_blank" href="" rel="noopener noreferrer">
                     <strong>Курская область</strong>
                 </a>{' '}
