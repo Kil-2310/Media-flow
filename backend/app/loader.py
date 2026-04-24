@@ -8,6 +8,7 @@ from .middleware import (
     setup_profiler,
 )
 
+
 def register_middleware(app: FastAPI):
     # Настройки безопасности
     setup_throttle(app)
@@ -15,9 +16,11 @@ def register_middleware(app: FastAPI):
     setup_cors_protect(app)
     setup_profiler(app)
 
+
 def register_routes(app: FastAPI):
     # Регистрация маршрутов
     register_user_routes(app)
+
 
 def create_app() -> FastAPI:
     app = FastAPI()

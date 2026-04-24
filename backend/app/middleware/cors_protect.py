@@ -8,7 +8,7 @@ def setup_cors_protect(app: FastAPI):
     app.add_middleware(
         CORSMiddleware,
         allow_credentials=True,  # Разрешение cookies и авторизации
-        allow_origins=[FRONTEND_URL], # Адрес Frontend
+        allow_origins=[FRONTEND_URL],  # Адрес Frontend
         allow_methods=["*"],  # Все HTTP методы
         allow_headers=["*"],  # Все заголовки
     )

@@ -18,7 +18,7 @@ def setup_profiler(app: FastAPI):
                 return Response(
                     "Unauthorized",
                     status_code=401,
-                    headers={"WWW-Authenticate": "Basic realm='Profiler'"}
+                    headers={"WWW-Authenticate": "Basic realm='Profiler'"},
                 )
 
             try:

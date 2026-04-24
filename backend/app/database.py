@@ -6,7 +6,6 @@ from sqlacache import configure
 
 from .config_data.config import DB_NAME, DB_PASSWORD, DB_USER, IS_PROD, REDIS_SESSIONS
 
-
 if not IS_PROD:
     engine = create_async_engine("sqlite+aiosqlite:///./app.db", echo=True)
 else:
@@ -17,6 +16,7 @@ else:
 async_session = async_sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
 
 Base = declarative_base()
+
 
 async def get_session() -> AsyncGenerator[AsyncSession, None]:
     async with async_session() as session:
@@ -29,6 +29,7 @@ async def get_session() -> AsyncGenerator[AsyncSession, None]:
         finally:
             await session.close()
 
+
 sqlacache = configure(
     backend=REDIS_SESSIONS,
     models={
@@ -40,9 +41,11 @@ sqlacache = configure(
     prefix="sqlacache",
 )
 
+
 async def init_cache():
     """Привязывает кэш к engine. Вызвать при запуске приложения."""
     await sqlacache.bind(engine)
+
 
 async def close_cache():
     """Закрывает соединение с Redis."""
