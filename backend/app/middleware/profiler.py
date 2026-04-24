@@ -3,7 +3,7 @@ import base64
 from fastapi import FastAPI, Request, Response
 from fastapi_profiler import Profiler
 
-from .config_data import PROFILER_USER, PROFILER_PASSWORD
+from ..config_data import PROFILER_USER, PROFILER_PASSWORD
 
 
 def setup_profiler(app: FastAPI):

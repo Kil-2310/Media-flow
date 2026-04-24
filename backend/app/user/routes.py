@@ -1,13 +1,20 @@
-from fastapi import Depends, Header, FastAPI, Request
-from sqlalchemy.ext.asyncio import AsyncSession
+from fastapi import Depends, FastAPI, Request, HTTPException
+from fastapi_csrf_protect import CsrfProtect
+from typing import Optional
 
-from ..config_data import logger
-from ..database import get_session
+from ..config_data import logger, IS_PROD
 from .schemas import FeedbackCreate
 from ..base_schemas import ServerBoolAnswer
 from ..celery import celery_send_email
-from ..config_data import SMTP_USER
+from ..config_data import SMTP_USER, IS_PROD
 
+async def get_csrf_prod() -> CsrfProtect:
+    """CSRF защита для продакшена"""
+    return CsrfProtect()
+
+async def get_csrf_dev() -> None:
+    """Заглушка для разработки"""
+    return None
 
 def register_user_routes(app: FastAPI):
     @app.post(
@@ -17,8 +24,18 @@ def register_user_routes(app: FastAPI):
         summary='Отправка письма на почту автора',
         response_model=ServerBoolAnswer,
     )
-    async def send_feedback(feedback: FeedbackCreate) -> ServerBoolAnswer:
+    async def send_feedback(
+            feedback: FeedbackCreate,
+            request: Request,
+            csrf_protect: CsrfProtect = Depends(get_csrf_prod if IS_PROD else get_csrf_dev)
+    ) -> ServerBoolAnswer:
         """Отправка письма на почту автора"""
+
+        if csrf_protect:
+            await csrf_protect.validate_csrf(request)
+        else:
+            logger.debug("CSRF проверка пропущена (режим разработки)")
+
         logger.debug("Отправка письма на почту автора")
 
         user_email = feedback.email
