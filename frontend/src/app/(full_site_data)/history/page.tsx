@@ -8,9 +8,8 @@ import ChronologicalSequence from '@/shared/ui/ChronologicalSequence';
 import Slider from '@/shared/ui/Slider';
 
 export const metadata: Metadata = {
-    title: 'История Курской области: от древности до героев наших дней | Курская дуга, СВО, события',
-    description:
-        'История Курской области: первое упоминание в 1032 году, Курская битва, оккупация, послевоенное развитие, строительство Курской АЭС, чернобыльская катастрофа и современные герои СВО. Полная хронология с 1917 по 2025 год.',
+    title: 'История Курской области: от древности до героев наших дней | Курская дуга, СВО, события | History of Kursk Region',
+    description: 'История Курской области: первое упоминание в 1032 году, Курская битва, оккупация, послевоенное развитие, строительство Курской АЭС, чернобыльская катастрофа и современные герои СВО. Для жителей России, СНГ и иностранных гостей. Полная хронология с 1917 по 2025 год. | History of the Kursk region: first mention in 1032, Kursk Battle, occupation, post-war development, construction of Kursk NPP, Chernobyl disaster and modern heroes. For residents of Russia, CIS and foreign guests.',
     keywords: [
         'история Курской области',
         'Курская область история',
@@ -30,103 +29,142 @@ export const metadata: Metadata = {
         'Курская губерния',
         'события Курской области',
         'развитие Курской области',
+        'история России регионы',
+        'поездка в Курск из Беларуси',
+        'экскурсии по историческим местам Курска',
+        'Kursk region history',
+        'Kursk Battle 1943',
+        'Battle of Kursk',
+        'Prokhorovka tank battle',
+        'Kursk WWII history',
+        'Kursk NPP history',
+        'heroes of Kursk region',
+        'Kursk military history',
+        'Kursk Oblast history',
     ],
-    authors: [{ name: 'Хомяков Евгений Алексеевич', url: 'https://kursk-region.ru' }],
+    authors: [
+        { 
+            name: 'Хомяков Евгений Алексеевич | Evgeny Khomyakov', 
+            url: 'https://kursk-region.ru' 
+        },
+    ],
     robots: {
         index: true,
         follow: true,
         googleBot: {
             index: true,
             follow: true,
+            'max-snippet': 280,
+            'max-image-preview': 'large',
         },
     },
     metadataBase: new URL('https://kursk-region.ru'),
     alternates: {
         canonical: 'https://kursk-region.ru/history',
+        languages: {
+            'ru': 'https://kursk-region.ru/history',
+            'en': 'https://kursk-region.ru/en/history',
+        },
     },
     openGraph: {
-        title: 'История Курской области: хронология событий от древности до наших дней',
-        description:
-            'Первое упоминание Курска – 1032 год. Курская дуга, освобождение от оккупации, строительство Курской АЭС, чернобыльская трагедия, подвиги героев СВО. Полная историческая хроника.',
+        title: 'История Курской области | От Курской дуги до героев СВО | History of Kursk Region | From Kursk Battle to Modern Heroes',
+        description: 'Первое упоминание Курска – 1032 год. Курская дуга, освобождение от оккупации, строительство Курской АЭС, чернобыльская трагедия, подвиги героев СВО. Для гостей из СНГ и иностранных туристов. | First mention of Kursk - 1032. Kursk Bulge, liberation from occupation, construction of Kursk NPP, Chernobyl tragedy, exploits of modern heroes. For guests from CIS and international tourists.',
         url: 'https://kursk-region.ru/history',
-        siteName: 'Курская область',
+        siteName: 'Курская область | Kursk Region',
         images: [
             {
                 url: '/images/region/kurska_duga.jpg',
                 width: 1200,
                 height: 630,
-                alt: 'Курская дуга – крупнейшее танковое сражение 1943 года',
+                alt: 'Курская дуга – крупнейшее танковое сражение 1943 года | Kursk Bulge - the largest tank battle of 1943',
             },
         ],
         locale: 'ru_RU',
+        alternateLocale: ['en_US', 'kk_KZ', 'uz_UZ', 'be_BY'],
         type: 'website',
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'История Курской области: от Курской дуги до героев СВО',
-        description:
-            'Хронология ключевых событий: 1032 год, Курская битва, Курская АЭС, чернобыльская катастрофа, подвиги современных героев. Полная история региона.',
+        title: 'История Курской области | От Курской дуги до героев СВО',
+        description: 'Хронология ключевых событий: 1032 год, Курская битва, Курская АЭС, чернобыльская катастрофа, подвиги современных героев. Для жителей России, СНГ и гостей из-за рубежа.',
         images: ['/images/region/kurska_duga.jpg'],
     },
+    category: 'history',
+    classification: 'История, Краеведение, Военная история, Региональная история, History, Local History, Military History, Regional History',
 };
+
+function BreadcrumbJsonLd() {
+    return (
+        <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                        {
+                            "@type": "ListItem",
+                            "position": 1,
+                            "name": "Главная",
+                            "item": "https://kursk-region.ru"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 2,
+                            "name": "История Курской области",
+                            "item": "https://kursk-region.ru/history"
+                        }
+                    ]
+                })
+            }}
+        />
+    );
+}
+
+function HistoryJsonLd() {
+    return (
+        <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "HistoricalEvent",
+                    "name": "Курская битва",
+                    "description": "Одно из крупнейших танковых сражений Второй мировой войны",
+                    "location": "Курская область, Россия"
+                })
+            }}
+        />
+    );
+}
 
 export default function HistoryPage() {
     const articleTitle = 'history';
 
     return (
         <>
+            <BreadcrumbJsonLd />
+            <HistoryJsonLd />
+            
             <PreviewArticle previewTitle={articleTitle} />
 
             <IntroductoryTextArticle articleTitle={articleTitle} />
 
-            <hr />
-
-            <h2 id="history_kursk_region">История развития Курской области</h2>
+            <h2 id="history_kursk_region">История развития Курской области | History of Kursk Region Development</h2>
 
             <ChronologicalSequence ChronologicalSequenceTitle={'history_kursk_region'} />
 
-            <h2 id="kursk_bulge">Курская дуга 1943 год</h2>
+            <h2 id="kursk_bulge">Курская дуга 1943 год | Kursk Bulge 1943</h2>
 
             <AsideBlock asideTitle={'kursk_bulge'} />
 
-            <h2 id="heroes_our_time">Герои нашего времени</h2>
-
-            <p className="simple_text">
-                Сегодня, как и в годы Великой Отечественной, Курская земля вновь доказывает: наш
-                народ един, когда речь идет о защите Родины. Вы можете ознакомиться с подвигами
-                простых курян, волонтеров и всех, кому небезразлична судьба нашего народа, — в
-                материалах: о подвиге курян и единстве после атак в приграничье; о героях Курской
-                области и цене спасения мирных жителей; об открытии в Курске мемориальной доски
-                герою СВО Владиславу Капле.
-            </p>
-            <p className="simple_text">
-                Но, говоря о сегодняшних героях, мы не вправе забывать и тех, кто отдал свои жизни,
-                сражаясь за Родину в годы Великой Отечественной войны. Бессмертный полк шагает по
-                Курску и в наши дни — памятью, благодарностью и верой.
-            </p>
-            <p className="simple_text">
-                С героями Специальной военной операции вы можете ознакомиться в разделе: «Герои
-                Спецоперации РФ».
-            </p>
+            <h2 id="heroes_our_time">Герои нашего времени | Heroes of Our Time</h2>
 
             <ImageSimpleCards simpleCardsTitle={'heroes_our_time'} />
 
             <h2 id="museum_ponyri">
-                Современные музеи, посвященные Специальной Военной Операции (СВО)
+                Современные музеи, посвященные Специальной Военной Операции (СВО) | Modern Museums Dedicated to the Special Military Operation (SVO)
             </h2>
-
-            <p className="simple_text">
-                1941–1943 годы стали самым тяжёлым испытанием для Курской области — регион пережил
-                фашистскую оккупацию, но в ходе легендарной Курской битвы (5 июля – 23 августа 1943
-                года) советские войска не только освободили край, но и разгромили врага, повернув
-                ход войны.
-            </p>
-            <p className="simple_text">
-                Сегодня область вновь столкнулась с вызовами времени: в условиях СВО здесь
-                открываются военно-патриотические музеи, призванные сохранить память о подвиге
-                предков и современников. Один из таких музеев расположен в рабочем поселке Поныри,
-                выше приведен один из его монументов.
-            </p>
 
             <Slider SliderTitle={'museum_ponyri'} />
         </>

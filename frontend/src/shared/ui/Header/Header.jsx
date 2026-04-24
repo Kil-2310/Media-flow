@@ -154,9 +154,9 @@ const Header = () => {
                     </li>
 
                     <li>
-                        <select name="cities" defaultValue="" aria-label="Города">
+                        <select name="cities" defaultValue="" aria-label="Города" onChange={ChangeLocation}>
                             <option value="">Города</option>
-                            <option value="/cities">Города Курской области</option>
+                            <option disabled value="/cities">В разработке</option>
                         </select>
                     </li>
                 </ul>
@@ -332,7 +332,7 @@ const Header = () => {
                             <summary>Города</summary>
                             <ul>
                                 <li>
-                                    <Link href="/cities">Города Курской области</Link>
+                                    В разработке
                                 </li>
                             </ul>
                         </details>

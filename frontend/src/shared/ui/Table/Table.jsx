@@ -1,12 +1,12 @@
 import dataTable from './dataTable';
 import styles from './Table.module.scss';
 
-const Table = ({ TitleTable }) => {
-    const data = dataTable[TitleTable];
+const Table = ({ tableTitle }) => {
+    const data = dataTable[tableTitle];
 
     return (
         <section className={`${styles.container}`}>
-            <table className={`${styles.container__table}`}>
+            <table>
                 <thead>
                     <tr>
                         {data['headers'].map((head, index) => (

@@ -27,6 +27,7 @@ const Slider = ({ SliderTitle }) => {
                     width={500}
                     height={300}
                     alt="Изображение со слайдера"
+                    className='html_image'
                 />
 
                 <button onClick={() => updateImage('down')}>←</button>

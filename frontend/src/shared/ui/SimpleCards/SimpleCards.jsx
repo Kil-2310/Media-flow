@@ -12,11 +12,7 @@ const SimpleCards = ({ TitleSimpleCards }) => {
         <section className={styles.container}>
             {categoryData.map((category, idx) => (
                 <aside key={idx} className={styles.simple_card}>
-                    <strong
-                        dangerouslySetInnerHTML={{
-                            __html: `${category.icon} ${category.category}`,
-                        }}
-                    />
+                    <strong>{category.category}</strong>
 
                     <ul>
                         {category.items.map((item, itemIdx) => (

@@ -1,11 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import styles from './UserData.module.scss';
+
+import styles from './UserForm.module.scss';
 import Button from '@/shared/ui/Button';
 import useUser from '@/entities/model/useUser';
 
-const UserData = () => {
+const UserForm = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const { sendFeedback } = useUser();
 
@@ -21,7 +22,7 @@ const UserData = () => {
     };
 
     return (
-        <form onSubmit={submitForm} className={`${styles.form}`}>
+        <form onSubmit={submitForm} className={styles.form}>
             <h1>Форма обратной связи</h1>
 
             <div>
@@ -44,23 +45,24 @@ const UserData = () => {
                 <textarea
                     className="form-control"
                     id="content"
-                    rows="3"
                     name="content"
+                    minLength={3}
                     required
                 ></textarea>
             </div>
 
             <div>
+                <Button className={'red_button'} type={'reset'}>
+                    Очистить
+                </Button>
+
                 <Button className={'blue_button'} type={'submit'} isDisabled={isSubmitting}>
                     {isSubmitting ? 'Отправка...' : 'Отправить'}
                 </Button>
 
-                <Button className={'blue_button'} type={'reset'}>
-                    Очистить
-                </Button>
             </div>
         </form>
     );
 };
 
-export default UserData;
+export default UserForm;

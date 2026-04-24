@@ -2,17 +2,14 @@ const dataSimpleCards = {
     traditions: [
         {
             category: 'Народные',
-            icon: '🏺',
             items: [
                 {
-                    icon: '🏺',
-                    text: 'Курская Коренская ярмарка',
+                    text: '🏺 Курская Коренская ярмарка',
                     href: '#',
                     description: 'Народные традиции',
                 },
                 {
-                    icon: '🪇',
-                    text: 'Свистовун',
+                    text: '🪇 Свистовун',
                     href: '#',
                     description: 'Народные традиции',
                 },
@@ -20,17 +17,14 @@ const dataSimpleCards = {
         },
         {
             category: 'Фольклор и музыкальные',
-            icon: '♬',
             items: [
                 {
-                    icon: '🐦',
-                    text: 'Курский соловей',
+                    text: '🐦 Курский соловей',
                     href: '#',
                     description: 'Фольклор и музыкальные традиции',
                 },
                 {
-                    icon: '🎼',
-                    text: 'Ансамбль «Курские соловьи»',
+                    text: '🎼 Ансамбль «Курские соловьи»',
                     href: '#',
                     description: 'Фольклор и музыкальные традиции',
                 },
@@ -38,23 +32,19 @@ const dataSimpleCards = {
         },
         {
             category: 'Кулинарные',
-            icon: '🎂',
             items: [
                 {
-                    icon: '🥞',
-                    text: 'Курские блины',
+                    text: '🥞 Курские блины',
                     href: '#',
                     description: 'Кулинарные традиции',
                 },
                 {
-                    icon: '🍲',
-                    text: 'Суджанский борщ',
+                    text: '🍲 Суджанский борщ',
                     href: '#',
                     description: 'Кулинарные традиции',
                 },
                 {
-                    icon: '🍎',
-                    text: 'Курское яблоко',
+                    text: '🍎 Курское яблоко',
                     href: '#',
                     description: 'Кулинарные традиции',
                 },
@@ -62,17 +52,14 @@ const dataSimpleCards = {
         },
         {
             category: 'Календарные и аграрные',
-            icon: '⌛',
             items: [
                 {
-                    icon: '🐎',
-                    text: 'Вождение коня',
+                    text: '🐎 Вождение коня',
                     href: '#',
                     description: 'Календарные и аграрные обряды',
                 },
                 {
-                    icon: '🌷',
-                    text: 'Закликание весны',
+                    text: '🌷 Закликание весны',
                     href: '#',
                     description: 'Календарные и аграрные обряды',
                 },
@@ -80,17 +67,14 @@ const dataSimpleCards = {
         },
         {
             category: 'Военные и казачьи',
-            icon: '⭐',
             items: [
                 {
-                    icon: '⚔️',
-                    text: 'Рыльские казаки',
+                    text: '⚔️ Рыльские казаки',
                     href: '#',
                     description: 'Военные и казачьи традиции',
                 },
                 {
-                    icon: '🏆',
-                    text: 'День Курской битвы',
+                    text: '🏆 День Курской битвы',
                     href: '#',
                     description: 'Военные и казачьи традиции',
                 },
