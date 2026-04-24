@@ -5,6 +5,8 @@ const IntroductoryTextArticle = ({ articleTitle }) => {
     return (
         <aside className={`${styles.introductory_text_article}`}>
             <p>{dataIntroductoryTextArticle[articleTitle]}</p>
+            
+            <hr />
         </aside>
     );
 };

@@ -1,8 +1,6 @@
 @use '@/app/styles/mixins' as *;
 
 .slider{
-    width: 100vw;
-
     div{
         width: 90%;
         height: 80vh;
@@ -19,6 +17,8 @@
             width: 100%;
             height: 100%;
 
+            filter: brightness(0.7);
+
             object-fit: cover;
             border-radius: 25px;
         }
@@ -31,7 +31,7 @@
             border-radius: 10px;
             min-width: 7vw;
 
-            background-color: var(--bg_simple_cards);
+            background-color: var(--bg_elements);
             color: var(--const_font_black_color);
             font-size: var(--h3_font_size);
         }

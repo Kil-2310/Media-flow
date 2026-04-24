@@ -7,7 +7,7 @@ const ChronologicalSequence = ({ ChronologicalSequenceTitle }) => {
 
     const renderImageBlock = (img) => {
         return img ? (
-            <Image src={img} alt="Декоративное изображение" width={300} height={300} />
+            <Image src={img} alt="Декоративное изображение" width={300} height={300} className='html_image' />
         ) : (
             <div className={`${styles.darck_bg}`}></div>
         );

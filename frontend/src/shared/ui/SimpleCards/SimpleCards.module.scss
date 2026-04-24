@@ -2,17 +2,17 @@
 
 .container{
     @include markup();
-    row-gap: 7vh;
     flex-direction: column;
+    row-gap: 7vh;
 
     .simple_card{
         margin: auto;
-        height: 35vh;
+        height: 25vh;
         width: 90%;
 
         @include markup();
 
-        background-color: var(--bg_simple_cards);
+        background-color: var(--bg_elements);
         border-radius: 10px;
 
         strong,
@@ -23,7 +23,7 @@
         }
 
         strong{
-            width: clamp(10vw, 20vw, 40vw);
+            width: 25%;
             height: 100%;
 
             border-left: 2px solid var(--const_font_blue_color);
@@ -35,12 +35,11 @@
         }
 
         ul{
-            width: clamp(60vw, 20vw, 75vw);
+            width: 75%;
             height: 100%;
-
             text-decoration: underline;
 
-            @include markup();
+            @include markup($justify-content: space-evenly);
             flex-direction: column;
         }
     }

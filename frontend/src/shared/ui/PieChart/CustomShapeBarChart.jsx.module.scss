@@ -1,0 +1,12 @@
+@use '@/app/styles/mixins' as *;
+
+.container{
+    @include markup();
+
+    height: clamp(50vh, 40vw, 80vh);
+
+    & > div{
+        height: 90%;
+
+    }
+}

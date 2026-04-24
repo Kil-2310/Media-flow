@@ -7,14 +7,14 @@ const SmallDescriptionCards = ({ cardsTitle }) => {
 
     return (
         <section className={`${styles.container_small_cards}`}>
-            {Object.entries(cardsData).map(([title, [description, image, link]]) => (
-                <aside key={title} className={`${styles.container_small_cards__card}`}>
+            {Object.entries(cardsData).map(([title, { description, image, alt, href }]) => (
+                <aside key={title} className={`${styles.card}`}>
                     <h3>{title}</h3>
                     <div>
-                        <Image src={image} alt={title} width={900} height={200} />
+                        <Image src={image} alt={alt || title} width={900} height={200} className='html_image' />
                         <div>
                             <p>{description}</p>
-                            <a href={link}>Подробнее</a>
+                            <a href={href}>Подробнее</a>
                         </div>
                     </div>
                 </aside>
