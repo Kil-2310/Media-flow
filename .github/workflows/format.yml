@@ -51,7 +51,7 @@ jobs:
           SMTP_HOST=host
           SMTP_PORT=0
           FRONTEND_URL=url
-          IS_PROD=false
+          IS_PROD=False
           EOF
 
       - name: Run pytest

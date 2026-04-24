@@ -3,7 +3,7 @@ import base64
 from fastapi import FastAPI, Request, Response
 from fastapi_profiler import Profiler
 
-from .config_data import PROFILER_USER, PROFILER_PASSWORD
+from ..config_data import PROFILER_USER, PROFILER_PASSWORD
 
 
 def setup_profiler(app: FastAPI):
@@ -18,7 +18,7 @@ def setup_profiler(app: FastAPI):
                 return Response(
                     "Unauthorized",
                     status_code=401,
-                    headers={"WWW-Authenticate": "Basic realm='Profiler'"}
+                    headers={"WWW-Authenticate": "Basic realm='Profiler'"},
                 )
 
             try:
