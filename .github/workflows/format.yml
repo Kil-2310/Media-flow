@@ -2,7 +2,7 @@ name: Code Formatting Check
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ develop ]
   pull_request:
     branches: [ main, develop ]
 
@@ -30,8 +30,6 @@ jobs:
         run: |
           cd frontend
           npx prettier --check "src/**/*.{js,jsx,ts,tsx,json}" --config ./config_data/.prettierrc
-          
-          
 
       - uses: actions/setup-python@v4
         with:
@@ -46,12 +44,27 @@ jobs:
           DB_USER=user
           DB_PASSWORD=user_password
           DB_NAME=database_name
+          
           SMTP_USER=email
           SMTP_PASSWORD=password
           SMTP_HOST=host
           SMTP_PORT=0
+          
           FRONTEND_URL=url
-          IS_PROD=False
+          CSRF_TOKEN=token
+          
+          PROFILER_USER=user
+          PROFILER_PASSWORD=user_password
+          
+          REDIS_BROKER=route
+          REDIS_BACKEND=route
+          
+          REDIS_CLIENT=route
+          
+          REDIS_SESSIONS=route
+          
+          IS_PROD=is_prod_True/False_?
+
           EOF
 
       - name: Run pytest
