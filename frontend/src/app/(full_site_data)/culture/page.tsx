@@ -159,21 +159,21 @@ export default function CulturePage() {
 
             <IntroductoryTextArticle articleTitle={articleName} />
 
-            <h2 id="directions">Основные направления культуры Курской области | Main Directions of Culture of Kursk Region</h2>
+            <h2 id="directions">Основные направления культуры Курской области</h2>
 
             <SmallDescriptionCards cardsTitle={'cultural_trends'} />
 
-            <h2 id="nightingale">Курский соловей — пернатый символ соловьиного края | Kursk Nightingale — The Feathered Symbol of the Nightingale Land</h2>
+            <h2 id="nightingale">Курский соловей — пернатый символ соловьиного края</h2>
 
             <AsideBlock asideTitle={'kursk_nightingale'} />
 
-            <h2 id="personalities">Известные личности Курской области | Notable Personalities of Kursk Region</h2>
+            <h2 id="personalities">Известные личности Курской области</h2>
 
             <SmallDescriptionCards cardsTitle={'notable_figures'} />
 
-            <h2 id="traditions">Традиции Курской области | Traditions of Kursk Region</h2>
+            <h2 id="traditions">Традиции Курской области</h2>
 
-            <SimpleCards TitleSimpleCards={'traditions'} />
+            <SimpleCards simpleCardsTitle={'traditions'} />
         </>
     );
 }
