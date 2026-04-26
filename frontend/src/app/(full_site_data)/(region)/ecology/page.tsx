@@ -5,10 +5,12 @@ import IntroductoryTextArticle from '@/shared/ui/IntroductoryTextArticle';
 import AsideBlock from '@/shared/ui/AsideBlock';
 import SmallDescriptionCards from '@/shared/ui/SmallDescriptionCards';
 import ImageSimpleCards from '@/shared/ui/ImageSimpleCards';
+import SimpleAreaChart from '@/shared/ui/SimpleAreaChart';
 
 export const metadata: Metadata = {
     title: 'Экология и природа Курской области: климат, рельеф, заповедник имени Алёхина, Красная книга | Соловьиный край | Ecology and Nature of Kursk Region',
-    description: 'Узнайте об экологии и природе Курской области: климат, рельеф, реки, Центрально-Чернозёмный заповедник, экологические проблемы, лесовосстановление и редкие виды из Красной книги. Для жителей России, СНГ и иностранных гостей. | Learn about the ecology and nature of the Kursk region: climate, relief, rivers, Central Black Earth Reserve, environmental problems, reforestation and rare species from the Red Book. For residents of Russia, CIS and foreign guests.',
+    description:
+        'Узнайте об экологии и природе Курской области: климат, рельеф, реки, Центрально-Чернозёмный заповедник, экологические проблемы, лесовосстановление и редкие виды из Красной книги. Для жителей России, СНГ и иностранных гостей. | Learn about the ecology and nature of the Kursk region: climate, relief, rivers, Central Black Earth Reserve, environmental problems, reforestation and rare species from the Red Book. For residents of Russia, CIS and foreign guests.',
     keywords: [
         'экология Курской области',
         'природа Курской области',
@@ -58,13 +60,14 @@ export const metadata: Metadata = {
     alternates: {
         canonical: 'https://kursk-region.ru/ecology',
         languages: {
-            'ru': 'https://kursk-region.ru/ecology',
-            'en': 'https://kursk-region.ru/en/ecology',
+            ru: 'https://kursk-region.ru/ecology',
+            en: 'https://kursk-region.ru/en/ecology',
         },
     },
     openGraph: {
         title: 'Экология и природа Курской области | От климата до Красной книги | Ecology and Nature of Kursk Region | From Climate to Red Book',
-        description: 'Изучите уникальную природу Курской области: климатические особенности, рельеф, водные ресурсы, Центрально-Чернозёмный заповедник, экологические проблемы и меры по сохранению редких видов. Для гостей из СНГ и иностранных туристов. | Explore the unique nature of the Kursk region: climatic features, relief, water resources, Central Black Earth Reserve, environmental problems and measures to preserve rare species. For guests from CIS and international tourists.',
+        description:
+            'Изучите уникальную природу Курской области: климатические особенности, рельеф, водные ресурсы, Центрально-Чернозёмный заповедник, экологические проблемы и меры по сохранению редких видов. Для гостей из СНГ и иностранных туристов. | Explore the unique nature of the Kursk region: climatic features, relief, water resources, Central Black Earth Reserve, environmental problems and measures to preserve rare species. For guests from CIS and international tourists.',
         url: 'https://kursk-region.ru/ecology',
         siteName: 'Курская область | Kursk Region',
         images: [
@@ -82,11 +85,13 @@ export const metadata: Metadata = {
     twitter: {
         card: 'summary_large_image',
         title: 'Экология и природа Курской области | Климат, рельеф, заповедник, Красная книга',
-        description: 'Уникальная природа Соловьиного края: климат, рельеф, реки, заповедник имени Алёхина, экологические проблемы и лесовосстановление. Для жителей России, СНГ и гостей из-за рубежа.',
+        description:
+            'Уникальная природа Соловьиного края: климат, рельеф, реки, заповедник имени Алёхина, экологические проблемы и лесовосстановление. Для жителей России, СНГ и гостей из-за рубежа.',
         images: ['/images/region/ecology.jpg'],
     },
     category: 'ecology',
-    classification: 'Экология, Природа, Охрана окружающей среды, Заповедники, Ecology, Nature, Environmental Protection, Nature Reserves',
+    classification:
+        'Экология, Природа, Охрана окружающей среды, Заповедники, Ecology, Nature, Environmental Protection, Nature Reserves',
 };
 
 function BreadcrumbJsonLd() {
@@ -95,23 +100,23 @@ function BreadcrumbJsonLd() {
             type="application/ld+json"
             dangerouslySetInnerHTML={{
                 __html: JSON.stringify({
-                    "@context": "https://schema.org",
-                    "@type": "BreadcrumbList",
-                    "itemListElement": [
+                    '@context': 'https://schema.org',
+                    '@type': 'BreadcrumbList',
+                    itemListElement: [
                         {
-                            "@type": "ListItem",
-                            "position": 1,
-                            "name": "Главная",
-                            "item": "https://kursk-region.ru"
+                            '@type': 'ListItem',
+                            position: 1,
+                            name: 'Главная',
+                            item: 'https://kursk-region.ru',
                         },
                         {
-                            "@type": "ListItem",
-                            "position": 2,
-                            "name": "Экология Курской области",
-                            "item": "https://kursk-region.ru/ecology"
-                        }
-                    ]
-                })
+                            '@type': 'ListItem',
+                            position: 2,
+                            name: 'Экология Курской области',
+                            item: 'https://kursk-region.ru/ecology',
+                        },
+                    ],
+                }),
             }}
         />
     );
@@ -123,11 +128,12 @@ function EcologyJsonLd() {
             type="application/ld+json"
             dangerouslySetInnerHTML={{
                 __html: JSON.stringify({
-                    "@context": "https://schema.org",
-                    "@type": "GovernmentBuilding",
-                    "name": "Центрально-Чернозёмный государственный природный биосферный заповедник имени профессора В. В. Алёхина",
-                    "description": "Заповедник с уникальными участками целинных чернозёмных степей, дубравами и болотами. Более 1000 видов растений и 200 видов животных под охраной.",
-                })
+                    '@context': 'https://schema.org',
+                    '@type': 'GovernmentBuilding',
+                    name: 'Центрально-Чернозёмный государственный природный биосферный заповедник имени профессора В. В. Алёхина',
+                    description:
+                        'Заповедник с уникальными участками целинных чернозёмных степей, дубравами и болотами. Более 1000 видов растений и 200 видов животных под охраной.',
+                }),
             }}
         />
     );
@@ -146,26 +152,31 @@ export default function EcologyPage() {
             <IntroductoryTextArticle articleTitle={articleTitle} />
 
             <h2 id="environmental_characteristics">
-                3 основне характеристики экологии Курской области | 3 Main Characteristics of Ecology of Kursk Region
+                3 основне характеристики экологии Курской области
             </h2>
 
             <SmallDescriptionCards cardsTitle={'environmental_characteristics'} />
 
             <h2 id="state_nature_reserve">
-                Центрально-Чернозёмный государственный природный биосферный заповедник имени профессора В. В. Алёхина | Central Black Earth State Natural Biosphere Reserve named after Professor V. V. Alekhin
+                Центрально-Чернозёмный государственный природный биосферный заповедник имени
+                профессора В. В. Алёхина
             </h2>
 
             <AsideBlock asideTitle={'state_nature_reserve'} />
 
-            <h2 id="environmental_issues">Проблемы экологии Курской области | Environmental Problems of Kursk Region</h2>
+            <h2 id="environmental_issues">Проблемы экологии Курской области</h2>
 
             <ImageSimpleCards simpleCardsTitle={'environmental_issues'} />
 
-            <h2 id="forest_conservation_project">Красная книга Курской области | Red Book of Kursk Region</h2>
+            <h2>Загрязнении воздуха в Курской области</h2>
+
+            <SimpleAreaChart />
+
+            <h2 id="forest_conservation_project">Красная книга Курской области</h2>
 
             <AsideBlock asideTitle={'forest_conservation_project'} />
 
-            <h2 id="red_book">Проект "Сохранение лесов" | Project "Forest Conservation"</h2>
+            <h2 id="red_book">Проект "Сохранение лесов"</h2>
 
             <AsideBlock asideTitle={'red_book'} />
         </>

@@ -1,57 +1,54 @@
 @use '@/app/styles/mixins' as *;
 
-.container {
-    .cards {
-        display: grid;
-        grid-template-columns: repeat(3, 23vw);
-        grid-auto-rows: clamp(35vh, 25vw, 55vh);
-        justify-content: space-evenly;
-        align-items: stretch;
-        row-gap: 6vh;
-    }
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, calc(23vw + 2rem));
+    grid-auto-rows: clamp(35vh, 25vw, 55vh);
+    justify-content: space-evenly;
+    row-gap: 6vh;
 
-    .image_simple_card {
-        display: block;
-
+    .simple_card {
         background-color: var(--bg_elements);
         border-radius: 10px;
         box-shadow: 2px 4px 5px rgb(44, 44, 44);
 
-        img {
+        img,
+        a {
             width: 100%;
-            height: 75%;
-
             border-radius: 10px;
-
+        }
+    
+        img {
+            height: 65%;
+    
             object-fit: cover;
-
             filter: brightness(0.6);
         }
-
-        strong {
-            height: 25%;
-            padding: 0.6em;
+    
+        a {
+            height: 35%;
             font-size: var(--smalle_text_size);
+            background-color: var(--bg_elements);
+            border: 1px solid black;
+    
             @include markup();
             text-align: center;
+            
+            &:hover{
+                transform: translateY(-5px);
+            }
         }
-
-        &:hover{
-            transform: translateY(-5px);
-        }
-
     }
-    
-    summary{
-        background-color: var(--bg_elements);
-        font-size: var(--smalle_text_size);
-        padding: 0.5em;
-        font-weight: bold;
-        border-radius: 5px;
+}
 
-        margin-block: 5vh;
-        margin-inline: 5vw;
-    }
+.summary{
+    background-color: var(--bg_elements);
+    font-size: var(--smalle_text_size);
+    padding: 0.5em;
+    font-weight: bold;
+    border-radius: 5px;
+
+    margin: 5vh 5vw;
 }
 
 @media (max-width: 1024px){

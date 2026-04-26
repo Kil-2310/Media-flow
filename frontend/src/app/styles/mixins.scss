@@ -14,9 +14,9 @@
     }
 }
 
-@mixin img_positon($z-index: 1, $filter: 0.4){
+@mixin img_positon($z-index: 1, $filter: 0.4, $width: 100%){
     position: absolute;
-    width: 100%;
+    width: $width;
     height: 100%;
     z-index: $z-index;
 

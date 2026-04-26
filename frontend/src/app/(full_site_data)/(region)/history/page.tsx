@@ -6,10 +6,12 @@ import AsideBlock from '@/shared/ui/AsideBlock';
 import ImageSimpleCards from '@/shared/ui/ImageSimpleCards';
 import ChronologicalSequence from '@/shared/ui/ChronologicalSequence';
 import Slider from '@/shared/ui/Slider';
+import PopulationPyramid from '@/shared/ui/PopulationPyramid';
 
 export const metadata: Metadata = {
     title: 'История Курской области: от древности до героев наших дней | Курская дуга, СВО, события | History of Kursk Region',
-    description: 'История Курской области: первое упоминание в 1032 году, Курская битва, оккупация, послевоенное развитие, строительство Курской АЭС, чернобыльская катастрофа и современные герои СВО. Для жителей России, СНГ и иностранных гостей. Полная хронология с 1917 по 2025 год. | History of the Kursk region: first mention in 1032, Kursk Battle, occupation, post-war development, construction of Kursk NPP, Chernobyl disaster and modern heroes. For residents of Russia, CIS and foreign guests.',
+    description:
+        'История Курской области: первое упоминание в 1032 году, Курская битва, оккупация, послевоенное развитие, строительство Курской АЭС, чернобыльская катастрофа и современные герои СВО. Для жителей России, СНГ и иностранных гостей. Полная хронология с 1917 по 2025 год. | History of the Kursk region: first mention in 1032, Kursk Battle, occupation, post-war development, construction of Kursk NPP, Chernobyl disaster and modern heroes. For residents of Russia, CIS and foreign guests.',
     keywords: [
         'история Курской области',
         'Курская область история',
@@ -43,9 +45,9 @@ export const metadata: Metadata = {
         'Kursk Oblast history',
     ],
     authors: [
-        { 
-            name: 'Хомяков Евгений Алексеевич | Evgeny Khomyakov', 
-            url: 'https://kursk-region.ru' 
+        {
+            name: 'Хомяков Евгений Алексеевич | Evgeny Khomyakov',
+            url: 'https://kursk-region.ru',
         },
     ],
     robots: {
@@ -62,13 +64,14 @@ export const metadata: Metadata = {
     alternates: {
         canonical: 'https://kursk-region.ru/history',
         languages: {
-            'ru': 'https://kursk-region.ru/history',
-            'en': 'https://kursk-region.ru/en/history',
+            ru: 'https://kursk-region.ru/history',
+            en: 'https://kursk-region.ru/en/history',
         },
     },
     openGraph: {
         title: 'История Курской области | От Курской дуги до героев СВО | History of Kursk Region | From Kursk Battle to Modern Heroes',
-        description: 'Первое упоминание Курска – 1032 год. Курская дуга, освобождение от оккупации, строительство Курской АЭС, чернобыльская трагедия, подвиги героев СВО. Для гостей из СНГ и иностранных туристов. | First mention of Kursk - 1032. Kursk Bulge, liberation from occupation, construction of Kursk NPP, Chernobyl tragedy, exploits of modern heroes. For guests from CIS and international tourists.',
+        description:
+            'Первое упоминание Курска – 1032 год. Курская дуга, освобождение от оккупации, строительство Курской АЭС, чернобыльская трагедия, подвиги героев СВО. Для гостей из СНГ и иностранных туристов. | First mention of Kursk - 1032. Kursk Bulge, liberation from occupation, construction of Kursk NPP, Chernobyl tragedy, exploits of modern heroes. For guests from CIS and international tourists.',
         url: 'https://kursk-region.ru/history',
         siteName: 'Курская область | Kursk Region',
         images: [
@@ -86,11 +89,13 @@ export const metadata: Metadata = {
     twitter: {
         card: 'summary_large_image',
         title: 'История Курской области | От Курской дуги до героев СВО',
-        description: 'Хронология ключевых событий: 1032 год, Курская битва, Курская АЭС, чернобыльская катастрофа, подвиги современных героев. Для жителей России, СНГ и гостей из-за рубежа.',
+        description:
+            'Хронология ключевых событий: 1032 год, Курская битва, Курская АЭС, чернобыльская катастрофа, подвиги современных героев. Для жителей России, СНГ и гостей из-за рубежа.',
         images: ['/images/region/kurska_duga.jpg'],
     },
     category: 'history',
-    classification: 'История, Краеведение, Военная история, Региональная история, History, Local History, Military History, Regional History',
+    classification:
+        'История, Краеведение, Военная история, Региональная история, History, Local History, Military History, Regional History',
 };
 
 function BreadcrumbJsonLd() {
@@ -99,23 +104,23 @@ function BreadcrumbJsonLd() {
             type="application/ld+json"
             dangerouslySetInnerHTML={{
                 __html: JSON.stringify({
-                    "@context": "https://schema.org",
-                    "@type": "BreadcrumbList",
-                    "itemListElement": [
+                    '@context': 'https://schema.org',
+                    '@type': 'BreadcrumbList',
+                    itemListElement: [
                         {
-                            "@type": "ListItem",
-                            "position": 1,
-                            "name": "Главная",
-                            "item": "https://kursk-region.ru"
+                            '@type': 'ListItem',
+                            position: 1,
+                            name: 'Главная',
+                            item: 'https://kursk-region.ru',
                         },
                         {
-                            "@type": "ListItem",
-                            "position": 2,
-                            "name": "История Курской области",
-                            "item": "https://kursk-region.ru/history"
-                        }
-                    ]
-                })
+                            '@type': 'ListItem',
+                            position: 2,
+                            name: 'История Курской области',
+                            item: 'https://kursk-region.ru/history',
+                        },
+                    ],
+                }),
             }}
         />
     );
@@ -127,12 +132,12 @@ function HistoryJsonLd() {
             type="application/ld+json"
             dangerouslySetInnerHTML={{
                 __html: JSON.stringify({
-                    "@context": "https://schema.org",
-                    "@type": "HistoricalEvent",
-                    "name": "Курская битва",
-                    "description": "Одно из крупнейших танковых сражений Второй мировой войны",
-                    "location": "Курская область, Россия"
-                })
+                    '@context': 'https://schema.org',
+                    '@type': 'HistoricalEvent',
+                    name: 'Курская битва',
+                    description: 'Одно из крупнейших танковых сражений Второй мировой войны',
+                    location: 'Курская область, Россия',
+                }),
             }}
         />
     );
@@ -145,25 +150,29 @@ export default function HistoryPage() {
         <>
             <BreadcrumbJsonLd />
             <HistoryJsonLd />
-            
+
             <PreviewArticle previewTitle={articleTitle} />
 
             <IntroductoryTextArticle articleTitle={articleTitle} />
 
-            <h2 id="history_kursk_region">История развития Курской области | History of Kursk Region Development</h2>
+            <h2>Динамика численности населения Курской области</h2>
+
+            <PopulationPyramid defaultIndex={0} />
+
+            <h2 id="history_kursk_region">История развития Курской области</h2>
 
             <ChronologicalSequence ChronologicalSequenceTitle={'history_kursk_region'} />
 
-            <h2 id="kursk_bulge">Курская дуга 1943 год | Kursk Bulge 1943</h2>
+            <h2 id="kursk_bulge">Курская дуга 1943 год</h2>
 
             <AsideBlock asideTitle={'kursk_bulge'} />
 
-            <h2 id="heroes_our_time">Герои нашего времени | Heroes of Our Time</h2>
+            <h2 id="heroes_our_time">Герои нашего времени</h2>
 
             <ImageSimpleCards simpleCardsTitle={'heroes_our_time'} />
 
             <h2 id="museum_ponyri">
-                Современные музеи, посвященные Специальной Военной Операции (СВО) | Modern Museums Dedicated to the Special Military Operation (SVO)
+                Современные музеи, посвященные Специальной Военной Операции (СВО)
             </h2>
 
             <Slider SliderTitle={'museum_ponyri'} />

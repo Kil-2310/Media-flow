@@ -8,6 +8,9 @@
 
     background-color: var(--bg_elements);
     border-radius: 10px;
+    border: 1px solid black;
+
+    height: clamp(25vh, 12rem, 30vh);
 
     h3,
     li{
@@ -17,9 +20,7 @@
 
     h3{
         width: 25%;
-        height: clamp(25vh, 12rem, 30vh);
 
-        border-left: 2px solid var(--const_font_blue_color);
         font-size: var(--smalle_text_size);
 
         writing-mode: vertical-rl;
@@ -31,6 +32,10 @@
     ul{
         width: 75%;
         height: 100%;
+        border-left: 2px solid var(--const_font_blue_color);
+
+        @include markup();
+        flex-direction: column;
 
         a{
             font-size: var(--simple_text_size);

@@ -12,7 +12,7 @@ const PreviewArticle = ({ previewTitle }) => {
                 width={900}
                 height={600}
                 alt={data.alt}
-                className='html_image'
+                className="html_image"
             />
             <h1>{data.title}</h1>
         </section>

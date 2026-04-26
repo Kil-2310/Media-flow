@@ -7,17 +7,20 @@ const SimpleCards = ({ simpleCardsTitle }) => {
     return (
         <section>
             {data.map((category, idx) => (
-                <aside key={idx} className={styles.simple_card}>
+                <div key={idx} className={styles.simple_card}>
                     <h3>{category.category}</h3>
 
                     <ul>
                         {category.items.map((item, index) => (
                             <li key={index}>
-                                {item.icon} <a href={item.href}>{item.text}</a>
+                                {item.icon}{' '}
+                                <a target="_blanck" href={item.href}>
+                                    {item.text}
+                                </a>
                             </li>
                         ))}
                     </ul>
-                </aside>
+                </div>
             ))}
         </section>
     );

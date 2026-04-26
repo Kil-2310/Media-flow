@@ -54,14 +54,10 @@ h3{
 
 .simple_text{
     font-size: var(--simple_text_size);
+    color: var(--changeable_font_color);
     text-indent: 1.2em;
     padding: 0.6em;
-}
-
-.smalle_text{
-    font-size: var(--smolle_text_size);
-    text-align: left;
-    padding: 0.4em;
+    margin-block: 3vh;
 }
 
 .header_scroll_view{
@@ -69,10 +65,28 @@ h3{
     margin-bottom: -16vh;
 }
 
+button{
+    color: var(--const_font_white_color);
+    font-size: var(--smalle_text_size);
+    border: none;
+    
+    border-radius: 5px;
+
+    &:hover{
+        transform: translate(10px, -5px);
+    }
+}
+
 .blue_button {
     background-color: var(--const_font_blue_color);
+    padding: 0.5em 0.4em;
 }
 
 .red_button {
     background-color: var(--const_font_red_color);
+    padding: 0.5em 0.4em;
+}
+
+.chart_container{
+    @include markup();
 }

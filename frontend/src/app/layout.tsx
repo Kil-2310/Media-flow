@@ -1,4 +1,6 @@
 import { YandexMetricaProvider, standardYMInitParameters } from '@artginzburg/next-ym';
+import { GoogleAnalytics } from '@next/third-parties/google';
+
 import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './styles';
@@ -27,7 +29,8 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
     title: 'Курская область: культура, история, экология и экономика | Соловьиный край России | Kursk Region: Culture, History, Ecology & Economy | Nightingale Land of Russia',
-    description: 'Патриотический сайт о Соловьином крае России. Культура, природа, промышленность и героическая история Курской области. Для жителей России, СНГ и гостей из-за рубежа. | Patriotic website about the Nightingale Land of Russia. Explore Kursk region heritage, nature reserves, industrial potential, and heroic history.',
+    description:
+        'Патриотический сайт о Соловьином крае России. Культура, природа, промышленность и героическая история Курской области. Для жителей России, СНГ и гостей из-за рубежа. | Patriotic website about the Nightingale Land of Russia. Explore Kursk region heritage, nature reserves, industrial potential, and heroic history.',
     keywords: [
         'Курская область',
         'соловьиный край',
@@ -80,7 +83,8 @@ export const metadata: Metadata = {
     },
     openGraph: {
         title: 'Курская область | Соловьиный край России | Kursk Region | Nightingale Land of Russia',
-        description: 'Откройте для себя Соловьиный край России — Курскую область. Памятники Второй мировой войны, православные святыни, заповедники и промышленное наследие. Для гостей из СНГ и иностранных туристов. | Discover the Nightingale Land of Russia — Kursk region. WWII memorials, Orthodox shrines, nature reserves, and industrial heritage.',
+        description:
+            'Откройте для себя Соловьиный край России — Курскую область. Памятники Второй мировой войны, православные святыни, заповедники и промышленное наследие. Для гостей из СНГ и иностранных туристов. | Discover the Nightingale Land of Russia — Kursk region. WWII memorials, Orthodox shrines, nature reserves, and industrial heritage.',
         url: 'https://kursk-region.ru',
         siteName: 'Курский Край | Kursk Region',
         images: [
@@ -98,15 +102,16 @@ export const metadata: Metadata = {
     twitter: {
         card: 'summary_large_image',
         title: 'Курская область | Соловьиный край России',
-        description: 'Узнайте о Курской области: история Второй мировой, православная культура, заповедники и современная промышленность. Для гостей из России, СНГ и зарубежья.',
+        description:
+            'Узнайте о Курской области: история Второй мировой, православная культура, заповедники и современная промышленность. Для гостей из России, СНГ и зарубежья.',
         images: ['/images/global/entrance_region.jpg'],
     },
     metadataBase: new URL('https://kursk-region.ru'),
     alternates: {
         canonical: 'https://kursk-region.ru',
         languages: {
-            'ru': 'https://kursk-region.ru',
-            'en': 'https://kursk-region.ru/en',
+            ru: 'https://kursk-region.ru',
+            en: 'https://kursk-region.ru/en',
         },
     },
     robots: {
@@ -120,7 +125,8 @@ export const metadata: Metadata = {
         },
     },
     category: 'regional portal',
-    classification: 'Региональный портал, Туризм, Культура, История, Regional Information Portal, Tourism, Culture, History',
+    classification:
+        'Региональный портал, Туризм, Культура, История, Regional Information Portal, Tourism, Culture, History',
 };
 
 function JsonLd() {
@@ -129,14 +135,14 @@ function JsonLd() {
             type="application/ld+json"
             dangerouslySetInnerHTML={{
                 __html: JSON.stringify({
-                    "@context": "https://schema.org",
-                    "@type": "WebSite",
-                    "name": "Курская область | Соловьиный край России",
-                    "alternateName": "Kursk Region | Nightingale Land of Russia",
-                    "url": "https://kursk-region.ru",
-                    "description": "Патриотический сайт о Соловьином крае России...",
-                    "inLanguage": ["ru-RU", "en-US"],
-                })
+                    '@context': 'https://schema.org',
+                    '@type': 'WebSite',
+                    name: 'Курская область | Соловьиный край России',
+                    alternateName: 'Kursk Region | Nightingale Land of Russia',
+                    url: 'https://kursk-region.ru',
+                    description: 'Патриотический сайт о Соловьином крае России...',
+                    inLanguage: ['ru-RU', 'en-US'],
+                }),
             }}
         />
     );
@@ -148,13 +154,13 @@ function LocalBusinessJsonLd() {
             type="application/ld+json"
             dangerouslySetInnerHTML={{
                 __html: JSON.stringify({
-                    "@context": "https://schema.org",
-                    "@type": "Organization",
-                    "name": "Курская область",
-                    "alternateName": "Соловьиный край",
-                    "url": "https://kursk-region.ru",
-                    "logo": "https://kursk-region.ru/favicon/favicon-96x96.png",
-                })
+                    '@context': 'https://schema.org',
+                    '@type': 'Organization',
+                    name: 'Курская область',
+                    alternateName: 'Соловьиный край',
+                    url: 'https://kursk-region.ru',
+                    logo: 'https://kursk-region.ru/favicon/favicon-96x96.png',
+                }),
             }}
         />
     );
@@ -168,9 +174,13 @@ export default function RootLayout({
     return (
         <html lang="ru">
             <head>
+                <meta name="google-site-verification" content="googleb17e9195c6d74c3a" />
+                <meta name="yandex-verification" content="49f0c2ffcf2b441d" />
+
                 <JsonLd />
                 <LocalBusinessJsonLd />
             </head>
+
             <body className={`${geistSans.variable} ${geistMono.variable}`}>
                 <ContestProvider>
                     <ThemeProvider>
@@ -183,6 +193,8 @@ export default function RootLayout({
                 <YandexMetricaProvider initParameters={standardYMInitParameters}>
                     {null}
                 </YandexMetricaProvider>
+
+                <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID!} />
             </body>
         </html>
     );

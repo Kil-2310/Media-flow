@@ -8,24 +8,19 @@
 
     img{
         @include img_positon();
-        filter: brightness(0.4);
+        filter: brightness(0.65);
     }
 
     h1{
         z-index: 2;
         color: var(--const_font_white_color);
 
-        padding-left: 1em;
+        padding: 0.8em;
     }
 }
 
 @media (max-width: 1024px){
     .preview_article{
         justify-content: center !important;
-
-        h1{
-            padding-inline: 0.3em;
-            text-align: center;
-        }
     }
 }
