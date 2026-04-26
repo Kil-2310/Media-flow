@@ -27,7 +27,7 @@
     --bg_elements: #d3d3d3;
 
     .css_image{
-        @include blackout($value: 0.85);
+        @include blackout($value: 0.8);
     }
 
     .html_image {

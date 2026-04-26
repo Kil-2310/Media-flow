@@ -1,7 +1,7 @@
 @use '@/app/styles/mixins' as *;
 
 .form {
-    width: clamp(65vw, 58vh, 95vw);
+    width: clamp(230px, 58vh + 30vw, 95vw);
     margin: auto;
 
     margin-top: 5vh;

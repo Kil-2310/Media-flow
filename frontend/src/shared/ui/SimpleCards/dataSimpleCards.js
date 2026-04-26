@@ -4,14 +4,14 @@ const dataSimpleCards = {
             category: 'Народные',
             items: [
                 {
-                    text: '🏺 Курская Коренская ярмарка',
-                    href: '#',
-                    description: 'Народные традиции',
+                    icon: '🎁',
+                    text: 'Курская Коренская ярмарка',
+                    href: 'https://kurskyarmarka.rkursk.ru/',
                 },
                 {
-                    text: '🪇 Свистовун',
-                    href: '#',
-                    description: 'Народные традиции',
+                    icon: '🏺',
+                    text: 'Глиняная игрушка',
+                    href: 'https://kurskcity.ru/news/firstline/63242',
                 },
             ],
         },
@@ -19,14 +19,14 @@ const dataSimpleCards = {
             category: 'Фольклор и музыкальные',
             items: [
                 {
-                    text: '🐦 Курский соловей',
-                    href: '#',
-                    description: 'Фольклор и музыкальные традиции',
+                    icon: '🐦',
+                    text: 'Народные песни Курского края',
+                    href: 'https://ikur46.ru/themplane/26-narodnye-pesni-kurskogo-kraya/',
                 },
                 {
-                    text: '🎼 Ансамбль «Курские соловьи»',
-                    href: '#',
-                    description: 'Фольклор и музыкальные традиции',
+                    icon: '🎭',
+                    text: 'Фольклор – духовное богатство курян',
+                    href: 'https://ikur46.ru/themplane/22-folklor-duhovnoe-bogatstvo-kuryan/',
                 },
             ],
         },
@@ -34,49 +34,14 @@ const dataSimpleCards = {
             category: 'Кулинарные',
             items: [
                 {
-                    text: '🥞 Курские блины',
-                    href: '#',
-                    description: 'Кулинарные традиции',
+                    icon: '🥞',
+                    text: 'Праздник блинов',
+                    href: 'https://welcomekursk.ru/events/34438/folklornaya-programma-prazdnik-blinov',
                 },
                 {
-                    text: '🍲 Суджанский борщ',
-                    href: '#',
-                    description: 'Кулинарные традиции',
-                },
-                {
-                    text: '🍎 Курское яблоко',
-                    href: '#',
-                    description: 'Кулинарные традиции',
-                },
-            ],
-        },
-        {
-            category: 'Календарные и аграрные',
-            items: [
-                {
-                    text: '🐎 Вождение коня',
-                    href: '#',
-                    description: 'Календарные и аграрные обряды',
-                },
-                {
-                    text: '🌷 Закликание весны',
-                    href: '#',
-                    description: 'Календарные и аграрные обряды',
-                },
-            ],
-        },
-        {
-            category: 'Военные и казачьи',
-            items: [
-                {
-                    text: '⚔️ Рыльские казаки',
-                    href: '#',
-                    description: 'Военные и казачьи традиции',
-                },
-                {
-                    text: '🏆 День Курской битвы',
-                    href: '#',
-                    description: 'Военные и казачьи традиции',
+                    icon: '🍎',
+                    text: 'Фестиваль курское яблоко',
+                    href: 'https://mediiia.com/profi/project/6b589383c5944ef38e848a67577552b5',
                 },
             ],
         },

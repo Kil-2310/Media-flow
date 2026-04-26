@@ -7,7 +7,13 @@ const AsideBlock = ({ asideTitle }) => {
 
     return (
         <aside className={`${styles.aside_block}`}>
-            <Image src={AsideData.image} alt={AsideData.alt} width={1000} height={500} className='html_image' />
+            <Image
+                src={AsideData.image}
+                alt={AsideData.alt}
+                width={1000}
+                height={500}
+                className="html_image"
+            />
 
             <div>
                 <p>{AsideData.description}</p>

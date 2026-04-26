@@ -59,7 +59,6 @@ const UserForm = () => {
                 <Button className={'blue_button'} type={'submit'} isDisabled={isSubmitting}>
                     {isSubmitting ? 'Отправка...' : 'Отправить'}
                 </Button>
-
             </div>
         </form>
     );

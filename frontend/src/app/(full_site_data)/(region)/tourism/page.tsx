@@ -4,6 +4,10 @@ import PreviewArticle from '@/shared/ui/PreviewArticle';
 import IntroductoryTextArticle from '@/shared/ui/IntroductoryTextArticle';
 import ImageSimpleCards from '@/shared/ui/ImageSimpleCards';
 import SmallDescriptionCards from '@/shared/ui/SmallDescriptionCards';
+import Candlestick from '@/shared/ui/Candlestick';
+import Slider from '@/shared/ui/Slider';
+import Map from '@/shared/ui/Map';
+import ChronologicalSequence from '@/shared/ui/ChronologicalSequence';
 
 export const metadata: Metadata = {
     title: 'Туризм в Курской области: отдых в России для гостей из СНГ и иностранцев | Соловьиный край | Tourism in Kursk Region',
@@ -75,8 +79,8 @@ export const metadata: Metadata = {
     alternates: {
         canonical: 'https://kursk-region.ru/tourism',
         languages: {
-            'ru': 'https://kursk-region.ru/tourism',
-            'en': 'https://kursk-region.ru/en/tourism',
+            ru: 'https://kursk-region.ru/tourism',
+            en: 'https://kursk-region.ru/en/tourism',
         },
     },
     openGraph: {
@@ -119,23 +123,23 @@ function BreadcrumbJsonLd() {
             type="application/ld+json"
             dangerouslySetInnerHTML={{
                 __html: JSON.stringify({
-                    "@context": "https://schema.org",
-                    "@type": "BreadcrumbList",
-                    "itemListElement": [
+                    '@context': 'https://schema.org',
+                    '@type': 'BreadcrumbList',
+                    itemListElement: [
                         {
-                            "@type": "ListItem",
-                            "position": 1,
-                            "name": "Главная",
-                            "item": "https://kursk-region.ru"
+                            '@type': 'ListItem',
+                            position: 1,
+                            name: 'Главная',
+                            item: 'https://kursk-region.ru',
                         },
                         {
-                            "@type": "ListItem",
-                            "position": 2,
-                            "name": "Туризм в Курской области",
-                            "item": "https://kursk-region.ru/tourism"
-                        }
-                    ]
-                })
+                            '@type': 'ListItem',
+                            position: 2,
+                            name: 'Туризм в Курской области',
+                            item: 'https://kursk-region.ru/tourism',
+                        },
+                    ],
+                }),
             }}
         />
     );
@@ -147,16 +151,17 @@ function TourismJsonLd() {
             type="application/ld+json"
             dangerouslySetInnerHTML={{
                 __html: JSON.stringify({
-                    "@context": "https://schema.org",
-                    "@type": "TouristAttraction",
-                    "name": "Туризм в Курской области",
-                    "description": "Достопримечательности, усадьбы, маршруты и отдых в Соловьином крае",
-                    "address": {
-                        "@type": "PostalAddress",
-                        "addressRegion": "Курская область",
-                        "addressCountry": "RU"
-                    }
-                })
+                    '@context': 'https://schema.org',
+                    '@type': 'TouristAttraction',
+                    name: 'Туризм в Курской области',
+                    description:
+                        'Достопримечательности, усадьбы, маршруты и отдых в Соловьином крае',
+                    address: {
+                        '@type': 'PostalAddress',
+                        addressRegion: 'Курская область',
+                        addressCountry: 'RU',
+                    },
+                }),
             }}
         />
     );
@@ -169,26 +174,35 @@ export default function TourismPage() {
         <>
             <BreadcrumbJsonLd />
             <TourismJsonLd />
-            
+
             <PreviewArticle previewTitle={articleName} />
 
             <IntroductoryTextArticle articleTitle={articleName} />
 
-            <h2 id="tourism_infrastructure">Инфраструктура туризма Курской области | Tourism Infrastructure</h2>
-
-            <p className="simple_text">
-                По состоянию на 25.06.2020 г. туристская инфраструктура региона включает:
-                | As of June 2024, the tourism infrastructure includes:
-            </p>
+            <h2 id="tourism_infrastructure">Инфраструктура туризма Курской области</h2>
 
             <ImageSimpleCards simpleCardsTitle={'tourism_infrastructure'} />
 
-            <h2 id="attractions">Популярные места и достопремечательности | Popular Attractions & Landmarks</h2>
+            <h2>Поток туристов Курской области</h2>
+
+            <Candlestick />
+
+            <h2>Фотографии Курской области</h2>
+
+            <Slider SliderTitle={articleName} />
+
+            <h2>Топ моих любимых мест в Курской области</h2>
+
+            <Map />
+
+            <ChronologicalSequence ChronologicalSequenceTitle={articleName} />
+
+            <h2 id="attractions">Популярные места и достопремечательности</h2>
 
             <SmallDescriptionCards cardsTitle={'attractions'} />
 
             <h2 id="natural_attractions" className="title">
-                Уникальные природные объекты | Unique Natural Wonders
+                Уникальные природные объекты
             </h2>
 
             <SmallDescriptionCards cardsTitle={'natural_attractions'} />

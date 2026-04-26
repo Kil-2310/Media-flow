@@ -5,7 +5,8 @@ import DescriptionRegion from '@/features/description_region';
 
 export const metadata: Metadata = {
     title: 'Курск и Курская область на карте России: экология, экономика, история, культура, туризм | Соловьиный край | Kursk and Kursk Region on the map of Russia',
-    description: 'Курская область на карте России: подробная информация об экологии, экономике, истории, культуре и туризме региона. Для жителей России, СНГ и иностранных гостей. Достопримечательности, промышленность и природные особенности Курска. | Kursk region on the map of Russia: detailed information about ecology, economy, history, culture and tourism. For residents of Russia, CIS and foreign guests.',
+    description:
+        'Курская область на карте России: подробная информация об экологии, экономике, истории, культуре и туризме региона. Для жителей России, СНГ и иностранных гостей. Достопримечательности, промышленность и природные особенности Курска. | Kursk region on the map of Russia: detailed information about ecology, economy, history, culture and tourism. For residents of Russia, CIS and foreign guests.',
     keywords: [
         'Курск',
         'Курская область',
@@ -61,13 +62,14 @@ export const metadata: Metadata = {
     alternates: {
         canonical: 'https://kursk-region.ru',
         languages: {
-            'ru': 'https://kursk-region.ru',
-            'en': 'https://kursk-region.ru/en',
+            ru: 'https://kursk-region.ru',
+            en: 'https://kursk-region.ru/en',
         },
     },
     openGraph: {
         title: 'Курск и Курская область | Соловьиный край России | Kursk and Kursk Region | Nightingale Land of Russia',
-        description: 'Курская область на карте России: экология, экономика, история, культура и туризм. Для гостей из СНГ и иностранных туристов. | Kursk region on the map of Russia: ecology, economy, history, culture and tourism. For guests from CIS and international tourists.',
+        description:
+            'Курская область на карте России: экология, экономика, история, культура и туризм. Для гостей из СНГ и иностранных туристов. | Kursk region on the map of Russia: ecology, economy, history, culture and tourism. For guests from CIS and international tourists.',
         url: 'https://kursk-region.ru',
         siteName: 'Курская область | Kursk Region',
         images: [
@@ -85,11 +87,13 @@ export const metadata: Metadata = {
     twitter: {
         card: 'summary_large_image',
         title: 'Курск и Курская область | Соловьиный край России',
-        description: 'Экология, экономика, история, культура и туризм Курской области. Для жителей России, СНГ и гостей из-за рубежа.',
+        description:
+            'Экология, экономика, история, культура и туризм Курской области. Для жителей России, СНГ и гостей из-за рубежа.',
         images: ['/images/global/entrance_region.jpg'],
     },
     category: 'regional portal',
-    classification: 'Региональный портал, Туризм, Культура, История, Экономика, Экология, Regional Portal, Tourism, Culture, History, Economy, Ecology',
+    classification:
+        'Региональный портал, Туризм, Культура, История, Экономика, Экология, Regional Portal, Tourism, Culture, History, Economy, Ecology',
 };
 
 function BreadcrumbJsonLd() {
@@ -98,17 +102,17 @@ function BreadcrumbJsonLd() {
             type="application/ld+json"
             dangerouslySetInnerHTML={{
                 __html: JSON.stringify({
-                    "@context": "https://schema.org",
-                    "@type": "BreadcrumbList",
-                    "itemListElement": [
+                    '@context': 'https://schema.org',
+                    '@type': 'BreadcrumbList',
+                    itemListElement: [
                         {
-                            "@type": "ListItem",
-                            "position": 1,
-                            "name": "Главная",
-                            "item": "https://kursk-region.ru"
-                        }
-                    ]
-                })
+                            '@type': 'ListItem',
+                            position: 1,
+                            name: 'Главная',
+                            item: 'https://kursk-region.ru',
+                        },
+                    ],
+                }),
             }}
         />
     );
