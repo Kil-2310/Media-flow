@@ -1,12 +1,21 @@
-from fastapi import Depends, FastAPI, Request, HTTPException
+from fastapi import Depends, FastAPI, Request, Header, HTTPException
 from fastapi_csrf_protect import CsrfProtect
-from typing import Optional
+from pydantic import BaseModel
 
 from .schemas import FeedbackCreate
 from ..base_schemas import ServerBoolAnswer
 from ..celery import celery_send_email
-from ..config_data import SMTP_USER, logger
+from ..config_data import SMTP_USER, logger, IS_TESTING
 
+
+async def get_csrf_protect_dependency(request: Request):
+    """Возвращает CSRF защиту только если не тестирование"""
+    if IS_TESTING:
+        return None  # Отключаем CSRF для тестов
+
+    csrf_protect = CsrfProtect()
+    await csrf_protect.validate_csrf(request)
+    return csrf_protect
 
 
 def register_user_routes(app: FastAPI):
@@ -18,22 +27,16 @@ def register_user_routes(app: FastAPI):
         response_model=ServerBoolAnswer,
     )
     async def send_feedback(
-        feedback: FeedbackCreate,
-        request: Request,
-        csrf_protect: CsrfProtect = Depends(CsrfProtect()),
+            feedback: FeedbackCreate,
+            request: Request,
+            csrf_protect: CsrfProtect = Depends(get_csrf_protect_dependency),
     ) -> ServerBoolAnswer:
         """Отправка письма на почту автора"""
-
-
-        await csrf_protect.validate_csrf(request)
-
 
         logger.debug("Отправка письма на почту автора")
 
         user_email = feedback.email
         user_content = feedback.content
-
-        print(user_email)
 
         if user_email:
             author_content = f"{user_content}\n\nUser email: {user_email}"

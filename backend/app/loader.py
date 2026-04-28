@@ -10,7 +10,8 @@ from .middleware import (
 
 
 def register_middleware(app: FastAPI):
-    # Настройки безопасности
+    # Настройки middleware
+    print('Настройки middleware')
     setup_throttle(app)
     setup_csrf_protect(app)
     setup_cors_protect(app)
@@ -20,6 +21,8 @@ def register_middleware(app: FastAPI):
 def register_routes(app: FastAPI):
     # Регистрация маршрутов
     register_user_routes(app)
+
+    return app
 
 
 def create_app() -> FastAPI:

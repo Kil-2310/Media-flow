@@ -45,7 +45,7 @@
 
         @include markup($justify-content: space-between);
 
-        div{
+        label{
             width: clamp(60px, 40%, 30%);
             height: 40px;
             
@@ -76,6 +76,10 @@
                 &:checked ~ p{
                     left: 50%;
                 }
+            }
+
+            .hidden{
+                display: none;
             }
         }
     }

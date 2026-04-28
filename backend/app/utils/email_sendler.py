@@ -15,7 +15,7 @@ def send_email(
         receiver: Email адрес получателя.
         subject: Тема письма.
         content: Данные для вставки в HTML-шаблон (подставляется вместо {}).
-        file_name_message: Имя HTML-файла в директории templates.
+        file_name_message: Имя HTML-файла в директории email_forms.
     """
     with smtplib.SMTP(SMTP_HOST, SMTP_PORT) as server:
         server.starttls()
@@ -27,7 +27,7 @@ def send_email(
         email["To"] = receiver
 
         path_for_template = (
-            Path(__file__).parent.parent / "templates" / file_name_message
+            Path(__file__).parent.parent / "email_forms" / file_name_message
         )
 
         with open(path_for_template, mode="r", encoding="utf-8") as f:

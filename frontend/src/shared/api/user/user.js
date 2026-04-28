@@ -1,11 +1,23 @@
-import { headers } from '@/shared/api/apiClient.js';
 import { SERVER_URL } from '/config_data';
+//import { headers } from ''
 
 const userAPI = {
-    APISendFeedback: async (data) => {
+    APIGetCSRFToken: async () => {
+        const response = await fetch(`${SERVER_URL}/api/csrf_token`, {
+            method: 'GET',
+            credentials: 'include',  // Важно для получения cookie
+        });
+        return response;
+    },
+
+    APISendFeedback: async (data, csrfToken) => {
         return fetch(`${SERVER_URL}/api/user/send_feedback`, {
             method: 'POST',
-            headers,
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': csrfToken,  // Отправляем токен в заголовке
+            },
+            credentials: 'include',  // Важно для отправки cookie
             body: JSON.stringify(data),
         });
     },
