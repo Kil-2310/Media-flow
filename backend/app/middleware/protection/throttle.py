@@ -7,7 +7,7 @@ from app.config_data import REDIS_CLIENT
 redis_client = redis.Redis.from_url(REDIS_CLIENT, decode_responses=True)
 
 limiter = SlidingWindowRateLimiter(
-    capacity=5,
+    capacity=10,
     fill_rate=10,
     scope="ip",
     backend="redis",

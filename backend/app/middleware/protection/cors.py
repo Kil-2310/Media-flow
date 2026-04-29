@@ -10,6 +10,9 @@ def setup_cors_protect(app: FastAPI):
         allow_origins=[
             "http://localhost:3000",
             FRONTEND_URL,
+            "https://search.google.com",
+            "https://webmaster.yandex.ru",
+            "https://metrika.yandex.ru",
         ],
         allow_credentials=True,
         allow_methods=["*"],

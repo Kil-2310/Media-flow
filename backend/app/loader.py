@@ -13,7 +13,7 @@ from .middleware import (
 def register_middleware(app: FastAPI):
     # Настройки middleware
     print('Настройки middleware')
-    setup_throttle(app)
+    # setup_throttle(app)
     setup_csrf_protect(app)
     setup_cors_protect(app)
     setup_profiler(app)

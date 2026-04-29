@@ -3,7 +3,7 @@ from fastapi.responses import JSONResponse
 from fastapi_csrf_protect import CsrfProtect
 from pydantic import BaseModel
 
-from app.config_data import CSRF_TOKEN, IS_TESTING
+from app.config_data import CSRF_TOKEN
 
 
 class CsrfSettings(BaseModel):
@@ -13,8 +13,8 @@ class CsrfSettings(BaseModel):
     header_key: str = "X-CSRF-Token"
     cookie_path: str = "/"
     cookie_httponly: bool = True
-    cookie_samesite: str = "lax" if IS_TESTING else "none"
-    cookie_secure: bool = False if IS_TESTING else True
+    cookie_samesite: str = "lax"
+    cookie_secure: bool = False
 
 
 def setup_csrf_protect(app: FastAPI):
@@ -32,29 +32,16 @@ def setup_csrf_protect(app: FastAPI):
 
         response = JSONResponse({"csrf_token": csrf_token})
 
-        # Определяем параметры куки в зависимости от окружения
-        if IS_TESTING:
-            response.set_cookie(
-                key="fastapi-csrf-token",
-                value=signed_token,
-                httponly=True,
-                secure=False,
-                samesite="lax",
-                path="/",
-                domain=None,  # localhost
-                max_age=3600,
-            )
-        else:
-            response.set_cookie(
-                key="fastapi-csrf-token",
-                value=signed_token,
-                httponly=True,
-                secure=True,
-                samesite="none",
-                path="/",
-                domain="test-domain-my.ru",
-                max_age=3600,
-            )
+        response.set_cookie(
+            key="fastapi-csrf-token",
+            value=signed_token,
+            httponly=True,
+            secure=False,
+            samesite="lax",
+            path="/",
+            domain="localhost",
+            max_age=3600,
+        )
 
         return response
 
@@ -71,17 +58,9 @@ def setup_csrf_protect(app: FastAPI):
     async def logout():
         """Очистка CSRF куки"""
         response = JSONResponse({"message": "Logged out"})
-
-        if IS_TESTING:
-            response.delete_cookie(
-                key="fastapi-csrf-token",
-                path="/"
-            )
-        else:
-            response.delete_cookie(
-                key="fastapi-csrf-token",
-                path="/",
-                domain="kursk-region.ru"
-            )
-
+        response.delete_cookie(
+            key="fastapi-csrf-token",
+            path="/",
+            domain="localhost"
+        )
         return response
