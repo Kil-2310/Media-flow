@@ -6,6 +6,7 @@ from .middleware import (
     setup_cors_protect,
     setup_csrf_protect,
     setup_profiler,
+    setup_open_api
 )
 
 

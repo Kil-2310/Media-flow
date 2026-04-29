@@ -7,7 +7,6 @@ from .config import (
     SMTP_HOST,
     SMTP_PORT,
     FRONTEND_URL,
-    IS_PROD,
     PROFILER_USER,
     PROFILER_PASSWORD,
     REDIS_BROKER,

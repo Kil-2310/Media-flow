@@ -32,5 +32,4 @@ REDIS_CLIENT = os.getenv("REDIS_CLIENT")
 
 REDIS_SESSIONS = os.getenv("REDIS_SESSIONS")
 
-IS_PROD = os.getenv("IS_PROD") == "True"
 IS_TESTING = os.getenv("IS_TESTING") == "True"

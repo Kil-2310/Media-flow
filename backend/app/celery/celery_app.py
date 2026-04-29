@@ -1,19 +1,16 @@
 from celery import Celery
+import os
 
 from ..utils.email_sendler import send_email
-from ..config_data import REDIS_BROKER, REDIS_BACKEND, IS_TESTING
+from ..config_data import REDIS_BROKER, REDIS_BACKEND
 
-if IS_TESTING:
-    broker_url = "redis://localhost:6379/0"
-    backend_url = "redis://localhost:6379/1"
-else:
-    broker_url = REDIS_BROKER
-    backend_url = REDIS_BACKEND
+# REDIS_BROKER = os.getenv("REDIS_BROKER")
+# REDIS_BACKEND = os.getenv("REDIS_BACKEND")
 
 celery = Celery(
     "celery_app",
-    broker=broker_url,
-    backend=backend_url,
+    broker=REDIS_BROKER,
+    backend=REDIS_BACKEND,
 )
 
 @celery.task
