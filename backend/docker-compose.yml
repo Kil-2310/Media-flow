@@ -1,15 +1,46 @@
 services:
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - backend
+    networks:
+      - app_network
+
   redis:
     image: redis:7-alpine
     ports:
       - "6380:6379"
-    restart: unless-stopped
+    networks:
+      - app_network
 
   backend:
     build: .
     ports:
-      - "8000:8000"
+      - "8000"
+    depends_on:
+      - redis
+    networks:
+      - app_network
+    environment:
+      - REDIS_BROKER=redis://redis:6379/0
+      - REDIS_BACKEND=redis://redis:6379/0
 
   worker:
     build: .
     command: celery -A app.celery.celery_app worker --loglevel=info
+    network_mode: "host"
+    depends_on:
+      - redis
+    environment:
+      - REDIS_BROKER=redis://127.0.0.1:6380/0
+      - REDIS_BACKEND=redis://127.0.0.1:6380/0
+
+networks:
+  app_network:
+    driver: bridge

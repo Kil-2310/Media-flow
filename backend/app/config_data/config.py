@@ -17,6 +17,9 @@ SMTP_HOST = os.getenv("SMTP_HOST")
 SMTP_PORT = os.getenv("SMTP_PORT")
 
 FRONTEND_URL = os.getenv("FRONTEND_URL")
+
+NGINX_TRUSTED_IP=os.getenv("NGINX_TRUSTED_IP")
+
 CSRF_TOKEN = os.getenv("CSRF_TOKEN")
 
 PROFILER_USER = os.getenv("PROFILER_USER")
@@ -29,4 +32,4 @@ REDIS_CLIENT = os.getenv("REDIS_CLIENT")
 
 REDIS_SESSIONS = os.getenv("REDIS_SESSIONS")
 
-IS_PROD = os.getenv("IS_PROD") == "True"
+IS_TESTING = os.getenv("IS_TESTING") == "True"
