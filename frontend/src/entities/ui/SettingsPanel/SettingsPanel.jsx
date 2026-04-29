@@ -32,20 +32,20 @@ const SettingsPanel = () => {
             <div className={`${styles.themes}`}>
                 <label onClick={() => setUserTheme('light')}>
                     <input checked={useUserTheme === 'light'} type="checkbox" readOnly />
-                    <p>☀️</p>
-                    <span class={styles.hidden}>Включить светлую тему</span>
+                    <p>☼</p>
+                    <span className={styles.hidden}>Включить светлую тему</span>
                 </label>
 
                 <label onClick={() => setUserTheme('dark')}>
                     <input checked={useUserTheme === 'dark'} type="checkbox" readOnly />
-                    <p>🌙</p>
-                    <span class={styles.hidden}>Включить тёмную тему</span>
+                    <p>☾</p>
+                    <span className={styles.hidden}>Включить тёмную тему</span>
                 </label>
 
                 <label onClick={() => setUserTheme('simple')}>
                     <input checked={useUserTheme === 'simple'} type="checkbox" readOnly />
-                    <p>👓</p>
-                    <span class={styles.hidden}>Включить упрощенную тему</span>
+                    <p>☍</p>
+                    <span className={styles.hidden}>Включить упрощенную тему</span>
                 </label>
             </div>
         </aside>

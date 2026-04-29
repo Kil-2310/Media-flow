@@ -1,12 +1,17 @@
-import { SERVER_URL } from '/config_data';
+const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL
 //import { headers } from ''
 
 const userAPI = {
+
     APIGetCSRFToken: async () => {
         const response = await fetch(`${SERVER_URL}/api/csrf_token`, {
             method: 'GET',
-            credentials: 'include',  // Важно для получения cookie
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include',
         });
+        console.log(SERVER_URL)
         return response;
     },
 
@@ -15,9 +20,9 @@ const userAPI = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'X-CSRF-Token': csrfToken,  // Отправляем токен в заголовке
+                'X-CSRF-Token': csrfToken,
             },
-            credentials: 'include',  // Важно для отправки cookie
+            credentials: 'include',
             body: JSON.stringify(data),
         });
     },
