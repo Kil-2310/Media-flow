@@ -17,6 +17,7 @@ def register_middleware(app: FastAPI):
     setup_csrf_protect(app)
     setup_cors_protect(app)
     setup_profiler(app)
+    setup_open_api(app)
 
 
 def register_routes(app: FastAPI):

@@ -13,9 +13,8 @@ class CsrfSettings(BaseModel):
     header_key: str = "X-CSRF-Token"
     cookie_path: str = "/"
     cookie_httponly: bool = True
-    cookie_samesite: str = "lax" if IS_TESTING else "none"
-    cookie_secure: bool = False if IS_TESTING else True
-
+    cookie_samesite: str = "lax"
+    cookie_secure: bool = False if not IS_TESTING else True # cookie только по HTTPS
 
 def setup_csrf_protect(app: FastAPI):
     @CsrfProtect.load_config
@@ -27,61 +26,18 @@ def setup_csrf_protect(app: FastAPI):
             request: Request,
             csrf_protect: CsrfProtect = Depends()
     ):
-        """Эндпоинт для получения CSRF токена"""
+        """Получения CSRF токена"""
         csrf_token, signed_token = csrf_protect.generate_csrf_tokens()
 
         response = JSONResponse({"csrf_token": csrf_token})
 
-        # Определяем параметры куки в зависимости от окружения
-        if IS_TESTING:
-            response.set_cookie(
-                key="fastapi-csrf-token",
-                value=signed_token,
-                httponly=True,
-                secure=False,
-                samesite="lax",
-                path="/",
-                domain=None,  # localhost
-                max_age=3600,
-            )
-        else:
-            response.set_cookie(
-                key="fastapi-csrf-token",
-                value=signed_token,
-                httponly=True,
-                secure=True,
-                samesite="none",
-                path="/",
-                domain="test-domain-my.ru",
-                max_age=3600,
-            )
-
-        return response
-
-    @app.post("/api/protected", tags=["CSRF"])
-    async def protected_endpoint(
-            request: Request,
-            csrf_protect: CsrfProtect = Depends()
-    ):
-        """Защищенный эндпоинт для проверки CSRF"""
-        await csrf_protect.validate_csrf(request)
-        return JSONResponse({"message": "CSRF validation successful"})
-
-    @app.post("/api/logout", tags=["CSRF"])
-    async def logout():
-        """Очистка CSRF куки"""
-        response = JSONResponse({"message": "Logged out"})
-
-        if IS_TESTING:
-            response.delete_cookie(
-                key="fastapi-csrf-token",
-                path="/"
-            )
-        else:
-            response.delete_cookie(
-                key="fastapi-csrf-token",
-                path="/",
-                domain="kursk-region.ru"
-            )
+        # Установка подписки
+        response.set_cookie(
+            key="fastapi-csrf-token",
+            value=signed_token,
+            httponly=True,
+            samesite="lax",
+            max_age=3600,
+        )
 
         return response

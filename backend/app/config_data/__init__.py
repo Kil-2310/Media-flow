@@ -6,15 +6,13 @@ from .config import (
     SMTP_PASSWORD,
     SMTP_HOST,
     SMTP_PORT,
-    FRONTEND_URL,
-    PROFILER_USER,
-    PROFILER_PASSWORD,
+    USER_USERNAME,
+    USER_PASSWORD,
     REDIS_BROKER,
     REDIS_BACKEND,
     CSRF_TOKEN,
     REDIS_CLIENT,
     REDIS_SESSIONS,
-    NGINX_TRUSTED_IP,
     IS_TESTING,
 )
 from .logger_config import logger

@@ -17,35 +17,38 @@ const useUser = () => {
         }
     }, []);
 
-    const sendFeedback = useCallback(async (content, email, setIsSubmitting) => {
-        // Получаем токен, если его нет
-        let token = csrfTokenGlobal;
-        if (!token) {
-            token = await CSRFToken();
+    const sendFeedback = useCallback(
+        async (content, email, setIsSubmitting) => {
+            // Получаем токен, если его нет
+            let token = csrfTokenGlobal;
             if (!token) {
-                alert('Ошибка безопасности. Обновите страницу.');
+                token = await CSRFToken();
+                if (!token) {
+                    alert('Ошибка безопасности. Обновите страницу.');
+                    setIsSubmitting(false);
+                    return;
+                }
+            }
+
+            const formData = { email, content };
+
+            try {
+                const response = await userAPI.APISendFeedback(formData, token);
+                if (response.ok) {
+                    alert('Успешно');
+                } else {
+                    const error = await response.json();
+                    throw new Error(error.detail || 'Ошибка отправки');
+                }
+            } catch (error) {
+                console.error('Ошибка:', error);
+                alert('Ошибка отправки');
+            } finally {
                 setIsSubmitting(false);
-                return;
             }
-        }
-
-        const formData = { email, content };
-
-        try {
-            const response = await userAPI.APISendFeedback(formData, token);
-            if (response.ok) {
-                alert('Успешно');
-            } else {
-                const error = await response.json();
-                throw new Error(error.detail || 'Ошибка отправки');
-            }
-        } catch (error) {
-            console.error('Ошибка:', error);
-            alert('Ошибка отправки');
-        } finally {
-            setIsSubmitting(false);
-        }
-    }, [csrfTokenGlobal, CSRFToken]);
+        },
+        [csrfTokenGlobal, CSRFToken]
+    );
 
     return { sendFeedback, CSRFToken };
 };
