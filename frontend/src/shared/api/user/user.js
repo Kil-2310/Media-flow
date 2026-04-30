@@ -1,17 +1,16 @@
-const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL
+const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
 //import { headers } from ''
 
 const userAPI = {
-
     APIGetCSRFToken: async () => {
         const response = await fetch(`${SERVER_URL}/api/csrf_token`, {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
             credentials: 'include',
         });
-        console.log(SERVER_URL)
+        console.log(SERVER_URL);
         return response;
     },
 

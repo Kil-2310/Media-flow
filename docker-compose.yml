@@ -10,20 +10,19 @@ services:
     build: ./backend
     ports:
       - "8000"
-    depends_on:
-      - redis
     networks:
       - app_network
     environment:
       - REDIS_BROKER=redis://redis:6379/0
       - REDIS_BACKEND=redis://redis:6379/0
+      - HOST=${HOST}
+    env_file:
+      - ./.env
 
   frontend:
     build: ./frontend
     ports:
       - "80:80"
-    depends_on:
-      - redis
     networks:
       - app_network
 
@@ -31,8 +30,6 @@ services:
     build: backend
     command: celery -A app.celery.celery_app worker --loglevel=info
     network_mode: "host"
-    depends_on:
-      - redis
     environment:
       - REDIS_BROKER=redis://127.0.0.1:6380/0
       - REDIS_BACKEND=redis://127.0.0.1:6380/0

@@ -3,7 +3,7 @@ from fastapi.responses import JSONResponse
 from fastapi_csrf_protect import CsrfProtect
 from pydantic import BaseModel
 
-from app.config_data import CSRF_TOKEN
+from app.config_data import CSRF_TOKEN, IS_TESTING
 
 
 class CsrfSettings(BaseModel):
@@ -14,8 +14,7 @@ class CsrfSettings(BaseModel):
     cookie_path: str = "/"
     cookie_httponly: bool = True
     cookie_samesite: str = "lax"
-    cookie_secure: bool = False
-
+    cookie_secure: bool = False if not IS_TESTING else True # cookie только по HTTPS
 
 def setup_csrf_protect(app: FastAPI):
     @CsrfProtect.load_config
@@ -27,40 +26,18 @@ def setup_csrf_protect(app: FastAPI):
             request: Request,
             csrf_protect: CsrfProtect = Depends()
     ):
-        """Эндпоинт для получения CSRF токена"""
+        """Получения CSRF токена"""
         csrf_token, signed_token = csrf_protect.generate_csrf_tokens()
 
         response = JSONResponse({"csrf_token": csrf_token})
 
+        # Установка подписки
         response.set_cookie(
             key="fastapi-csrf-token",
             value=signed_token,
             httponly=True,
-            secure=False,
             samesite="lax",
-            path="/",
-            domain="localhost",
             max_age=3600,
         )
 
-        return response
-
-    @app.post("/api/protected", tags=["CSRF"])
-    async def protected_endpoint(
-            request: Request,
-            csrf_protect: CsrfProtect = Depends()
-    ):
-        """Защищенный эндпоинт для проверки CSRF"""
-        await csrf_protect.validate_csrf(request)
-        return JSONResponse({"message": "CSRF validation successful"})
-
-    @app.post("/api/logout", tags=["CSRF"])
-    async def logout():
-        """Очистка CSRF куки"""
-        response = JSONResponse({"message": "Logged out"})
-        response.delete_cookie(
-            key="fastapi-csrf-token",
-            path="/",
-            domain="localhost"
-        )
         return response
