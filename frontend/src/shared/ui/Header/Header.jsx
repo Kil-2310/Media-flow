@@ -161,21 +161,6 @@ const Header = () => {
                     <li>
                         <Link href="/reviews">Отзывы</Link>
                     </li>
-
-                    <li>
-                        <select
-                            name="cities"
-                            defaultValue=""
-                            title="Города"
-                            onChange={ChangeLocation}
-                        >
-                            <option value="">Города</option>
-                            <option value="" disabled>
-                                В разработке
-                            </option>
-                            {/* <option value="/cities">Города Курской области</option> */}
-                        </select>
-                    </li>
                 </ul>
             </nav>
 
@@ -366,20 +351,6 @@ const Header = () => {
 
                     <li onClick={closeBurgerMenu}>
                         <Link href="/reviews">Отзывы</Link>
-                    </li>
-
-                    <li>
-                        <details>
-                            <summary>Города</summary>
-                            <ul>
-                                <li onClick={closeBurgerMenu}>
-                                    <option value="" disabled>
-                                        В разработке
-                                    </option>
-                                    {/* <Link href="/cities">Города Курской области</Link> */}
-                                </li>
-                            </ul>
-                        </details>
                     </li>
                 </ul>
             </nav>

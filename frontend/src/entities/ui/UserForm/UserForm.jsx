@@ -1,36 +1,29 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-
+import { useState } from 'react';
 import styles from './UserForm.module.scss';
 import Button from '@/shared/ui/Button';
 import useUser from '@/entities/model/useUser';
+import { SECRET_FORM_KEY } from '/config_data'
 
 const UserForm = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const { sendFeedback, CSRFToken } = useUser();
+    const sendFeedback = useUser();
 
     const submitForm = async (e) => {
         e.preventDefault();
 
-        const email = e.target.email.value || '';
-        const content = e.target.content.value;
+        const formData = new FormData(e.target);
 
-        console.log(content);
-
-        await sendFeedback(content, email, setIsSubmitting);
+        await sendFeedback(formData);
+        setIsSubmitting(false)
     };
-
-    useEffect(() => {
-        const initCSRF = async () => {
-            const token = await CSRFToken();
-        };
-        initCSRF();
-    }, []);
 
     return (
         <form onSubmit={submitForm} className={styles.form}>
             <h1>Форма обратной связи</h1>
+
+            <input type="hidden" name="access_key" value={SECRET_FORM_KEY} />
 
             <div>
                 <label htmlFor="email" className="form-label">

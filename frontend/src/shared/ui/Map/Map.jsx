@@ -8,7 +8,7 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import styles from './Map.module.scss';
 const points = [
     {
-        id: 1,
+        id: 3,
         name: 'Коренская ярмарка',
         longitude: 35.5079,
         latitude: 51.412,
@@ -26,7 +26,7 @@ const points = [
         image: '/images/region/main_image.jpg',
     },
     {
-        id: 3,
+        id: 1,
         name: 'Мемориал «Курская дуга» в Понырях',
         longitude: 36.2345,
         latitude: 52.3167,

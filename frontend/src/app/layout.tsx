@@ -174,9 +174,6 @@ export default function RootLayout({
     return (
         <html lang="ru">
             <head>
-                <meta name="google-site-verification" content="googleb17e9195c6d74c3a" />
-                <meta name="yandex-verification" content="49f0c2ffcf2b441d" />
-
                 <JsonLd />
                 <LocalBusinessJsonLd />
             </head>
