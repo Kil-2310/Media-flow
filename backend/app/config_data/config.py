@@ -7,6 +7,8 @@ if not find_dotenv():
 else:
     load_dotenv()
 
+IS_TESTING = os.getenv("IS_TESTING") == "True"
+
 DB_USER = os.getenv("DB_USER")
 DB_PASSWORD = os.getenv("DB_PASSWORD")
 DB_NAME = os.getenv("DB_NAME")
@@ -16,17 +18,29 @@ SMTP_PASSWORD = os.getenv("SMTP_PASSWORD")
 SMTP_HOST = os.getenv("SMTP_HOST")
 SMTP_PORT = os.getenv("SMTP_PORT")
 
-FRONTEND_URL = os.getenv("FRONTEND_URL")
 CSRF_TOKEN = os.getenv("CSRF_TOKEN")
 
-PROFILER_USER = os.getenv("PROFILER_USER")
-PROFILER_PASSWORD = os.getenv("PROFILER_PASSWORD")
+USER_USERNAME = os.getenv("USER_USERNAME")
+USER_PASSWORD = os.getenv("USER_PASSWORD")
 
-REDIS_BROKER = os.getenv("REDIS_BROKER")
-REDIS_BACKEND = os.getenv("REDIS_BACKEND")
+if IS_TESTING:
+    REDIS_BROKER = "redis://127.0.0.1:6379/0"
+    REDIS_BACKEND = "redis://127.0.0.1:6379/0"
+    REDIS_CLIENT = "redis://127.0.0.1:6379/1"
+    REDIS_SESSIONS = "redis://127.0.0.1:6379/2"
+else:
+    REDIS_BROKER = os.getenv("REDIS_BROKER")
+    REDIS_BACKEND = os.getenv("REDIS_BACKEND")
+    REDIS_CLIENT = os.getenv("REDIS_CLIENT")
+    REDIS_SESSIONS = os.getenv("REDIS_SESSIONS")
 
-REDIS_CLIENT = os.getenv("REDIS_CLIENT")
+ALGORITHM = os.getenv("ALGORITHM")
+SECRET_KEY = os.getenv("SECRET_KEY")
 
-REDIS_SESSIONS = os.getenv("REDIS_SESSIONS")
+SECRET_SALT_KEY = os.getenv("SECRET_SALT_KEY")
 
-IS_PROD = os.getenv("IS_PROD") == "True"
+S3_ACCESS_KEY = os.getenv("S3_ACCESS_KEY")
+S3_SECRET_KEY = os.getenv("S3_SECRET_KEY")
+S3_BUCKET = os.getenv("S3_BUCKET")
+S3_REGION = os.getenv("S3_REGION")
+S3_ENDPOINT = os.getenv("S3_ENDPOINT")
