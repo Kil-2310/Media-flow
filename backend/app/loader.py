@@ -1,9 +1,10 @@
-from app.utils.cache_sessions import cache
+from app.utils.cache import cache
 from fastapi import FastAPI
 from sqlalchemy import select
 
 from .base import Base
 from .comment.routes import register_comment_routes
+from .config_data import IS_TESTING
 from .database import async_session, engine  # init_cache,; close_cache
 from .media.routes import register_media_routes
 from .middleware import setup_cors_protect, setup_open_api, setup_profiler

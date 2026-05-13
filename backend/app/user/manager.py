@@ -74,6 +74,7 @@ class UserManager:
             select(User)
             .where(User.email == email)
             .options(selectinload(User.temporary_code))
+            .options(selectinload(User.comment))
         )
 
         user_obj = result.scalar_one_or_none()
@@ -94,7 +95,11 @@ class UserManager:
     @classmethod
     async def get_by_id(cls, session, user_id: int):
 
-        result = await session.execute(select(User).where(User.user_id == user_id))
+        result = await session.execute(
+            select(User)
+            .where(User.user_id == user_id)
+            .options(selectinload(User.comment))
+        )
 
         user_obj = result.scalar_one_or_none()
 

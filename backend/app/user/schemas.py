@@ -55,4 +55,4 @@ class UserProfile(ServerBoolAnswer):
     user_id: int
     full_name: str
     email: EmailStr
-    created_at: datetime
+    content: Optional[str]

@@ -1,9 +1,7 @@
 from app.middleware import limiter
-from app.utils.cache_sessions import cache
 from fastapi import Depends, FastAPI, Request, Response
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from ..base_schemas import ServerBoolAnswer
 from ..celery.celery_app import celery_send_email
 from ..config_data import SMTP_USER, logger
 from ..database import get_session
@@ -11,8 +9,9 @@ from ..temporary_code.manager import ManagerTemporaryCode
 from ..utils.functions import cookie_configuration
 from ..utils.jwt_token import jwt_token
 from .manager import UserManager
-from .model import User
 from .schemas import *
+from ..utils.cache import cache
+from .model import User
 
 
 def register_user_routes(app: FastAPI):
@@ -29,6 +28,7 @@ def register_user_routes(app: FastAPI):
     async def rout_send_feedback(
         feedback: FeedbackCreate,
         request: Request,
+        response: Response,
     ) -> ServerBoolAnswer:
         """Отправка письма на почту автора"""
         logger.debug("Отправка письма на почту автора")
@@ -147,17 +147,17 @@ def register_user_routes(app: FastAPI):
             session, post_code, cookie_email
         )
 
-        # Кеширование пользователя на 2 час
+        # Кеширование пользователя на 1 час
         cache_key = f"user:{user_obj.user_id}"
         user_data = {
             "user_id": user_obj.user_id,
             "full_name": user_obj.full_name,
             "email": user_obj.email,
             "role": user_obj.role,
-            "created_at": user_obj.created_at,
+            "content": user_obj.comment.content if user_obj.comment else None,
         }
 
-        await cache.set(cache_key, user_data, expire=7200)
+        await cache.set(cache_key, user_data, expire=3600)
 
         token = jwt_token.create(
             user_id=user_obj.user_id,
@@ -168,6 +168,47 @@ def register_user_routes(app: FastAPI):
 
         # Request
         return ServerBoolAnswer()
+
+    """Получение данных пользователя"""
+
+    @app.get(
+        "/api/user/profile",
+        status_code=200,
+        tags=["user profile"],
+        summary="Получение данных профидя пользователя",
+        response_model=UserProfile,
+    )
+    async def route_profile(
+            request: Request,
+            response: Response,
+            session: AsyncSession = Depends(get_session),
+    ) -> UserProfile:
+        """Получение данных профидя пользователя"""
+        logger.debug("Получение данных профидя пользователя")
+
+        # Получение и проверка токена
+        user_id, role = jwt_token.read(request.cookies.get("jwt_token"))
+
+        # Бизнес-логика
+        cache_key = f"user:{user_id}"
+        user_cache = await cache.get(cache_key)
+
+        if not user_cache:
+            user_obj = await UserManager.get_by_id(session, user_id)
+
+            return UserProfile(
+                user_id=user_obj.user_id,
+                full_name=user_obj.full_name,
+                email=user_obj.email,
+                content=user_obj.comment.content if user_obj.comment else None
+            )
+
+        return UserProfile(
+            user_id=user_cache["user_id"],
+            full_name=user_cache["full_name"],
+            email=user_cache["email"],
+            content=user_cache.get("content")
+        )
 
     @app.delete(
         "/api/user/login/logout",
@@ -189,39 +230,3 @@ def register_user_routes(app: FastAPI):
 
         # Request
         return ServerBoolAnswer()
-
-    """Получение данных пользователя"""
-
-    @app.get(
-        "/api/user/profile",
-        status_code=200,
-        tags=["user profile"],
-        summary="Получение данных профидя пользователя",
-        response_model=UserProfile,
-    )
-    async def route_profile(
-        request: Request,
-        session: AsyncSession = Depends(get_session),
-    ) -> UserProfile:
-        """Получение данных профидя пользователя"""
-        logger.debug("Получение данных профидя пользователя")
-
-        # Получение и проверка токена
-        user_id, role = jwt_token.read(request.cookies.get("jwt_token"))
-
-        # Бизнес-логика
-        cache_key = f"user:{user_id}"
-        user_cache = await cache.get(cache_key)
-
-        if not user_cache:
-            user_obj = await UserManager.get_by_id(session, user_id)
-        else:
-            user_obj = User(**user_cache)
-
-        # Request
-        return UserProfile(
-            user_id=user_obj.user_id,
-            full_name=user_obj.full_name,
-            email=user_obj.email,
-            created_at=user_obj.created_at,
-        )

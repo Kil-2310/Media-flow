@@ -23,11 +23,16 @@ CSRF_TOKEN = os.getenv("CSRF_TOKEN")
 USER_USERNAME = os.getenv("USER_USERNAME")
 USER_PASSWORD = os.getenv("USER_PASSWORD")
 
-
-REDIS_BROKER = os.getenv("REDIS_BROKER")
-REDIS_BACKEND = os.getenv("REDIS_BACKEND")
-REDIS_CLIENT = os.getenv("REDIS_CLIENT")
-REDIS_SESSIONS = os.getenv("REDIS_SESSIONS")
+if IS_TESTING:
+    REDIS_BROKER = "redis://127.0.0.1:6379/0"
+    REDIS_BACKEND = "redis://127.0.0.1:6379/0"
+    REDIS_CLIENT = "redis://127.0.0.1:6379/1"
+    REDIS_SESSIONS = "redis://127.0.0.1:6379/2"
+else:
+    REDIS_BROKER = os.getenv("REDIS_BROKER")
+    REDIS_BACKEND = os.getenv("REDIS_BACKEND")
+    REDIS_CLIENT = os.getenv("REDIS_CLIENT")
+    REDIS_SESSIONS = os.getenv("REDIS_SESSIONS")
 
 ALGORITHM = os.getenv("ALGORITHM")
 SECRET_KEY = os.getenv("SECRET_KEY")

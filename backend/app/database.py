@@ -5,10 +5,12 @@ from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_asyn
 from .config_data.config import DB_NAME, DB_PASSWORD, DB_USER, IS_TESTING
 
 if IS_TESTING:
-    engine = create_async_engine("sqlite+aiosqlite:///./develop.db", echo=True)
+    engine = create_async_engine(
+        f"postgresql+asyncpg://{DB_USER}:{DB_PASSWORD}@127.0.0.1:5432/{DB_NAME}"
+    )
 else:
     engine = create_async_engine(
-        f"postgresql+asyncpg://{DB_USER}:{DB_PASSWORD}@postgres:5432/{DB_NAME}"
+        f"postgresql+asyncpg://{DB_USER}:{DB_PASSWORD}@postgres/{DB_NAME}"
     )
 
 async_session = async_sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
