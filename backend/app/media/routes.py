@@ -1,5 +1,5 @@
 from app.middleware import limiter
-from fastapi import Depends, FastAPI, File, Request, UploadFile
+from fastapi import Depends, FastAPI, File, Request, UploadFile, Response
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from ..comment.manager import CommentManager
@@ -13,7 +13,7 @@ from .schemas import CreateCommentResponse
 def register_media_routes(app: FastAPI):
 
     @app.post(
-        "/api/media",
+        "/api/media/create",
         status_code=200,
         tags=["media"],
         summary="Загрузка картинки для комментария",
@@ -22,6 +22,7 @@ def register_media_routes(app: FastAPI):
     @limiter.limit("2/minute")
     async def route_media(
         request: Request,
+        response: Response,
         file: UploadFile = File(..., description="Выберете медиафайл для загрузки"),
         session: AsyncSession = Depends(get_session),
     ) -> CreateCommentResponse:

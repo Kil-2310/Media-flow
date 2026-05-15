@@ -1,4 +1,4 @@
-from .entities import test_user, test_comment
+from .entities import test_user, create_comment
 from .utils import get_jwt_token
 
 async def test_1_comment(client, setup_database, test_user, db_session):
@@ -20,7 +20,7 @@ async def test_2_comment(client, setup_database, test_user, db_session):
 
     get_jwt_token(client, test_user)
 
-    await test_comment(db_session, test_user)
+    await create_comment(db_session, test_user)
 
     response = client.delete(f"/api/comment/delete")
 
@@ -32,7 +32,7 @@ async def test_3_comment(client, setup_database, test_user, db_session):
 
     get_jwt_token(client, test_user)
 
-    await test_comment(db_session, test_user)
+    await create_comment(db_session, test_user)
 
     response = client.get("/api/comment/get_all")
 
@@ -43,7 +43,7 @@ async def test_4_comment(client, setup_database, test_user, db_session):
     """Получение верифицированных комментариев"""
     get_jwt_token(client, test_user)
 
-    await test_comment(db_session, test_user, True)
+    await create_comment(db_session, test_user, True)
 
     response = client.get("/api/comment/get_verified")
 
@@ -55,7 +55,7 @@ async def test_5_comment(client, setup_database, test_user, db_session):
     """Получение не верифицированных комментариев"""
     get_jwt_token(client, test_user)
 
-    await test_comment(db_session, test_user, False)
+    await create_comment(db_session, test_user, False)
 
     response = client.get("/api/comment/get_unverified")
 

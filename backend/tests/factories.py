@@ -30,7 +30,7 @@ class TemporaryCodeFactory(factory.alchemy.SQLAlchemyModelFactory):
         sqlalchemy_session_persistence = "commit"
 
     temporary_code_id = factory.Sequence(lambda n: n)
-    temporary_code_value = "1234"
+    temporary_code_value = None
     expires_at = factory.LazyFunction(
         lambda: datetime.now() + timedelta(hours=random.randint(1, 48))
     )

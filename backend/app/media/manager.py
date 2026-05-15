@@ -1,7 +1,4 @@
-from typing import Union
-
 from fastapi import HTTPException, UploadFile
-from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from ..comment.model import Comment
