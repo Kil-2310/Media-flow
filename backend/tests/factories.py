@@ -45,11 +45,13 @@ class CommentFactory(factory.alchemy.SQLAlchemyModelFactory):
 
     comment_id = factory.Sequence(lambda n: n)
     content = factory.Faker("text", max_nb_chars=120)
-    verified = factory.Iterator([True, False])
+    verified = factory.Iterator([False])
     created_at = factory.LazyFunction(
         lambda: datetime.now() - timedelta(days=random.randint(0, 180))
     )
-    user_id = factory.Sequence(lambda n: n)
+    user_id = factory.LazyFunction(
+        lambda: random.randint(1, 10485760)
+    )
 
 
 class MediaFactory(factory.alchemy.SQLAlchemyModelFactory):

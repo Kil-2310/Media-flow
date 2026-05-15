@@ -179,9 +179,9 @@ def register_user_routes(app: FastAPI):
         response_model=UserProfile,
     )
     async def route_profile(
-            request: Request,
-            response: Response,
-            session: AsyncSession = Depends(get_session),
+        request: Request,
+        response: Response,
+        session: AsyncSession = Depends(get_session),
     ) -> UserProfile:
         """Получение данных профидя пользователя"""
         logger.debug("Получение данных профидя пользователя")
@@ -200,14 +200,14 @@ def register_user_routes(app: FastAPI):
                 user_id=user_obj.user_id,
                 full_name=user_obj.full_name,
                 email=user_obj.email,
-                content=user_obj.comment.content if user_obj.comment else None
+                content=user_obj.comment.content if user_obj.comment else None,
             )
 
         return UserProfile(
             user_id=user_cache["user_id"],
             full_name=user_cache["full_name"],
             email=user_cache["email"],
-            content=user_cache.get("content")
+            content=user_cache.get("content"),
         )
 
     @app.delete(

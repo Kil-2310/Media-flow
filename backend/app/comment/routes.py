@@ -1,8 +1,7 @@
 from app.middleware import limiter
-from fastapi import Depends, FastAPI, Request
+from fastapi import Depends, FastAPI, Request, Response
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from ..base_schemas import ServerBoolAnswer
 from ..config_data import logger
 from ..database import get_session
 from ..utils.jwt_token import jwt_token
@@ -23,6 +22,7 @@ def register_comment_routes(app: FastAPI):
     async def route_comment_create(
         comment: CreateCommentRequest,
         request: Request,
+        response: Response,
         session: AsyncSession = Depends(get_session),
     ) -> CreateCommentResponse:
         """Создание нового комментария"""
@@ -53,6 +53,7 @@ def register_comment_routes(app: FastAPI):
     @limiter.limit("2/minute")
     async def route_comment_delete(
         request: Request,
+        response: Response,
         session: AsyncSession = Depends(get_session),
     ) -> ServerBoolAnswer:
         """Удаление комментария по id"""

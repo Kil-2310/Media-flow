@@ -1,8 +1,10 @@
 from unittest.mock import patch, MagicMock
 from types import SimpleNamespace
 
-from .entities import test_user
+from .entities import test_user, test_comment
 from .conftest import EMAIL
+
+from .utils import get_jwt_token
 
 def test_1(client, setup_database):
     """Тест успешной отправки feedback с почтой от пользователя"""
@@ -90,9 +92,7 @@ def test_5(client, setup_database):
 def test_6(client, setup_database):
     """Данные аккаунта пользователя"""
 
-    from app.utils.jwt_token import jwt_token
-    token = jwt_token.create(user_id=1, role="user")
-    client.cookies.set("jwt_token", token)
+    get_jwt_token(client)
 
     with patch('app.user.routes.cache.get') as mock_cache_get:
         cached_user_data = {
@@ -106,4 +106,3 @@ def test_6(client, setup_database):
         response = client.get('/api/user/profile')
 
         assert response.status_code == 200
-

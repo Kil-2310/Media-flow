@@ -2,7 +2,7 @@ import hashlib
 import secrets
 import string
 
-from ..config_data import SECRET_SALT_KEY
+from ..config_data import SECRET_SALT_KEY, ALGORITHM
 
 
 def generate_numeric_code() -> str:
@@ -13,7 +13,7 @@ def generate_numeric_code() -> str:
 def hash_code(code: str) -> str:
     """Хэширование кода с помощью SHA256 и соли"""
     salt = SECRET_SALT_KEY
-    return hashlib.sha256(f"{code}{salt}".encode()).hexdigest()
+    return hashlib.ALGORITHM(f"{code}{salt}".encode()).hexdigest()
 
 
 def verify_code(plain_code: str, hashed_code: str) -> bool:
