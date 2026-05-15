@@ -6,12 +6,12 @@ from ..celery.celery_app import celery_send_email
 from ..config_data import SMTP_USER, logger
 from ..database import get_session
 from ..temporary_code.manager import ManagerTemporaryCode
+from ..utils.cache import cache
 from ..utils.functions import cookie_configuration
 from ..utils.jwt_token import jwt_token
 from .manager import UserManager
-from .schemas import *
-from ..utils.cache import cache
 from .model import User
+from .schemas import *
 
 
 def register_user_routes(app: FastAPI):

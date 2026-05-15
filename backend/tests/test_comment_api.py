@@ -1,14 +1,13 @@
 from .entities import test_user, create_comment
 from .utils import get_jwt_token
 
+
 async def test_1_comment(client, setup_database, test_user, db_session):
     """Создание комментария"""
 
     get_jwt_token(client, test_user)
 
-    data = {
-        "content": "Какой-то комментарий от пользователя"
-    }
+    data = {"content": "Какой-то комментарий от пользователя"}
 
     response = client.post("/api/comment/create", json=data)
 
@@ -48,7 +47,7 @@ async def test_4_comment(client, setup_database, test_user, db_session):
     response = client.get("/api/comment/get_verified")
 
     assert response.status_code == 200
-    assert response.json()["data"][0]['verified'] == True
+    assert response.json()["data"][0]["verified"] == True
 
 
 async def test_5_comment(client, setup_database, test_user, db_session):
@@ -60,7 +59,7 @@ async def test_5_comment(client, setup_database, test_user, db_session):
     response = client.get("/api/comment/get_unverified")
 
     assert response.status_code == 200
-    assert response.json()["data"][0]['verified'] == False
+    assert response.json()["data"][0]["verified"] == False
 
 
 async def test_6_comment(client, setup_database, test_user):
@@ -71,4 +70,4 @@ async def test_6_comment(client, setup_database, test_user):
     response = client.get("/api/comment/get_all")
 
     assert response.status_code == 404
-    assert response.json()['detail'].startswith('The comment does')
+    assert response.json()["detail"].startswith("The comment does")

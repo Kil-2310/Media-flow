@@ -49,9 +49,7 @@ class CommentFactory(factory.alchemy.SQLAlchemyModelFactory):
     created_at = factory.LazyFunction(
         lambda: datetime.now() - timedelta(days=random.randint(0, 180))
     )
-    user_id = factory.LazyFunction(
-        lambda: random.randint(1, 10485760)
-    )
+    user_id = factory.LazyFunction(lambda: random.randint(1, 10485760))
 
 
 class MediaFactory(factory.alchemy.SQLAlchemyModelFactory):
@@ -66,12 +64,8 @@ class MediaFactory(factory.alchemy.SQLAlchemyModelFactory):
     file_url = factory.LazyAttribute(
         lambda obj: f"https://s3.example.com/bucket/{obj.file_name}"
     )
-    s3_key = factory.LazyAttribute(
-        lambda obj: f"uploads/{obj.file_name}"
-    )
-    file_size = factory.LazyFunction(
-        lambda: random.randint(1024, 10485760)
-    )
+    s3_key = factory.LazyAttribute(lambda obj: f"uploads/{obj.file_name}")
+    file_size = factory.LazyFunction(lambda: random.randint(1024, 10485760))
     created_at = factory.LazyFunction(
         lambda: datetime.now() - timedelta(days=random.randint(0, 60))
     )

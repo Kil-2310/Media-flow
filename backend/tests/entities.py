@@ -30,13 +30,13 @@ async def create_temporary_code(db_session, user):
     hashed_code = hash_code("1234")
 
     temporary_code = TemporaryCodeFactory.build(
-        temporary_code_value=hashed_code,
-        user_id=user.user_id
+        temporary_code_value=hashed_code, user_id=user.user_id
     )
     db_session.add(temporary_code)
     await db_session.commit()
     await db_session.refresh(temporary_code)
     return temporary_code
+
 
 # async def test_media(db_session, comment) -> MediaFactory:
 #     """Тестовый медиа, связанный с комментарием"""

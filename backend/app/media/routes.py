@@ -1,5 +1,5 @@
 from app.middleware import limiter
-from fastapi import Depends, FastAPI, File, Request, UploadFile, Response
+from fastapi import Depends, FastAPI, File, Request, Response, UploadFile
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from ..comment.manager import CommentManager

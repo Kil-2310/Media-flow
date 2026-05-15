@@ -46,7 +46,7 @@ jobs:
             S3_ENDPOINT=url
             S3_REGION=region
             S3_BUCKET=bucket
-            IS_TESTING=False
+            IS_TESTING=True
           EOF
 
       - name: Code Formatting Check

@@ -5,15 +5,13 @@ from .conftest import EMAIL
 
 from .utils import get_jwt_token
 
+
 async def test_1_user(client, setup_database):
     """Тест успешной отправки feedback с почтой от пользователя"""
 
-    data = {
-        "email": "user@example.com",
-        "content": "Test feedback message"
-    }
+    data = {"email": "user@example.com", "content": "Test feedback message"}
 
-    with patch('app.celery.celery_send_email.delay') as mock_celery:
+    with patch("app.celery.celery_send_email.delay") as mock_celery:
         mock_celery.return_value = MagicMock()
 
         response = client.post("/api/user/send_feedback", json=data)
@@ -25,15 +23,13 @@ async def test_1_user(client, setup_database):
 
         # Первый вызов (письмо пользователю)
         first_call_args = calls[0][1]
-        assert first_call_args.get('receiver') == data['email']
+        assert first_call_args.get("receiver") == data["email"]
+
 
 async def test_2_user(client, setup_database):
     """Тест регистрации пользователя"""
 
-    data = {
-        "email": "test_c@gmail.com",
-        "full_name": "user user user"
-    }
+    data = {"email": "test_c@gmail.com", "full_name": "user user user"}
 
     response = client.post("/api/user/registration", json=data)
 
@@ -43,9 +39,7 @@ async def test_2_user(client, setup_database):
 async def test_3_user(client, setup_database, test_user, db_session):
     """Отправка письма пользователю для подтверждения и входа в аккаунт"""
 
-    data = {
-        "email": EMAIL
-    }
+    data = {"email": EMAIL}
 
     await create_temporary_code(db_session, test_user)
 
@@ -58,25 +52,20 @@ async def test_3_user(client, setup_database, test_user, db_session):
 async def test_4_user(client, setup_database, test_user, db_session):
     """Подтверждение входа в аккаунт"""
 
-    client.cookies.set('email', EMAIL)
+    client.cookies.set("email", EMAIL)
 
-    data = {
-        "code": "1234"
-    }
+    data = {"code": "1234"}
 
     await create_temporary_code(db_session, test_user)
 
-    confirm_response = client.post(
-        "/api/user/login/mail_confirmation",
-        json=data
-    )
+    confirm_response = client.post("/api/user/login/mail_confirmation", json=data)
 
     assert confirm_response.status_code == 200
 
 
 def test_5_user(client, setup_database):
     """Выход из аккаунта пользователя"""
-    response = client.delete('/api/user/login/logout')
+    response = client.delete("/api/user/login/logout")
 
     assert response.status_code == 200
 
@@ -86,15 +75,15 @@ def test_6_user(client, setup_database, test_user):
 
     get_jwt_token(client, test_user)
 
-    with patch('app.user.routes.cache.get') as mock_cache_get:
+    with patch("app.user.routes.cache.get") as mock_cache_get:
         cached_user_data = {
             "user_id": 1,
             "full_name": "Test User",
             "email": "test@example.com",
-            "content": "Test comment"
+            "content": "Test comment",
         }
         mock_cache_get.return_value = cached_user_data
 
-        response = client.get('/api/user/profile')
+        response = client.get("/api/user/profile")
 
         assert response.status_code == 200
