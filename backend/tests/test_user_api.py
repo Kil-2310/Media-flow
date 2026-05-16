@@ -2,12 +2,11 @@ from unittest.mock import patch, MagicMock
 
 from .entities import test_user, create_temporary_code
 from .conftest import EMAIL
-
 from .utils import get_jwt_token
 
 
 async def test_1_user(client, setup_database):
-    """Тест успешной отправки feedback с почтой от пользователя"""
+    """Тест успешной отправки письма на почту автору и клиенту"""
 
     data = {"email": "user@example.com", "content": "Test feedback message"}
 
@@ -37,11 +36,9 @@ async def test_2_user(client, setup_database,):
 
 
 async def test_3_user(client, setup_database, test_user, db_session):
-    """Отправка письма пользователю для подтверждения и входа в аккаунт"""
+    """Отправка письма пользователю для подтверждения входа в аккаунт"""
 
     data = {"email": EMAIL}
-
-    await create_temporary_code(db_session, test_user)
 
     response = client.post("/api/user/login/temporary_code", json=data)
 
@@ -75,15 +72,6 @@ def test_6_user(client, setup_database, test_user):
 
     get_jwt_token(client, test_user)
 
-    with patch("app.user.routes.cache.get") as mock_cache_get:
-        cached_user_data = {
-            "user_id": 1,
-            "full_name": "Test User",
-            "email": "test@example.com",
-            "content": "Test comment",
-        }
-        mock_cache_get.return_value = cached_user_data
+    response = client.get("/api/user/profile")
 
-        response = client.get("/api/user/profile")
-
-        assert response.status_code == 200
+    assert response.status_code == 200
