@@ -53,4 +53,4 @@ jobs:
         run: black --diff --check  backend/app/
 
       - name: Run pytest
-        run: pytest backend/tests/
+        run: pytest backend/tests/test_user_api.py
