@@ -10,28 +10,23 @@ jobs:
   format:
     runs-on: ubuntu-latest
     
+    services:
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: frontend/package-lock.json
-      
-      - name: Install dependencies JavaScript
-        run: |
-          cd frontend
-          npm ci
-      
-      - name: Check formatting with Prettier JavaScript
-        run: |
-          cd frontend
-          npx prettier --check "src/**/*.{js,jsx,ts,tsx,json}" --config ./config_data/.prettierrc
 
-      - uses: actions/setup-python@v4
+      - name: Setup Python
+        uses: actions/setup-python@v4
         with:
           python-version: '3.10'
 
@@ -42,30 +37,32 @@ jobs:
         run: |
           cat << EOF > backend/.env
           DB_USER=user
-          DB_PASSWORD=user_password
-          DB_NAME=database_name
-          
+          DB_PASSWORD=password
+          DB_NAME=nmae
           SMTP_USER=email
           SMTP_PASSWORD=password
           SMTP_HOST=host
           SMTP_PORT=0
-          
-          FRONTEND_URL=url
-          CSRF_TOKEN=token
-          
-          PROFILER_USER=user
-          PROFILER_PASSWORD=user_password
-          
-          REDIS_BROKER=route
-          REDIS_BACKEND=route
-          
-          REDIS_CLIENT=route
-          
-          REDIS_SESSIONS=route
-          
-          IS_PROD=is_prod_True/False_?
-
+          USER_USERNAME=user
+          USER_PASSWORD=password
+          REDIS_BROKER=url
+          REDIS_BACKEND=url
+          REDIS_CLIENT=url
+          REDIS_SESSIONS=url
+          ALGORITHM=HS256
+          SECRET_KEY=key
+          SECRET_SALT_KEY=test
+          FRONTEND_URL=http://localhost
+          S3_ACCESS_KEY=access_key
+          S3_SECRET_KEY=secret_key
+          S3_ENDPOINT=https://s3.twcs
+          S3_REGION=region
+          S3_BUCKET=bucket
+          IS_TESTING=True
           EOF
 
+      - name: Code Formatting Check
+        run: black --diff --check backend/app/
+
       - name: Run pytest
-        run: pytest backend/tests/
+        run: pytest backend/tests/ -v

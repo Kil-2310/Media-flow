@@ -1,6 +1,5 @@
 from .config import (
     ALGORITHM,
-    CSRF_TOKEN,
     DB_NAME,
     DB_PASSWORD,
     DB_USER,

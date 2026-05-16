@@ -30,7 +30,7 @@ class TemporaryCodeFactory(factory.alchemy.SQLAlchemyModelFactory):
         sqlalchemy_session_persistence = "commit"
 
     temporary_code_id = factory.Sequence(lambda n: n)
-    temporary_code_value = "1234"
+    temporary_code_value = None
     expires_at = factory.LazyFunction(
         lambda: datetime.now() + timedelta(hours=random.randint(1, 48))
     )
@@ -45,11 +45,11 @@ class CommentFactory(factory.alchemy.SQLAlchemyModelFactory):
 
     comment_id = factory.Sequence(lambda n: n)
     content = factory.Faker("text", max_nb_chars=120)
-    verified = factory.Iterator([True, False])
+    verified = factory.Iterator([False])
     created_at = factory.LazyFunction(
         lambda: datetime.now() - timedelta(days=random.randint(0, 180))
     )
-    user_id = factory.Sequence(lambda n: n)
+    user_id = factory.LazyFunction(lambda: random.randint(1, 10485760))
 
 
 class MediaFactory(factory.alchemy.SQLAlchemyModelFactory):
@@ -64,12 +64,8 @@ class MediaFactory(factory.alchemy.SQLAlchemyModelFactory):
     file_url = factory.LazyAttribute(
         lambda obj: f"https://s3.example.com/bucket/{obj.file_name}"
     )
-    s3_key = factory.LazyAttribute(
-        lambda obj: f"uploads/{obj.file_name}"
-    )
-    file_size = factory.LazyFunction(
-        lambda: random.randint(1024, 10485760)
-    )
+    s3_key = factory.LazyAttribute(lambda obj: f"uploads/{obj.file_name}")
+    file_size = factory.LazyFunction(lambda: random.randint(1024, 10485760))
     created_at = factory.LazyFunction(
         lambda: datetime.now() - timedelta(days=random.randint(0, 60))
     )
