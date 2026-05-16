@@ -4,7 +4,6 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 import pytest
-from unittest.mock import patch
 from fastapi import FastAPI
 import pytest_asyncio
 from fastapi.testclient import TestClient

@@ -40,6 +40,7 @@ async def test_3_comment(client, setup_database, test_user, db_session):
 
 async def test_4_comment(client, setup_database, test_user, db_session):
     """Получение верифицированных комментариев"""
+
     get_jwt_token(client, test_user)
 
     await create_comment(db_session, test_user, True)
