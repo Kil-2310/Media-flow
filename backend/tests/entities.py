@@ -36,13 +36,3 @@ async def create_temporary_code(db_session, user):
     await db_session.commit()
     await db_session.refresh(temporary_code)
     return temporary_code
-
-
-# async def test_media(db_session, comment) -> MediaFactory:
-#     """Тестовый медиа, связанный с комментарием"""
-#
-#     media = CommentFactory.build(user_id=user.user_id, verified=verified)
-#     db_session.add(comment)
-#     await db_session.commit()
-#     await db_session.refresh(comment)
-#     return comment

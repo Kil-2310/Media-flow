@@ -92,10 +92,3 @@ async def db_session():
             yield session
             await session.rollback()
             await session.close()
-
-@pytest.fixture(autouse=True)
-def disable_rate_limiting():
-    """Отключает rate limiting для всех тестов"""
-    with patch('app.middleware.protection.throttle.setup_throttle') as mock_hit:
-        mock_hit.return_value = True
-        yield
